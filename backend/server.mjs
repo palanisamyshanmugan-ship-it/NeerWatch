@@ -14,7 +14,7 @@ try {
 } catch (e) {
   console.warn('No history_v2.json found');
 }
-const port = Number(process.env.PORT) || 8000;
+const PORT = Number(process.env.PORT) || 8000;
 const stateSet = new Set(seed.states);
 const byId = new Map(seed.locations.map(location => [location.location_id, location]));
 
@@ -533,7 +533,7 @@ const server = createServer((request, response) => {
   });
 });
 
-server.listen(port, '0.0.0.0', () => {
-  console.log(`NeerWatch API listening on http://localhost:${port}`);
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`NeerWatch API listening on http://localhost:${PORT}`);
   console.log(`Loaded ${seed.locations.length} published sample locations; ML risk outputs use August 2024 prototype snapshot — synthetic demonstration data.`);
 });
