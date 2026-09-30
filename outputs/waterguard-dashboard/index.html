@@ -557,10 +557,11 @@ function renderMarkers(){
     if (!mlData) return; // if backend not loaded yet, don't show
     
     const riskLvl = mlData.riskLevel || 'Unknown';
+    const riskClass = riskLvl === 'Unknown' ? 'Unknown' : riskLvl.charAt(0).toUpperCase() + riskLvl.slice(1).toLowerCase();
     const rProb = mlData.riskProbability != null ? Math.round(mlData.riskProbability * 100) + '%' : 'N/A';
     
     const el = document.createElement('button'); el.type='button';
-    el.className = `nw-ml-marker ${riskLvl}`;
+    el.className = `nw-ml-marker ${riskClass}`;
     el.setAttribute('aria-label', `${locId}: Risk ${riskLvl}`);
     const popup = new maplibregl.Popup({offset:12,closeButton:false}).setHTML(`<b>${escapeHtml(locId)}</b><br>State: ${escapeHtml(mlZoneInfo.state)}<br>Risk level: ${escapeHtml(riskLvl)} (${rProb})<br><small style="color:var(--amber)">Prototype demonstration geography</small>`);
     const marker = new maplibregl.Marker({element:el,anchor:'center'}).setLngLat([mlZoneInfo.coords[1], mlZoneInfo.coords[0]]).setPopup(popup).addTo(map);
