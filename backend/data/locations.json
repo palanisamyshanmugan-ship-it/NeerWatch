@@ -1,0 +1,3643 @@
+{
+  "region": "NORTHEAST_INDIA",
+  "states": [
+    "Arunachal Pradesh",
+    "Assam",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Sikkim",
+    "Tripura"
+  ],
+  "sources": {
+    "source_1": "https://www.jocpr.com/articles/arsenic-contamination-in-ground-water-is-a-serious-threat-in-the-north-karimganj-block-of-karimganj-district-southern-pa.pdf",
+    "source_2": "https://cpcb.nic.in/NGT/Report-NGT-15.01.2019.pdf",
+    "source_3": "https://cpcb.nic.in/openpdffile.php?id=UmVwb3J0RmlsZXMvMTc3N18xNzYwNjgxNDA4X21lZGlhcGhvdG80MzkyLnBkZg%3D%3D",
+    "source_4": "https://cpcb.nic.in/wqm/2022/WQuality_River-Data-2022.pdf",
+    "source_5": "https://cpcb.nic.in/wqm/2023/WQuality_River-Data-2023.pdf",
+    "source_6": "https://cpcb.nic.in/wqm/2022/Water_Quality_data_of_Med_Min_River_2022.pdf",
+    "source_7": "https://cpcb.nic.in/wqm/2020/WQuality_River-Data-2020.pdf"
+  },
+  "locations": [
+    {
+      "location_id": "NER_ASM_SADARASHI",
+      "state": "Assam",
+      "district": "North Karimganj",
+      "location_name": "Sadarashi GP",
+      "latitude": 24.8871,
+      "longitude": 92.3166,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "Hand pump",
+        "sample": "SD-12",
+        "period": "Apr\u2013Jun 2014 \u00b7 published 2015",
+        "screening_status": "flagged",
+        "summary": "Arsenic 93.05 \u00b5g/L \u00b7 Iron 8.56 mg/L",
+        "source_label": "Research study \u00b7 195 hand-pump samples",
+        "source_id": "source_1",
+        "readings": [
+          {
+            "parameter": "Arsenic",
+            "value": "93.05 \u00b5g/L",
+            "reference": "Reference: 10 \u00b5g/L acceptable limit"
+          },
+          {
+            "parameter": "Iron",
+            "value": "8.56 mg/L",
+            "reference": "Reference: 0.3 mg/L acceptable limit"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_ASM_AKBARPUR",
+      "state": "Assam",
+      "district": "North Karimganj",
+      "location_name": "Akbarpur GP",
+      "latitude": 24.904,
+      "longitude": 92.365,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "Hand pump",
+        "sample": "AP-2",
+        "period": "Apr\u2013Jun 2014 \u00b7 published 2015",
+        "screening_status": "flagged",
+        "summary": "Arsenic 51.24 \u00b5g/L \u00b7 Iron 5.98 mg/L",
+        "source_label": "Research study \u00b7 North Karimganj block",
+        "source_id": "source_1",
+        "readings": [
+          {
+            "parameter": "Arsenic",
+            "value": "51.24 \u00b5g/L",
+            "reference": "Reference: 10 \u00b5g/L acceptable limit"
+          },
+          {
+            "parameter": "Iron",
+            "value": "5.98 mg/L",
+            "reference": "Reference: 0.3 mg/L acceptable limit"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_ASM_NORTH_KARIMGANJ",
+      "state": "Assam",
+      "district": "North Karimganj",
+      "location_name": "North Karimganj GP",
+      "latitude": 24.874,
+      "longitude": 92.354,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "Hand pump",
+        "sample": "NK-14",
+        "period": "Apr\u2013Jun 2014 \u00b7 published 2015",
+        "screening_status": "flagged",
+        "summary": "Arsenic 28.61 \u00b5g/L \u00b7 Iron 26.27 mg/L",
+        "source_label": "Research study \u00b7 North Karimganj block",
+        "source_id": "source_1",
+        "readings": [
+          {
+            "parameter": "Arsenic",
+            "value": "28.61 \u00b5g/L",
+            "reference": "Reference: 10 \u00b5g/L acceptable limit"
+          },
+          {
+            "parameter": "Iron",
+            "value": "26.27 mg/L",
+            "reference": "Reference: 0.3 mg/L acceptable limit"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_ASM_PURAHURIA",
+      "state": "Assam",
+      "district": "North Karimganj",
+      "location_name": "Purahuria GP",
+      "latitude": 24.8505,
+      "longitude": 92.2852,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "Hand pump",
+        "sample": "PH-33",
+        "period": "Apr\u2013Jun 2014 \u00b7 published 2015",
+        "screening_status": "flagged",
+        "summary": "Arsenic 71.14 \u00b5g/L \u00b7 Iron 15.69 mg/L",
+        "source_label": "Research study \u00b7 North Karimganj block",
+        "source_id": "source_1",
+        "readings": [
+          {
+            "parameter": "Arsenic",
+            "value": "71.14 \u00b5g/L",
+            "reference": "Reference: 10 \u00b5g/L acceptable limit"
+          },
+          {
+            "parameter": "Iron",
+            "value": "15.69 mg/L",
+            "reference": "Reference: 0.3 mg/L acceptable limit"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MLY_RYMBAI",
+      "state": "Meghalaya",
+      "district": "East Jaintia Hills",
+      "location_name": "Kalipai River \u00b7 Rymbai",
+      "latitude": 25.3252,
+      "longitude": 92.31673,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River monitoring site",
+        "sample": "CPCB/State joint sample",
+        "period": "Reported in 2019 report",
+        "screening_status": "flagged",
+        "summary": "pH 2.51 \u00b7 Iron 4.2 mg/L \u00b7 Sulphate 100.2 mg/L",
+        "source_label": "CPCB / State Board report to NGT",
+        "source_id": "source_2",
+        "readings": [
+          {
+            "parameter": "pH",
+            "value": "2.51",
+            "reference": "Drinking-water reference range: 6.5\u20138.5"
+          },
+          {
+            "parameter": "Iron",
+            "value": "4.2 mg/L",
+            "reference": "Reference: 0.3 mg/L acceptable limit"
+          },
+          {
+            "parameter": "Sulphate",
+            "value": "100.2 mg/L",
+            "reference": "Reported concentration"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MLY_MOOKHLOT",
+      "state": "Meghalaya",
+      "district": "East Jaintia Hills",
+      "location_name": "Waikhyrwai River \u00b7 Mookhlot",
+      "latitude": 25.348229,
+      "longitude": 92.42338,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River monitoring site",
+        "sample": "CPCB station 4313",
+        "period": "Reported in 2019 report",
+        "screening_status": "flagged",
+        "summary": "pH 2.6 \u00b7 Iron 4.2 mg/L \u00b7 Sulphate 99.9 mg/L",
+        "source_label": "CPCB / State Board report to NGT",
+        "source_id": "source_2",
+        "readings": [
+          {
+            "parameter": "pH",
+            "value": "2.6",
+            "reference": "Drinking-water reference range: 6.5\u20138.5"
+          },
+          {
+            "parameter": "Iron",
+            "value": "4.2 mg/L",
+            "reference": "Reference: 0.3 mg/L acceptable limit"
+          },
+          {
+            "parameter": "Sulphate",
+            "value": "99.9 mg/L",
+            "reference": "Reported concentration"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MLY_MOOLAMYLLIANG",
+      "state": "Meghalaya",
+      "district": "East Jaintia Hills",
+      "location_name": "Kwai River \u00b7 Moolamylliang",
+      "latitude": 25.38251,
+      "longitude": 92.45122,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River monitoring site",
+        "sample": "Reported location",
+        "period": "Reported in 2019 report",
+        "screening_status": "flagged",
+        "summary": "pH 3.71 \u00b7 Iron 1.0 mg/L \u00b7 Sulphate 79.3 mg/L",
+        "source_label": "CPCB / State Board report to NGT",
+        "source_id": "source_2",
+        "readings": [
+          {
+            "parameter": "pH",
+            "value": "3.71",
+            "reference": "Drinking-water reference range: 6.5\u20138.5"
+          },
+          {
+            "parameter": "Iron",
+            "value": "1.0 mg/L",
+            "reference": "Reference: 0.3 mg/L acceptable limit"
+          },
+          {
+            "parameter": "Sulphate",
+            "value": "79.3 mg/L",
+            "reference": "Reported concentration"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MLY_MIHMYNTDU",
+      "state": "Meghalaya",
+      "district": "West Jaintia Hills",
+      "location_name": "Myntdu River \u00b7 Mihmyntdu",
+      "latitude": 25.434337,
+      "longitude": 92.204576,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River monitoring site",
+        "sample": "Reported location",
+        "period": "Reported in 2019 report",
+        "screening_status": "ok",
+        "summary": "pH 7.1 \u00b7 Iron 0.30 mg/L \u00b7 Sulphate 9.7 mg/L",
+        "source_label": "CPCB / State Board report to NGT",
+        "source_id": "source_2",
+        "readings": [
+          {
+            "parameter": "pH",
+            "value": "7.1",
+            "reference": "Drinking-water reference range: 6.5\u20138.5"
+          },
+          {
+            "parameter": "Iron",
+            "value": "0.30 mg/L",
+            "reference": "Reference: 0.3 mg/L acceptable limit"
+          },
+          {
+            "parameter": "Sulphate",
+            "value": "9.7 mg/L",
+            "reference": "Reported concentration"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_ARP_NAMCHIK_KHARSANG",
+      "state": "Arunachal Pradesh",
+      "district": "Changlang",
+      "location_name": "Namchik River \u00b7 Kharsang",
+      "latitude": 27.12,
+      "longitude": 95.72,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB NWMP station 3100",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.2 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.2 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_ARP_SENKI_CHANDRANAGAR",
+      "state": "Arunachal Pradesh",
+      "district": "Itanagar Capital Region",
+      "location_name": "Senki River \u00b7 Chandranagar",
+      "latitude": 27.12,
+      "longitude": 93.64,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB NWMP station 3095",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.2 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.2 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_ARP_DIBANG_ROING",
+      "state": "Arunachal Pradesh",
+      "district": "Lower Dibang Valley",
+      "location_name": "Dibang River \u00b7 Roing upstream",
+      "latitude": 28.15,
+      "longitude": 95.84,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB NWMP station 3106",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.6 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.6 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_ARP_SUBANSIRI_GERUKAMUKH",
+      "state": "Arunachal Pradesh",
+      "district": "Gerukamukh area",
+      "location_name": "Subansiri River \u00b7 Gerukamukh",
+      "latitude": 27.42,
+      "longitude": 94.25,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB NWMP station 3097",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.1 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.1 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_CHAKPI_CHAKPIKARON",
+      "state": "Manipur",
+      "district": "Chandel",
+      "location_name": "Chakpi River \u00b7 Chakpikaron",
+      "latitude": 24.22,
+      "longitude": 94.04,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS location",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.3 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.3 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_IJEI_NONEY",
+      "state": "Manipur",
+      "district": "Noney",
+      "location_name": "Ijei River \u00b7 Noney Bridge",
+      "latitude": 24.99,
+      "longitude": 93.58,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS location",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.4 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.4 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_IRANG_TAMENGLONG",
+      "state": "Manipur",
+      "district": "Tamenglong",
+      "location_name": "Irang River \u00b7 Tamenglong",
+      "latitude": 24.99,
+      "longitude": 93.5,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS location",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.6 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.6 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_KHUJAIROK_MOREH",
+      "state": "Manipur",
+      "district": "Tengnoupal",
+      "location_name": "Khujairok River \u00b7 Elora Hotel Road, Moreh",
+      "latitude": 24.25,
+      "longitude": 94.31,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS location",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 4.5 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "4.5 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_LEIMAKHONG_KANTO",
+      "state": "Manipur",
+      "district": "Imphal West",
+      "location_name": "Leimakhong River \u00b7 Kanto Awang Leikai",
+      "latitude": 24.96,
+      "longitude": 93.88,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS location",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.5 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.5 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_MAHA_KOMLATHABI",
+      "state": "Manipur",
+      "district": "Tengnoupal",
+      "location_name": "Maha River \u00b7 Komlathabi Bazar",
+      "latitude": 24.38,
+      "longitude": 94.06,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS location",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.5 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.5 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_SEKMAI_KAKCHING",
+      "state": "Manipur",
+      "district": "Kakching",
+      "location_name": "Sekmai River \u00b7 Kakching",
+      "latitude": 24.5,
+      "longitude": 93.98,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS location",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.7 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.7 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_THONGJAOROK_BRIDGE",
+      "state": "Manipur",
+      "district": "Noney area",
+      "location_name": "Thongjaorok River \u00b7 Thongjaorok Bridge",
+      "latitude": 24.96,
+      "longitude": 93.59,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS location",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.5 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.5 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_TUPUL_NONEY",
+      "state": "Manipur",
+      "district": "Noney",
+      "location_name": "Tupul River \u00b7 Tupul Bridge",
+      "latitude": 24.95,
+      "longitude": 93.6,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS location",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.1 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.1 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_BARAK_TAMENGLONG",
+      "state": "Manipur",
+      "district": "Tamenglong",
+      "location_name": "Barak River \u00b7 Senapati\u2013NH 53 reach",
+      "latitude": 24.98,
+      "longitude": 93.49,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS stretch",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.4 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.4 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_IMPHAL_SAMUROU",
+      "state": "Manipur",
+      "district": "Imphal West",
+      "location_name": "Imphal River \u00b7 Awang Sekmai\u2013Samurou reach",
+      "latitude": 24.83,
+      "longitude": 93.82,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS stretch",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 4.1 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "4.1 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_IRIL_LILONG",
+      "state": "Manipur",
+      "district": "Thoubal",
+      "location_name": "Iril River \u00b7 Kangla Siphai\u2013Lilong reach",
+      "latitude": 24.7,
+      "longitude": 93.91,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS stretch",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.4 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.4 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_KHUGA_RENGKAI",
+      "state": "Manipur",
+      "district": "Churachandpur",
+      "location_name": "Khuga River \u00b7 Tuitha Dam\u2013Rengkai reach",
+      "latitude": 24.33,
+      "longitude": 93.67,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS stretch",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 4.6 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "4.6 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_KONGBA_IRANPHAM",
+      "state": "Manipur",
+      "district": "Thoubal",
+      "location_name": "Kongba River \u00b7 Irong\u2013Iranpham reach",
+      "latitude": 24.67,
+      "longitude": 93.95,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS stretch",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.5 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.5 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_MANIPUR_ETHAI",
+      "state": "Manipur",
+      "district": "Thoubal",
+      "location_name": "Manipur River \u00b7 Thoubal\u2013Ethai Bridge reach",
+      "latitude": 24.62,
+      "longitude": 93.95,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS stretch",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 4.6 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "4.6 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_NAMBUL_BISHNUPUR",
+      "state": "Manipur",
+      "district": "Bishnupur",
+      "location_name": "Nambul River \u00b7 Singda Dam\u2013Bishnupur reach",
+      "latitude": 24.63,
+      "longitude": 93.78,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS stretch",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 5.6 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "5.6 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_THOUBAL_YARIPOK",
+      "state": "Manipur",
+      "district": "Thoubal",
+      "location_name": "Thoubal River \u00b7 Shong Kong\u2013Yaripok reach",
+      "latitude": 24.62,
+      "longitude": 94.01,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS stretch",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 4.6 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "4.6 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MNP_WANGJING_HEIROK",
+      "state": "Manipur",
+      "district": "Thoubal",
+      "location_name": "Wangjing River \u00b7 Wangjing\u2013Heirok reach",
+      "latitude": 24.61,
+      "longitude": 94.02,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS stretch",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.5 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.5 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MZM_CHITE_ARMED_VENG",
+      "state": "Mizoram",
+      "district": "Aizawl",
+      "location_name": "Chite Stream \u00b7 Armed Veng reach",
+      "latitude": 23.74,
+      "longitude": 92.72,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS location",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 29.0 mg/L \u00b7 Priority II",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "29.0 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class II",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MZM_TUIKUAL_REIEK_KAI",
+      "state": "Mizoram",
+      "district": "Aizawl",
+      "location_name": "Tuikual Stream \u00b7 Reiek Kai reach",
+      "latitude": 23.73,
+      "longitude": 92.73,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS location",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 29.1 mg/L \u00b7 Priority II",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "29.1 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class II",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MZM_LAWIBUAL_ITI_VENG",
+      "state": "Mizoram",
+      "district": "Aizawl",
+      "location_name": "Lawibual Stream \u00b7 ITI Veng",
+      "latitude": 23.75,
+      "longitude": 92.72,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB NWMP location",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 14.3 mg/L \u00b7 Priority III",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "14.3 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class III",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MZM_TUIPUI_RIVER",
+      "state": "Mizoram",
+      "district": "Mizoram (reported reach)",
+      "location_name": "Tuipui River \u00b7 monitored reach",
+      "latitude": 22.35,
+      "longitude": 92.76,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS location",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 5.6 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "5.6 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_NGL_SANUO_NEW_SECRETARIAT",
+      "state": "Nagaland",
+      "district": "Kohima",
+      "location_name": "Sanuo Ru \u00b7 below New Secretariat",
+      "latitude": 25.67,
+      "longitude": 94.11,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB NWMP station 2890",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.4 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.4 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_SKM_MANEY_KHOLA_ADAMPOOL",
+      "state": "Sikkim",
+      "district": "Gangtok",
+      "location_name": "Maney Khola \u00b7 Adampool",
+      "latitude": 27.34,
+      "longitude": 88.6,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS reach",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 22.0 mg/L \u00b7 Priority II",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "22.0 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class II",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_SKM_RANGPO_RIVER",
+      "state": "Sikkim",
+      "district": "Pakyong",
+      "location_name": "Rangpo River \u00b7 dam site\u2013power house reach",
+      "latitude": 27.18,
+      "longitude": 88.53,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS reach",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 22.0 mg/L \u00b7 Priority II",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "22.0 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class II",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_SKM_RANICHU_RANIPOOL",
+      "state": "Sikkim",
+      "district": "Gangtok",
+      "location_name": "Ranichu \u00b7 Ranipool confluence",
+      "latitude": 27.28,
+      "longitude": 88.6,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS reach",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 8.8 mg/L \u00b7 Priority IV",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "8.8 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class IV",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_TRP_HAORA_DASHAMIGHAT",
+      "state": "Tripura",
+      "district": "West Tripura",
+      "location_name": "Haora River \u00b7 Dashamighat",
+      "latitude": 23.84,
+      "longitude": 91.28,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "River reach \u00b7 CPCB PRS",
+        "sample": "CPCB PRS location",
+        "period": "2022\u201323 data \u00b7 CPCB 2025 assessment",
+        "screening_status": "flagged",
+        "summary": "BOD 3.3 mg/L \u00b7 Priority V",
+        "source_label": "CPCB \u00b7 polluted-river assessment 2025",
+        "source_id": "source_3",
+        "readings": [
+          {
+            "parameter": "Maximum BOD",
+            "value": "3.3 mg/L",
+            "reference": "CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)"
+          },
+          {
+            "parameter": "Priority class",
+            "value": "Class V",
+            "reference": "CPCB class based on the reported maximum BOD"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_ARP_BERENG_CHOWKHAM",
+      "state": "Arunachal Pradesh",
+      "district": "Namsai",
+      "location_name": "Bereng River \u00b7 Chowkham",
+      "latitude": 27.67,
+      "longitude": 95.82,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "CPCB river monitoring site",
+        "sample": "CPCB NWMP",
+        "period": "2022 sample \u00b7 CPCB river data",
+        "screening_status": "ok",
+        "summary": "BOD 1.5\u20132.4 mg/L \u00b7 pH / DO shown in range",
+        "source_label": "CPCB \u00b7 river water quality 2022",
+        "source_id": "source_4",
+        "readings": [
+          {
+            "parameter": "BOD",
+            "value": "1.5\u20132.4 mg/L",
+            "reference": "CPCB PRS trigger: >3 mg/L"
+          },
+          {
+            "parameter": "pH",
+            "value": "6.77\u20138.1",
+            "reference": "Shown range: 6.5\u20138.5"
+          },
+          {
+            "parameter": "Dissolved oxygen",
+            "value": "7.2\u20139.5 mg/L",
+            "reference": "Shown range is above 5 mg/L"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_MZM_TLAWNG_PIALTHLENG",
+      "state": "Mizoram",
+      "district": "Lunglei",
+      "location_name": "Tlawng River \u00b7 Pialthleng Zotlang",
+      "latitude": 22.89,
+      "longitude": 92.75,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "CPCB river monitoring site",
+        "sample": "CPCB NWMP",
+        "period": "2023 sample \u00b7 CPCB river data",
+        "screening_status": "ok",
+        "summary": "BOD 1.1\u20131.3 mg/L \u00b7 pH / DO shown in range",
+        "source_label": "CPCB \u00b7 river water quality 2023",
+        "source_id": "source_5",
+        "readings": [
+          {
+            "parameter": "BOD",
+            "value": "1.1\u20131.3 mg/L",
+            "reference": "CPCB PRS trigger: >3 mg/L"
+          },
+          {
+            "parameter": "pH",
+            "value": "7.3\u20138.0",
+            "reference": "Shown range: 6.5\u20138.5"
+          },
+          {
+            "parameter": "Dissolved oxygen",
+            "value": "6.2\u20139.2 mg/L",
+            "reference": "Shown range is above 5 mg/L"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_SKM_RANGIT_JORETHANG",
+      "state": "Sikkim",
+      "district": "Namchi",
+      "location_name": "Rangit River \u00b7 Jorethang",
+      "latitude": 27.11,
+      "longitude": 88.32,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "CPCB river monitoring site",
+        "sample": "CPCB NWMP",
+        "period": "2022 sample \u00b7 CPCB river data",
+        "screening_status": "ok",
+        "summary": "BOD 1.2\u20132.7 mg/L \u00b7 coliform also reported",
+        "source_label": "CPCB \u00b7 river water quality 2022",
+        "source_id": "source_4",
+        "readings": [
+          {
+            "parameter": "BOD",
+            "value": "1.2\u20132.7 mg/L",
+            "reference": "CPCB PRS trigger: >3 mg/L"
+          },
+          {
+            "parameter": "pH",
+            "value": "6.5\u20137.5",
+            "reference": "Shown range: 6.5\u20138.5"
+          },
+          {
+            "parameter": "Dissolved oxygen",
+            "value": "8.0\u20139.8 mg/L",
+            "reference": "Shown range is above 5 mg/L"
+          },
+          {
+            "parameter": "Faecal coliform",
+            "value": "45\u201398 MPN/100 mL",
+            "reference": "Historical CPCB table result"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_TRP_JURI_KRISHNAPUR",
+      "state": "Tripura",
+      "district": "North Tripura",
+      "location_name": "Juri River \u00b7 Krishnapur, downstream Dharmanagar",
+      "latitude": 24.37,
+      "longitude": 92.17,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "CPCB river monitoring site",
+        "sample": "CPCB NWMP",
+        "period": "2022 sample \u00b7 CPCB medium/minor river data",
+        "screening_status": "ok",
+        "summary": "BOD 1.3\u20132.2 mg/L \u00b7 coliform also reported",
+        "source_label": "CPCB \u00b7 medium/minor river data 2022",
+        "source_id": "source_6",
+        "readings": [
+          {
+            "parameter": "BOD",
+            "value": "1.3\u20132.2 mg/L",
+            "reference": "CPCB PRS trigger: >3 mg/L"
+          },
+          {
+            "parameter": "pH",
+            "value": "7.1\u20137.8",
+            "reference": "Shown range: 6.5\u20138.5"
+          },
+          {
+            "parameter": "Dissolved oxygen",
+            "value": "5.4\u20136.5 mg/L",
+            "reference": "Historical CPCB table result"
+          },
+          {
+            "parameter": "Faecal coliform",
+            "value": "27\u201358 MPN/100 mL",
+            "reference": "Historical CPCB table result"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "NER_NGL_CHATHE_MEDZIPHEMA",
+      "state": "Nagaland",
+      "district": "Ch\u00fcmoukedima",
+      "location_name": "Chathe River \u00b7 Medziphema",
+      "latitude": 25.75,
+      "longitude": 93.87,
+      "population": null,
+      "coordinate_precision": "APPROXIMATE_LOCALITY",
+      "published_observation": {
+        "kind": "CPCB river monitoring site",
+        "sample": "CPCB NWMP",
+        "period": "2020 sample \u00b7 CPCB river data",
+        "screening_status": "ok",
+        "summary": "BOD 1.4\u20132.7 mg/L \u00b7 pH / DO shown in range",
+        "source_label": "CPCB \u00b7 river water quality 2020",
+        "source_id": "source_7",
+        "readings": [
+          {
+            "parameter": "BOD",
+            "value": "1.4\u20132.7 mg/L",
+            "reference": "CPCB PRS trigger: >3 mg/L"
+          },
+          {
+            "parameter": "pH",
+            "value": "7.2\u20138.3",
+            "reference": "Shown range: 6.5\u20138.5"
+          },
+          {
+            "parameter": "Dissolved oxygen",
+            "value": "5.4\u20137.4 mg/L",
+            "reference": "Historical CPCB table result"
+          }
+        ]
+      }
+    },
+    {
+      "location_id": "LOC_001",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_001)",
+      "latitude": 27.874072401451745,
+      "longitude": 91.11244788196946,
+      "population": 45732.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_002",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_002)",
+      "latitude": 26.408362588074063,
+      "longitude": 95.15215884902956,
+      "population": 2685.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_003",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_003)",
+      "latitude": 23.27553382390075,
+      "longitude": 92.04266527078843,
+      "population": 29693.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_004",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_004)",
+      "latitude": 24.09108486401413,
+      "longitude": 92.52098619336142,
+      "population": 1189.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_005",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_005)",
+      "latitude": 22.248378095399985,
+      "longitude": 94.37809535964108,
+      "population": 31740.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_006",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_006)",
+      "latitude": 24.18460326880028,
+      "longitude": 90.45207527784916,
+      "population": 24483.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_007",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_007)",
+      "latitude": 23.266770658410465,
+      "longitude": 95.51628285944592,
+      "population": 2021.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_008",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_008)",
+      "latitude": 25.27315600027324,
+      "longitude": 92.74265681721396,
+      "population": 34763.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_009",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_009)",
+      "latitude": 29.10879018262012,
+      "longitude": 96.20291063482178,
+      "population": 25300.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_010",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_010)",
+      "latitude": 23.969993865169076,
+      "longitude": 91.98130599392144,
+      "population": 49984.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_011",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_011)",
+      "latitude": 23.39131803066604,
+      "longitude": 95.1773330361646,
+      "population": 13666.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_012",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_012)",
+      "latitude": 25.270880056036525,
+      "longitude": 90.43465789697618,
+      "population": 36222.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_013",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_013)",
+      "latitude": 25.44161193871462,
+      "longitude": 90.62087569372493,
+      "population": 14773.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_014",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_014)",
+      "latitude": 25.820496220364955,
+      "longitude": 92.99206584136084,
+      "population": 24419.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_015",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_015)",
+      "latitude": 27.116370648195957,
+      "longitude": 90.77285219892524,
+      "population": 7374.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_016",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_016)",
+      "latitude": 27.110886997797785,
+      "longitude": 96.47960236041747,
+      "population": 44689.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_017",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_017)",
+      "latitude": 25.023824609027745,
+      "longitude": 96.5012579936753,
+      "population": 19047.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_018",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_018)",
+      "latitude": 26.75767590406021,
+      "longitude": 89.70400690286394,
+      "population": 10474.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_019",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_019)",
+      "latitude": 23.92059250348891,
+      "longitude": 91.57976652130786,
+      "population": 8994.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_020",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_020)",
+      "latitude": 23.804365604507584,
+      "longitude": 91.60094568385723,
+      "population": 45417.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_021",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_021)",
+      "latitude": 25.67009267421646,
+      "longitude": 90.09638638462492,
+      "population": 25548.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_022",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_022)",
+      "latitude": 29.292378405829503,
+      "longitude": 91.56382559063856,
+      "population": 5931.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_023",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_023)",
+      "latitude": 26.642293729451843,
+      "longitude": 94.57817877285888,
+      "population": 35698.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_024",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_024)",
+      "latitude": 22.20581356166073,
+      "longitude": 94.24987566254948,
+      "population": 48011.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_025",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_025)",
+      "latitude": 28.95392448367203,
+      "longitude": 92.76130456237392,
+      "population": 24078.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_026",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_026)",
+      "latitude": 25.960859803706743,
+      "longitude": 95.05753987495714,
+      "population": 17646.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_027",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_027)",
+      "latitude": 29.371902748184432,
+      "longitude": 97.13372900492372,
+      "population": 21932.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_028",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_028)",
+      "latitude": 28.24995856678729,
+      "longitude": 96.29369704746132,
+      "population": 13183.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_029",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_029)",
+      "latitude": 21.96897788712472,
+      "longitude": 90.48133088006846,
+      "population": 17482.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_030",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_030)",
+      "latitude": 26.7897094462695,
+      "longitude": 91.42687368284632,
+      "population": 25736.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_031",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_031)",
+      "latitude": 28.26917557870633,
+      "longitude": 94.76361927071264,
+      "population": 45064.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_032",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_032)",
+      "latitude": 29.19757916064334,
+      "longitude": 92.72685247993404,
+      "population": 11677.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_033",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_033)",
+      "latitude": 25.59388270364148,
+      "longitude": 91.20337100604496,
+      "population": 41764.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_034",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_034)",
+      "latitude": 28.953439382646856,
+      "longitude": 97.04525004291992,
+      "population": 37212.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_035",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_035)",
+      "latitude": 29.14991114282752,
+      "longitude": 97.11987382358726,
+      "population": 1190.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_036",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_036)",
+      "latitude": 26.076009468437626,
+      "longitude": 96.90839176103802,
+      "population": 1569.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_037",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_037)",
+      "latitude": 22.950630114273928,
+      "longitude": 93.69113832320078,
+      "population": 35177.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_038",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_038)",
+      "latitude": 24.1019388319837,
+      "longitude": 95.93208089718456,
+      "population": 39754.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_039",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_039)",
+      "latitude": 27.88721384225081,
+      "longitude": 94.7047222669888,
+      "population": 7655.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_040",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_040)",
+      "latitude": 22.60486454880652,
+      "longitude": 94.15275708567054,
+      "population": 34621.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_041",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_041)",
+      "latitude": 22.128751874542868,
+      "longitude": 89.98758105336896,
+      "population": 30749.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_042",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_042)",
+      "latitude": 26.5716785686425,
+      "longitude": 90.357175480452,
+      "population": 1876.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_043",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_043)",
+      "latitude": 29.218890595969008,
+      "longitude": 93.6755126819192,
+      "population": 19077.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_044",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_044)",
+      "latitude": 22.09013057561593,
+      "longitude": 97.11239279302004,
+      "population": 2150.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_045",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_045)",
+      "latitude": 23.69840519368052,
+      "longitude": 90.42282433362595,
+      "population": 21056.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_046",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_046)",
+      "latitude": 25.16754674008418,
+      "longitude": 95.321302737526,
+      "population": 9130.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_047",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_047)",
+      "latitude": 22.588492993600813,
+      "longitude": 90.42500880966791,
+      "population": 31445.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_048",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_048)",
+      "latitude": 25.45103828085424,
+      "longitude": 91.03365439830712,
+      "population": 38220.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_049",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_049)",
+      "latitude": 22.014784052177884,
+      "longitude": 96.88745957221202,
+      "population": 10823.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_050",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_050)",
+      "latitude": 28.981886978438755,
+      "longitude": 96.37743178837351,
+      "population": 23687.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_051",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_051)",
+      "latitude": 27.98403132552002,
+      "longitude": 96.01892396322846,
+      "population": 39155.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_052",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_052)",
+      "latitude": 23.509418397812805,
+      "longitude": 92.60489494085542,
+      "population": 32996.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_053",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_053)",
+      "latitude": 27.01210251729592,
+      "longitude": 92.32280918487466,
+      "population": 42576.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_054",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_054)",
+      "latitude": 27.41303282852914,
+      "longitude": 95.88680316396334,
+      "population": 28384.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_055",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_055)",
+      "latitude": 24.9946325768357,
+      "longitude": 92.56453926060443,
+      "population": 35911.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_056",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_056)",
+      "latitude": 27.449315703355307,
+      "longitude": 91.53441837351065,
+      "population": 47352.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_057",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_057)",
+      "latitude": 24.819012590506222,
+      "longitude": 89.7834499163983,
+      "population": 8400.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_058",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_058)",
+      "latitude": 26.200784160924645,
+      "longitude": 94.56514653370746,
+      "population": 22364.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_059",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_059)",
+      "latitude": 27.836842827943865,
+      "longitude": 95.78005969951806,
+      "population": 19540.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_060",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_060)",
+      "latitude": 28.557781370687245,
+      "longitude": 92.402045596651,
+      "population": 7801.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_061",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_061)",
+      "latitude": 22.53080104586248,
+      "longitude": 95.09746231223522,
+      "population": 40081.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_062",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_062)",
+      "latitude": 29.299796838758816,
+      "longitude": 92.58188512732212,
+      "population": 27432.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_063",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_063)",
+      "latitude": 24.721946891481867,
+      "longitude": 90.34295551857976,
+      "population": 7588.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_064",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_064)",
+      "latitude": 25.594688282181444,
+      "longitude": 89.78742306470913,
+      "population": 10435.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_065",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_065)",
+      "latitude": 27.495336594490677,
+      "longitude": 94.19193949124814,
+      "population": 1504.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_066",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_066)",
+      "latitude": 27.915819367700504,
+      "longitude": 97.22983514940788,
+      "population": 23700.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_067",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_067)",
+      "latitude": 23.797426259919305,
+      "longitude": 95.0546656479212,
+      "population": 45472.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_068",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_068)",
+      "latitude": 27.12693791897861,
+      "longitude": 92.65835410162,
+      "population": 42430.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_069",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_069)",
+      "latitude": 22.70067049451913,
+      "longitude": 92.28458249893662,
+      "population": 10337.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_070",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_070)",
+      "latitude": 24.60258821403951,
+      "longitude": 91.70161394397785,
+      "population": 39810.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_071",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_071)",
+      "latitude": 23.93218231886347,
+      "longitude": 90.72552546422288,
+      "population": 46445.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_072",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_072)",
+      "latitude": 28.474961144443444,
+      "longitude": 93.94722661858934,
+      "population": 38892.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_073",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_073)",
+      "latitude": 24.725542274534558,
+      "longitude": 95.47175290981576,
+      "population": 21309.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_074",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_074)",
+      "latitude": 23.95055303948029,
+      "longitude": 90.13409132421214,
+      "population": 30189.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_075",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_075)",
+      "latitude": 27.667405613853827,
+      "longitude": 96.9746961200947,
+      "population": 33201.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_076",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_076)",
+      "latitude": 26.4463097583816,
+      "longitude": 91.46054960237667,
+      "population": 38744.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_077",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_077)",
+      "latitude": 25.802307756778447,
+      "longitude": 95.64685161636444,
+      "population": 29538.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_078",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_078)",
+      "latitude": 24.926121496592977,
+      "longitude": 90.73191725906992,
+      "population": 20758.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_079",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_079)",
+      "latitude": 22.922786066900773,
+      "longitude": 89.8119939256427,
+      "population": 7949.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_080",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_080)",
+      "latitude": 24.511916002674752,
+      "longitude": 93.65771906653056,
+      "population": 32703.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_081",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_081)",
+      "latitude": 23.00305110696778,
+      "longitude": 96.83472471374353,
+      "population": 22833.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_082",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_082)",
+      "latitude": 24.36563707715631,
+      "longitude": 94.5771865782388,
+      "population": 13015.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_083",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_083)",
+      "latitude": 22.94120379487057,
+      "longitude": 94.63473553498476,
+      "population": 46415.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_084",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_084)",
+      "latitude": 23.192399034012222,
+      "longitude": 91.18062544482676,
+      "population": 24954.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_085",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_085)",
+      "latitude": 22.804769033254505,
+      "longitude": 93.247996513852,
+      "population": 19777.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_086",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_086)",
+      "latitude": 27.895577991817817,
+      "longitude": 94.53483299908,
+      "population": 11478.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_087",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_087)",
+      "latitude": 27.94650959844796,
+      "longitude": 95.46159961595416,
+      "population": 23195.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_088",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_088)",
+      "latitude": 25.884493154801504,
+      "longitude": 95.24797367271428,
+      "population": 40577.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_089",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_089)",
+      "latitude": 27.522121740064403,
+      "longitude": 89.93463557604868,
+      "population": 41441.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_090",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_090)",
+      "latitude": 22.050533983332947,
+      "longitude": 92.18000957499048,
+      "population": 30926.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_091",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_091)",
+      "latitude": 26.99326739358367,
+      "longitude": 95.7766185372765,
+      "population": 27734.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_092",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_092)",
+      "latitude": 22.856852270966726,
+      "longitude": 91.88507447465018,
+      "population": 20123.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_093",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_093)",
+      "latitude": 28.90268867819906,
+      "longitude": 89.75801459613238,
+      "population": 27900.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_094",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_094)",
+      "latitude": 27.94398665055857,
+      "longitude": 90.12853186804873,
+      "population": 14046.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_095",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_095)",
+      "latitude": 24.883916992843066,
+      "longitude": 97.16492233622034,
+      "population": 23350.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_096",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_096)",
+      "latitude": 27.28842953127415,
+      "longitude": 93.81978283674582,
+      "population": 49153.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_097",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_097)",
+      "latitude": 23.3963019550374,
+      "longitude": 95.36910331447837,
+      "population": 40051.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_098",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_098)",
+      "latitude": 28.890107566927004,
+      "longitude": 92.16894487962828,
+      "population": 48362.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_099",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_099)",
+      "latitude": 23.41297846747677,
+      "longitude": 94.97120091867473,
+      "population": 35387.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_100",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_100)",
+      "latitude": 26.445764107918787,
+      "longitude": 95.81602876474176,
+      "population": 43078.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_101",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_101)",
+      "latitude": 29.331971073430427,
+      "longitude": 91.27851393740993,
+      "population": 9162.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_102",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_102)",
+      "latitude": 28.109556653831188,
+      "longitude": 95.47886482069292,
+      "population": 31523.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_103",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_103)",
+      "latitude": 28.70899597846887,
+      "longitude": 92.13471368368302,
+      "population": 18449.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_104",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_104)",
+      "latitude": 26.58076158136378,
+      "longitude": 93.85631417674269,
+      "population": 38438.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_105",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_105)",
+      "latitude": 22.399643342931125,
+      "longitude": 91.46349551012094,
+      "population": 12302.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_106",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_106)",
+      "latitude": 23.15048069995037,
+      "longitude": 96.46544418837549,
+      "population": 6408.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_107",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_107)",
+      "latitude": 27.20235345932594,
+      "longitude": 95.6950039306908,
+      "population": 3336.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_108",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_108)",
+      "latitude": 22.671870230581085,
+      "longitude": 93.83090640643138,
+      "population": 30486.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_109",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_109)",
+      "latitude": 25.54768111496705,
+      "longitude": 92.8489548635583,
+      "population": 4756.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_110",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_110)",
+      "latitude": 26.392720235829948,
+      "longitude": 96.0663509741299,
+      "population": 15153.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_111",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_111)",
+      "latitude": 23.0501355233706,
+      "longitude": 94.21396970652934,
+      "population": 45241.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_112",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_112)",
+      "latitude": 28.7906289169556,
+      "longitude": 95.78365170585548,
+      "population": 39727.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_113",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_113)",
+      "latitude": 27.42333176718542,
+      "longitude": 96.89462601372142,
+      "population": 4797.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_114",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_114)",
+      "latitude": 22.8349701090245,
+      "longitude": 96.79048249615376,
+      "population": 35622.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_115",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_115)",
+      "latitude": 24.413979312344257,
+      "longitude": 95.8819715542047,
+      "population": 37980.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_116",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_116)",
+      "latitude": 24.49759495774471,
+      "longitude": 92.37153965460097,
+      "population": 37368.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_117",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_117)",
+      "latitude": 25.637758295546096,
+      "longitude": 92.92572596118502,
+      "population": 23359.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_118",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_118)",
+      "latitude": 26.876530290125327,
+      "longitude": 91.0708769448971,
+      "population": 47163.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_119",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_119)",
+      "latitude": 25.66646257748432,
+      "longitude": 94.28446463336434,
+      "population": 42949.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_120",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_120)",
+      "latitude": 26.58731990288289,
+      "longitude": 92.6084897952893,
+      "population": 8311.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_121",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_121)",
+      "latitude": 25.90841918442935,
+      "longitude": 93.4043772025844,
+      "population": 12485.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_122",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_122)",
+      "latitude": 27.54934665560588,
+      "longitude": 91.79672428134631,
+      "population": 11093.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_123",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_123)",
+      "latitude": 26.841929564326133,
+      "longitude": 89.90863914227683,
+      "population": 11998.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_124",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_124)",
+      "latitude": 27.89937064029892,
+      "longitude": 91.07479389781837,
+      "population": 25160.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_125",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_125)",
+      "latitude": 28.31772351079714,
+      "longitude": 96.09269295716584,
+      "population": 42124.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_126",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_126)",
+      "latitude": 22.54131398140851,
+      "longitude": 91.3007241646244,
+      "population": 21079.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_127",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_127)",
+      "latitude": 26.58570953282438,
+      "longitude": 92.28616710005372,
+      "population": 16358.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_128",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_128)",
+      "latitude": 27.70375892401005,
+      "longitude": 92.4932357889278,
+      "population": 8083.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_129",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_129)",
+      "latitude": 25.555733986871356,
+      "longitude": 96.58805214708453,
+      "population": 21607.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_130",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_130)",
+      "latitude": 26.651086648696104,
+      "longitude": 91.68573517783568,
+      "population": 18685.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_131",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_131)",
+      "latitude": 27.02387892334111,
+      "longitude": 96.03389584451988,
+      "population": 27665.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_132",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_132)",
+      "latitude": 27.301519362242217,
+      "longitude": 90.5206562219908,
+      "population": 17725.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_133",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_133)",
+      "latitude": 26.64823547518085,
+      "longitude": 93.5059086460647,
+      "population": 28529.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_134",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_134)",
+      "latitude": 24.55403532420937,
+      "longitude": 97.0814292653118,
+      "population": 20250.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_135",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_135)",
+      "latitude": 24.56754537348712,
+      "longitude": 95.23665346991868,
+      "population": 12046.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_136",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_136)",
+      "latitude": 27.394290729076875,
+      "longitude": 91.35504091514883,
+      "population": 41483.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_137",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_137)",
+      "latitude": 26.376321366876667,
+      "longitude": 92.2736779592906,
+      "population": 33921.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_138",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_138)",
+      "latitude": 27.06301797320802,
+      "longitude": 93.04817050724886,
+      "population": 14350.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_139",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_139)",
+      "latitude": 26.32673000151815,
+      "longitude": 92.4794990064382,
+      "population": 5090.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_140",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_140)",
+      "latitude": 25.964257105337683,
+      "longitude": 96.42168293624836,
+      "population": 6895.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_141",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_141)",
+      "latitude": 23.772510066443893,
+      "longitude": 93.46857222005218,
+      "population": 12918.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_142",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_142)",
+      "latitude": 28.83936238061749,
+      "longitude": 91.09043015748048,
+      "population": 20541.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_143",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_143)",
+      "latitude": 22.76461515935463,
+      "longitude": 92.94757247992496,
+      "population": 35268.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_144",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_144)",
+      "latitude": 26.734099879693662,
+      "longitude": 94.70628859841288,
+      "population": 36435.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_145",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_145)",
+      "latitude": 24.93364087261388,
+      "longitude": 94.1076937476377,
+      "population": 29535.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_146",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_146)",
+      "latitude": 25.10112792491148,
+      "longitude": 96.45032340954089,
+      "population": 45481.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_147",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_147)",
+      "latitude": 24.779729174397943,
+      "longitude": 96.88094230257444,
+      "population": 31586.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_148",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_148)",
+      "latitude": 25.498359951423783,
+      "longitude": 94.17183049565044,
+      "population": 19155.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_149",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_149)",
+      "latitude": 27.39203855388484,
+      "longitude": 89.72576698773095,
+      "population": 45460.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_150",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_150)",
+      "latitude": 23.9794923427258,
+      "longitude": 96.70961108584302,
+      "population": 48054.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_151",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_151)",
+      "latitude": 27.884919916075376,
+      "longitude": 91.69416641733396,
+      "population": 33123.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_152",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_152)",
+      "latitude": 29.31888682360019,
+      "longitude": 95.42381673628093,
+      "population": 49988.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_153",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_153)",
+      "latitude": 24.78067958618437,
+      "longitude": 89.98283591818493,
+      "population": 44513.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_154",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_154)",
+      "latitude": 25.786952750072945,
+      "longitude": 94.29901035771364,
+      "population": 31448.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_155",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_155)",
+      "latitude": 28.63077111034653,
+      "longitude": 93.26803176126027,
+      "population": 8287.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_156",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_156)",
+      "latitude": 28.48095646972785,
+      "longitude": 91.74512032793304,
+      "population": 33284.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_157",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_157)",
+      "latitude": 28.886921162392422,
+      "longitude": 95.3611374398306,
+      "population": 16585.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_158",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_158)",
+      "latitude": 25.89451889550572,
+      "longitude": 97.1083391889588,
+      "population": 10903.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_159",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_159)",
+      "latitude": 25.770592653327125,
+      "longitude": 96.68015563972328,
+      "population": 2591.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_160",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_160)",
+      "latitude": 27.88069516205196,
+      "longitude": 94.77007912686987,
+      "population": 48456.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_161",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_161)",
+      "latitude": 27.00105578820225,
+      "longitude": 94.46330761225693,
+      "population": 3469.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_162",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_162)",
+      "latitude": 28.09362562923572,
+      "longitude": 90.69229797954551,
+      "population": 23890.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_163",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_163)",
+      "latitude": 25.70600800320627,
+      "longitude": 89.74917121221962,
+      "population": 22727.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_164",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_164)",
+      "latitude": 26.65504277324708,
+      "longitude": 93.85788742381207,
+      "population": 2007.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_165",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_165)",
+      "latitude": 24.841134085838974,
+      "longitude": 91.08212939036352,
+      "population": 27660.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_166",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_166)",
+      "latitude": 23.14783190199204,
+      "longitude": 95.63657905249744,
+      "population": 9073.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_167",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_167)",
+      "latitude": 29.201167268830478,
+      "longitude": 97.16035948569984,
+      "population": 12939.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_168",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_168)",
+      "latitude": 24.32707664362156,
+      "longitude": 93.46255256611592,
+      "population": 28570.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_169",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_169)",
+      "latitude": 25.096359766769798,
+      "longitude": 93.1756800873385,
+      "population": 17422.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_170",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_170)",
+      "latitude": 27.00374476556035,
+      "longitude": 94.73973634996474,
+      "population": 23042.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_171",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_171)",
+      "latitude": 25.04795487694592,
+      "longitude": 94.61664979701348,
+      "population": 49901.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_172",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_172)",
+      "latitude": 23.624659544183142,
+      "longitude": 91.34090622099316,
+      "population": 27431.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_173",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_173)",
+      "latitude": 29.161450709360413,
+      "longitude": 91.12854647091405,
+      "population": 6776.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_174",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_174)",
+      "latitude": 26.596652412235613,
+      "longitude": 90.7105855581544,
+      "population": 42652.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_175",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_175)",
+      "latitude": 22.77981141721796,
+      "longitude": 90.66393059995964,
+      "population": 14547.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_176",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_176)",
+      "latitude": 26.26478551435799,
+      "longitude": 91.77124921415026,
+      "population": 17967.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_177",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_177)",
+      "latitude": 24.866588129099764,
+      "longitude": 97.20518885940432,
+      "population": 42125.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_178",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_178)",
+      "latitude": 27.33213981094809,
+      "longitude": 95.46854462107989,
+      "population": 10768.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_179",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_179)",
+      "latitude": 23.477621849391515,
+      "longitude": 92.36432757086529,
+      "population": 10127.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_180",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_180)",
+      "latitude": 22.51881400830316,
+      "longitude": 96.04875816110562,
+      "population": 44201.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_181",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_181)",
+      "latitude": 23.15611936694302,
+      "longitude": 90.50517237057488,
+      "population": 7090.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_182",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_182)",
+      "latitude": 25.959722514758028,
+      "longitude": 95.15976599977206,
+      "population": 37679.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_183",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_183)",
+      "latitude": 26.85615088724438,
+      "longitude": 93.95811118495809,
+      "population": 12653.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_184",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_184)",
+      "latitude": 25.18955412367153,
+      "longitude": 95.28116451103024,
+      "population": 8179.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_185",
+      "state": "Sikkim",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_185)",
+      "latitude": 25.426369445224985,
+      "longitude": 95.43094880508116,
+      "population": 29380.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_186",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_186)",
+      "latitude": 26.799472644279973,
+      "longitude": 92.25882261523434,
+      "population": 3920.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_187",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_187)",
+      "latitude": 22.129893766543542,
+      "longitude": 91.68415824153637,
+      "population": 31027.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_188",
+      "state": "Mizoram",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_188)",
+      "latitude": 24.49451244410222,
+      "longitude": 92.55699847498144,
+      "population": 40443.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_189",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_189)",
+      "latitude": 27.339432453113524,
+      "longitude": 93.44735084897022,
+      "population": 44585.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_190",
+      "state": "Assam",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_190)",
+      "latitude": 28.74272509212518,
+      "longitude": 91.32209885534364,
+      "population": 49364.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_191",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_191)",
+      "latitude": 28.717743904992307,
+      "longitude": 91.08355993830088,
+      "population": 42899.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_192",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_192)",
+      "latitude": 23.754233058023825,
+      "longitude": 96.40477423979834,
+      "population": 35414.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_193",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_193)",
+      "latitude": 24.833111524888203,
+      "longitude": 97.16447488198172,
+      "population": 3113.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_194",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_194)",
+      "latitude": 29.173657838089085,
+      "longitude": 93.19417946865404,
+      "population": 45738.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_195",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_195)",
+      "latitude": 25.131656427463543,
+      "longitude": 91.61509989892475,
+      "population": 14994.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_196",
+      "state": "Manipur",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_196)",
+      "latitude": 27.423015112992303,
+      "longitude": 94.8112948626879,
+      "population": 27788.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_197",
+      "state": "Nagaland",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_197)",
+      "latitude": 23.44380907527576,
+      "longitude": 90.56178106936252,
+      "population": 21337.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_198",
+      "state": "Arunachal Pradesh",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_198)",
+      "latitude": 22.8158243550752,
+      "longitude": 93.18193251778246,
+      "population": 29404.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_199",
+      "state": "Meghalaya",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_199)",
+      "latitude": 29.29972592219135,
+      "longitude": 97.13141396255756,
+      "population": 49938.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    },
+    {
+      "location_id": "LOC_200",
+      "state": "Tripura",
+      "district": "Synthetic ML Zone",
+      "location_name": "ML Assessment Zone (LOC_200)",
+      "latitude": 25.766970214344376,
+      "longitude": 93.46411866797828,
+      "population": 41363.0,
+      "coordinate_precision": "SYNTHETIC",
+      "published_observation": null
+    }
+  ]
+}

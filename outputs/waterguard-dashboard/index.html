@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#102f2b" />
+  <title>NeerWatch | Northeast India water watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.css" />
+  <style>
+    :root{--ink:#17342f;--muted:#75847f;--bg:#f4f7f5;--panel:#fff;--line:#e2e9e5;--teal:#147b70;--teal2:#dff2ed;--red:#d84e46;--redbg:#fff0ed;--amber:#c88419;--amberbg:#fff5e4;--green:#39866a;--greenbg:#e8f5ed;--nav:#123b35;--navmuted:#9abbb2}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",Arial,sans-serif}button,select{font:inherit}button{cursor:pointer}a{color:inherit}
+    .app{min-height:100vh;display:grid;grid-template-columns:244px minmax(0,1fr)}
+    .sidebar{background:var(--nav);color:#edf6f2;min-height:100vh;padding:24px 16px 18px;display:flex;flex-direction:column;gap:24px}
+    .brand{display:flex;align-items:center;gap:10px;padding:0 9px;font:800 19px Manrope,sans-serif;letter-spacing:-.7px}.brand small{display:block;margin-top:2px;color:#a9cac1;font:600 9px "DM Sans",sans-serif;letter-spacing:1.25px;text-transform:uppercase}.drop{width:23px;height:30px;background:#7fe0c8;border-radius:55% 45% 60% 40%;transform:rotate(45deg);position:relative}.drop:after{content:"";position:absolute;right:4px;bottom:4px;width:8px;height:8px;border-radius:50%;background:var(--nav)}
+    .section-label{margin:2px 10px 0;color:#8eafa7;font-size:10px;font-weight:700;letter-spacing:1.25px;text-transform:uppercase}.nav{display:grid;gap:5px;margin-top:-17px}.nav button{width:100%;padding:11px 12px;border:0;border-radius:8px;text-align:left;background:transparent;color:#c8ddd7;font-size:13px}.nav button:hover,.nav button.active{background:#285b52;color:#fff}.nav-icon{display:inline-block;width:24px;color:#8fe0ca;font-size:15px}
+    .scope{margin-top:-9px}.scope-title{display:flex;justify-content:space-between;align-items:center;padding:0 10px;color:var(--navmuted);font-size:11px}.scope-title b{color:#eff8f4;font-size:11px}.state-list{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:10px}.state-chip{min-height:33px;padding:6px 7px;border:1px solid #315e56;border-radius:7px;background:#19463f;color:#c8ddd7;text-align:left;font-size:10px}.state-chip:hover,.state-chip.active{background:#77d9c2;color:#123b35;border-color:#77d9c2;font-weight:700}.state-chip .state-dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:5px;vertical-align:1px;background:#739b90}.state-chip.has-data .state-dot{background:#74dfc1}.state-note{padding:0 9px;color:#94b7ad;font-size:10px;line-height:1.45;margin:9px 0 0}
+    .side-foot{margin-top:auto;padding:14px 12px;border:1px solid #315e56;border-radius:10px;background:#19463f}.side-foot strong{font-size:11px}.side-foot p{margin:6px 0 0;color:#abc9c1;font-size:10px;line-height:1.5}
+    main{width:100%;max-width:1600px;margin:0 auto;padding:25px 28px 36px;min-width:0}.topbar{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:18px}.eyebrow{margin:0 0 5px;color:var(--teal);font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase}h1{margin:0;font:800 26px Manrope,sans-serif;letter-spacing:-1.1px}.subtitle{margin:5px 0 0;color:var(--muted);font-size:12px}.top-right{display:flex;align-items:center;gap:10px}.data-tag{padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;color:#5c706a;font-size:11px}.data-tag span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#d69b3a;margin-right:6px}.region{appearance:none;min-height:36px;padding:8px 30px 8px 11px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);background-image:linear-gradient(45deg,transparent 50%,#53746b 50%),linear-gradient(135deg,#53746b 50%,transparent 50%);background-position:calc(100% - 14px) 15px,calc(100% - 9px) 15px;background-size:5px 5px;background-repeat:no-repeat}
+    .data-note{display:flex;align-items:flex-start;gap:10px;padding:11px 13px;margin-bottom:16px;border:1px solid #f0dfb8;border-radius:9px;background:#fffaf0;color:#735723;font-size:11px;line-height:1.5}.data-note b{color:#694d18}.note-icon{flex:none;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#f2dfb5;color:#775616;font-weight:700}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:17px}.stat{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:14px 15px;min-height:84px}.stat label{display:block;color:var(--muted);font-size:10px;font-weight:600;margin-bottom:6px}.stat strong{font:800 22px Manrope,sans-serif;letter-spacing:-.7px}.stat small{color:var(--muted);font-size:10px;margin-left:5px}
+    .main-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(330px,.82fr);gap:15px;align-items:stretch}.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;min-width:0}.map-panel{padding:17px}.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}.panel h2{margin:0;font:700 14px Manrope,sans-serif;letter-spacing:-.25px}.panel-sub{margin:4px 0 0;color:var(--muted);font-size:10px}.map-legend{display:flex;flex-wrap:wrap;gap:10px;color:#61746e;font-size:10px}.legend-item{white-space:nowrap}.legend-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}.map-frame{position:relative;height:363px;border-radius:8px;overflow:hidden;background:#e7efe9}.map-frame:before{content:"";position:absolute;inset:0;z-index:401;pointer-events:none;box-shadow:inset 0 0 0 1px #dbe6e0;border-radius:8px}.map-fallback{position:absolute;inset:0;display:grid;place-items:center;padding:20px;text-align:center;background:linear-gradient(140deg,#edf4ef,#deebe4);color:#47635b;font-size:12px}.map-fallback b{display:block;font:700 15px Manrope;margin-bottom:7px}.map-foot{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:10px;color:var(--muted);font-size:10px}.map-foot a{color:var(--teal);font-weight:600;text-decoration:none}.map-foot a:hover{text-decoration:underline}
+    .detail-panel{padding:17px}.detail-kicker{font-size:9px;font-weight:700;color:var(--teal);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}.detail-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.detail-title{font:800 18px Manrope,sans-serif;letter-spacing:-.6px}.place-meta{margin:4px 0 0;color:var(--muted);font-size:10px}.state-badge{flex:none;padding:5px 8px;border-radius:20px;background:#edf3ef;color:#52675f;font-size:9px;font-weight:700}.sample-line{display:flex;justify-content:space-between;gap:10px;padding:12px 0 10px;border-bottom:1px solid var(--line);color:var(--muted);font-size:10px}.sample-line strong{color:var(--ink);font-size:10px;font-weight:600;text-align:right}.status-banner{display:flex;align-items:center;gap:8px;margin:12px 0;padding:9px 10px;border-radius:7px;font-size:10px;font-weight:700}.status-banner.flagged{background:var(--redbg);color:#ad3731}.status-banner.watch{background:var(--amberbg);color:#90600f}.status-banner.ok{background:var(--greenbg);color:#286c51}.status-banner.unavailable{background:#edf1ef;color:#60746d}.status-mark{width:7px;height:7px;border-radius:50%;background:currentColor}.risk-snapshot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:12px 0 5px}.risk-snapshot>div{padding:9px 8px;border:1px solid var(--line);border-radius:7px;background:#fbfcfb;min-width:0}.risk-snapshot span{display:block;color:var(--muted);font-size:9px;margin-bottom:5px}.risk-snapshot strong{display:block;color:var(--ink);font:700 11px Manrope,sans-serif;overflow-wrap:anywhere}.model-note{margin:0 0 10px;color:var(--muted);font-size:9px;line-height:1.4}.data-tag.connected span{background:#39866a}.data-tag.offline span{background:#d84e46}.data-tag.loading span{background:#d69b3a}
+    .readings-title{display:flex;justify-content:space-between;align-items:center;margin:12px 0 7px;font-size:10px;font-weight:700}.readings-title span{color:var(--muted);font-size:9px;font-weight:500}.reading{display:grid;grid-template-columns:1fr auto;gap:3px 8px;padding:8px 0;border-top:1px solid #edf1ef}.reading-name{color:#465f57;font-size:10px}.reading-value{font:700 12px Manrope,sans-serif;text-align:right}.reading-ref{grid-column:1/-1;color:var(--muted);font-size:9px}.why-note{margin:10px 0 0;padding:10px;border-radius:7px;background:#f4f8f6;color:#536a63;font-size:10px;line-height:1.45}.why-note b{color:#254a41}.source-row{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:9px;color:var(--muted)}.source-row a{color:var(--teal);font-weight:700;text-decoration:none}.source-row a:hover{text-decoration:underline}.action-btn{width:100%;margin-top:12px;padding:10px;border:0;border-radius:7px;background:var(--teal);color:#fff;font-size:10px;font-weight:700}.action-btn:hover{background:#0d675d}
+    .bottom-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,.8fr);gap:15px;margin-top:15px}.table-panel{overflow:hidden}.table-heading{display:flex;justify-content:space-between;align-items:center;padding:16px 17px 11px}.table-heading button{border:0;background:transparent;color:var(--teal);font-size:10px;font-weight:700}.table-wrap{overflow:auto}.observations{width:100%;border-collapse:collapse;white-space:nowrap;font-size:10px}.observations th{padding:9px 12px;background:#f8faf9;color:#778780;font-size:9px;font-weight:700;letter-spacing:.45px;text-transform:uppercase;text-align:left}.observations td{padding:10px 12px;border-top:1px solid #edf1ef}.observations tr{cursor:pointer}.observations tbody tr:hover,.observations tbody tr.selected{background:#f1f8f5}.observations .parameter{font-weight:700;color:#304e45}.flag{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border-radius:20px;background:var(--redbg);color:#a83f38;font-size:9px;font-weight:700}.flag.ok{background:var(--greenbg);color:#286c51}.flag.neutral{background:#edf1ef;color:#60746d}.source-date{color:var(--muted)}
+    .coverage-panel{padding:16px}.coverage-title{display:flex;justify-content:space-between;align-items:flex-start}.coverage-title small{color:var(--muted);font-size:9px}.coverage-list{display:grid;gap:0;margin-top:11px}.coverage-row{display:grid;grid-template-columns:1fr auto;gap:5px;align-items:center;padding:8px 0;border-top:1px solid #edf1ef;font-size:10px}.coverage-row strong{font-weight:600}.coverage-state{display:flex;align-items:center;gap:7px}.coverage-state i{width:7px;height:7px;border-radius:50%;background:#c7d3ce}.coverage-state i.ready{background:#3e9a78}.coverage-state i.planned{background:#d5a444}.coverage-row small{color:var(--muted);font-size:9px}
+    .empty-state{display:none;padding:24px 10px;text-align:center;color:var(--muted);font-size:11px;line-height:1.5}.empty-state strong{display:block;margin-bottom:5px;color:var(--ink);font:700 13px Manrope}.toast{position:fixed;right:20px;bottom:20px;z-index:1000;padding:11px 14px;border-radius:8px;background:#123b35;color:#fff;font-size:11px;box-shadow:0 8px 24px #183a3430;opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}
+    .maplibregl-map{font-family:"DM Sans",Arial,sans-serif}.maplibregl-popup-content{padding:9px 11px;border-radius:8px;font-size:11px;line-height:1.5}.maplibregl-popup-content b{font-family:Manrope,sans-serif}.maplibregl-ctrl-attrib{font-size:9px!important}.maplibregl-ctrl-group{border-radius:7px!important;overflow:hidden}.nw-marker{width:16px;height:16px;border:3px solid white;border-radius:50%;box-shadow:0 1px 6px #143e3670;cursor:pointer}.nw-marker.flagged{background:#d84e46}.nw-marker.review{background:#c88419}.nw-marker.ok{background:#39866a}
+.nw-ml-marker{width:14px;height:14px;border:2px solid white;border-radius:3px;box-shadow:0 1px 6px #143e3670;cursor:pointer}.nw-ml-marker.High{background:#d84e46}.nw-ml-marker.Medium{background:#c88419}.nw-ml-marker.Low{background:#39866a}
+
+
+    /* ML Assessment Zone Selector */
+    .ml-selector-panel{padding:16px;margin-top:15px}
+    .ml-selector-panel h2{margin:0 0 4px;font:700 14px Manrope,sans-serif;letter-spacing:-.25px}
+    .ml-selector-sub{color:var(--muted);font-size:10px;margin:0 0 10px}
+    .ml-zone-select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font-size:12px;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#53746b 50%),linear-gradient(135deg,#53746b 50%,transparent 50%);background-position:calc(100% - 14px) 14px,calc(100% - 9px) 14px;background-size:5px 5px;background-repeat:no-repeat}
+    .ml-disclosure{margin:10px 0 0;padding:9px 10px;border-radius:7px;background:#fff8ed;border:1px solid #f0dfb8;color:#735723;font-size:10px;line-height:1.45}
+    .ml-disclosure b{color:#694d18}
+    .ml-detail-card{margin-top:12px;padding:13px;border:1px solid var(--line);border-radius:10px;background:#fbfcfb}
+    .ml-detail-card .ml-label{color:var(--muted);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+    .ml-detail-card .ml-value{font:700 12px Manrope,sans-serif;margin-top:3px}
+    .ml-detail-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:10px 0}
+    .ml-detail-grid>div{padding:8px;border:1px solid var(--line);border-radius:7px;background:#f8faf9}
+    .ml-shap-section{margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:8px;background:#f9fbfa}
+    .ml-shap-title{font:700 11px Manrope,sans-serif;color:var(--amber);margin-bottom:6px}
+    .ml-shap-sub{color:var(--muted);font-size:9px;margin-bottom:8px}
+    .ml-shap-driver{padding:4px 0;font-size:10px;color:#465f57}
+    .ml-snapshot-badge{display:inline-block;padding:4px 8px;border-radius:4px;background:#fff5e4;color:#90600f;font-size:9px;font-weight:700;margin-top:6px}
+
+    @media(max-width:1100px){.app{grid-template-columns:210px minmax(0,1fr)}main{padding:22px 19px}.main-grid{grid-template-columns:minmax(0,1.15fr) minmax(315px,.85fr)}.bottom-grid{grid-template-columns:1fr}.coverage-list{grid-template-columns:1fr 1fr;column-gap:20px}.map-frame{height:335px}}
+    @media(max-width:820px){.app{grid-template-columns:1fr}.sidebar{min-height:0;padding:13px 15px 12px;display:grid;grid-template-columns:1fr auto;gap:10px 15px;align-items:center}.brand{padding:2px 4px}.section-label,.side-foot{display:none}.nav{display:flex;grid-column:1/-1;grid-row:2;overflow:auto;margin:0;gap:4px}.nav button{width:auto;white-space:nowrap;padding:9px}.scope{grid-column:2;grid-row:1;margin:0}.scope-title{font-size:10px}.state-list,.state-note{display:none}.main-grid{grid-template-columns:minmax(0,1fr) minmax(300px,.9fr)}}
+    @media(max-width:640px){main{padding:19px 13px 28px}.topbar{align-items:flex-start;flex-direction:column}.top-right{width:100%;justify-content:space-between}.data-tag{font-size:10px}h1{font-size:22px}.stats{grid-template-columns:1fr 1fr;gap:8px}.stat{padding:11px;min-height:76px}.stat strong{font-size:20px}.stat small{display:block;margin:3px 0 0;font-size:9px}.main-grid{grid-template-columns:1fr}.map-frame{height:310px}.detail-panel{padding:15px}.bottom-grid{grid-template-columns:1fr}.coverage-list{grid-template-columns:1fr 1fr}.map-legend{gap:6px}.map-panel{padding:13px}.observations{min-width:640px}.map-foot{align-items:flex-start;flex-direction:column}.sidebar{grid-template-columns:1fr}.scope{display:none}.nav{grid-column:1;grid-row:2}}
+    .map-fallback[hidden]{display:none!important}
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><span class="drop" aria-hidden="true"></span><span>NeerWatch<small>Water intelligence</small></span></div>
+    <div class="section-label">Workspace</div>
+    <nav class="nav" aria-label="Main navigation"><button class="active" onclick="showView('overview')"><span class="nav-icon">▦</span>Overview</button><button onclick="showView('ml-zones')"><span class="nav-icon">⬡</span>ML Assessment Zones</button><button onclick="scrollToSection('site-table')"><span class="nav-icon">⌖</span>Water sites</button><button onclick="scrollToSection('disease-trends')"><span class="nav-icon">↗</span>Disease trends</button><button onclick="scrollToSection('coverage')"><span class="nav-icon">◉</span>State coverage</button></nav>
+    <section class="scope" aria-label="Northeast states"><div class="scope-title"><span>North East states</span><b>8</b></div><div class="state-list" id="stateList"></div><p class="state-note">Green dot means this prototype has a cited sample record. No record does not mean low risk.</p></section>
+    <div class="side-foot" style="margin-top:20px; background:#123b35; border-color:#285b52"><strong>Dataset Analysis Workflow</strong><div id="datasetStatus" style="color:#7fe0c8; font-size:10px; margin:8px 0; font-weight:bold;">Status: Waiting for upload</div><div id="datasetErrors" style="color:#d84e46; font-size:10px; margin-bottom:8px; display:none;"></div><input type="file" id="csvFileInput" accept=".csv" style="display:none" onchange="uploadCsv(this.files[0])"><button class="nav-btn" style="width:100%; padding:8px; margin-bottom:5px; border-radius:5px; border:1px solid #315e56; background:#19463f; color:#fff; font-size:10px; cursor:pointer;" onclick="document.getElementById('csvFileInput').click()">1. Upload CSV</button><button id="validateBtn" class="nav-btn" style="width:100%; padding:8px; margin-bottom:5px; border-radius:5px; border:1px solid #315e56; background:#19463f; color:#fff; font-size:10px; cursor:pointer; opacity:0.5" disabled onclick="validateCsv()">2. Validate Dataset</button><button id="analyzeBtn" class="nav-btn" style="width:100%; padding:8px; border-radius:5px; border:1px solid #315e56; background:#19463f; color:#fff; font-size:10px; cursor:pointer; opacity:0.5" disabled onclick="analyzeCsv()">3. Run Prototype Analysis</button></div>
+    <div class="side-foot" style="margin-top:10px"><strong>Field verification is next</strong><p>Published samples identify places to revisit. Use a fresh local test before making a current safety decision.</p></div>
+  </aside>
+  <main>
+    <header class="topbar"><div><p class="eyebrow">Northeast India · regional monitoring</p><h1>Water quality early warning</h1><p class="subtitle">Find documented contamination signals and decide where fresh water testing should happen first.</p></div><div class="top-right"><div class="data-tag loading" id="connectionTag"><span></span>Connecting to backend…</div><select class="region" id="stateSelect" aria-label="Filter by state"><option value="All">All 8 states</option><option value="Assam">Assam</option><option value="Meghalaya">Meghalaya</option><option value="Arunachal Pradesh">Arunachal Pradesh</option><option value="Manipur">Manipur</option><option value="Mizoram">Mizoram</option><option value="Nagaland">Nagaland</option><option value="Sikkim">Sikkim</option><option value="Tripura">Tripura</option></select></div></header>
+    <div class="data-note"><span class="note-icon">!</span><span><b>How to read this:</b> Historical water-quality observations are shown separately from the prototype ML assessment. ML risk, reliability and verification priority are generated by the prototype XGBoost model using synthetic demonstration data. Field testing is required before making current water-safety decisions. CPCB river flags use BOD &gt;3 mg/L against its outdoor-bathing criterion; this is an organic-pollution screen, not a drinking-water or pathogen test. "No exceedance" applies only to the displayed parameters and sample date.</span></div>
+    <section class="stats" aria-label="Dataset summary"><article class="stat"><label>States with records</label><strong id="stateCount">08</strong><small>North East India</small></article><article class="stat"><label>Published sample locations</label><strong id="siteCount">44</strong><small>historical/public evidence</small></article><article class="stat"><label>ML assessment zones</label><strong id="mlZoneCount">200</strong><small>synthetic prototype zones</small></article><article class="stat"><label>Historical BOD flags</label><strong id="flaggedCount">00</strong><small>CPCB 2022–23 assessment</small></article></section>
+    <section class="main-grid">
+      <article class="panel map-panel"><div class="panel-head"><div><h2>North East evidence map</h2><p class="panel-sub" id="mapSubtitle">Historical/public sample locations · select a marker for details</p></div><div class="map-legend"><span class="legend-item"><i class="legend-dot" style="background:#d84e46"></i>Historical exceedance in cited sample</span><span class="legend-item"><i class="legend-dot" style="background:#39866a"></i>Historical published sample</span><span class="legend-item"><i class="legend-dot" style="background:#c88419; border-radius:3px; width:10px; height:10px;"></i>Prototype ML assessment zone</span></div></div><div class="map-frame"><div id="map" style="height:100%;width:100%"></div><div class="map-fallback" id="mapFallback" hidden><div><b>Map could not load</b>Location records and readings are still available in the table below.</div></div></div><div class="map-foot"><span><b>Prototype ML assessment zones — synthetic demonstration geography.</b> These markers represent model assessment zones and are not real monitoring stations or sampling coordinates. Historical/public markers remain separate evidence.</span><a href="https://cpcb.nic.in/wqm/WQMN_list.pdf" target="_blank" rel="noreferrer">View CPCB station locations ↗</a></div></article>
+      <aside class="panel detail-panel" aria-live="polite"><div class="detail-kicker" id="detailKicker">Selected water site</div><div class="detail-title-row"><div><div class="detail-title" id="detailTitle">Loading locations…</div><p class="place-meta" id="placeMeta">Connecting to the API</p></div><span class="state-badge" id="detailState">—</span></div><div class="risk-snapshot"><div><span>ML risk</span><strong id="detailRisk">Not available</strong></div><div><span>Priority</span><strong id="detailPriority">Not available</strong></div><div><span>Evidence reliability</span><strong id="detailReliability">Not available</strong></div></div><p class="model-note" id="modelNote">These model outputs will appear when the ML service is connected.</p><div class="readings-title" id="riskDriversTitle" style="color:var(--amber)">Why this risk? <span style="color:var(--amber)">Explanation from the prototype XGBoost model using SHAP.</span></div><div id="riskDrivers" style="margin-bottom: 12px; font-size: 10px;"></div><div class="sample-line"><span>Published sample period</span><strong id="sampleContext">Not available</strong></div><div class="sample-line"><span>Historical observations</span><strong id="historySummary">Loading…</strong></div><div class="status-banner unavailable" id="statusBanner"><i class="status-mark"></i><span id="statusText">Historical sample status unavailable</span></div><div class="readings-title">Observed historical water quality <span id="sourceType">Published source data</span></div><div id="readings"></div><div class="why-note" id="detailNote"></div><div class="sample-line"><span>Verification status</span><strong id="verificationStatus">Not started</strong></div><div class="source-row"><span id="sourceLabel">Source unavailable</span><a id="sourceLink" href="#" target="_blank" rel="noreferrer" hidden>Open source ↗</a></div><button class="action-btn" id="verifyButton" onclick="requestRetest()">Plan a fresh field test</button></aside>
+    </section>
+
+    <section class="main-grid" style="margin-top: 16px;">
+      <article class="panel" id="disease-trends">
+        <div class="panel-head">
+          <div>
+            <h2>Disease trends</h2>
+            <p class="panel-sub">Monthly disease-case trend — prototype demonstration data</p>
+          </div>
+        </div>
+        <div style="padding: 16px;" id="diseaseTrendsContainer">
+          Select an ML assessment zone to view disease trend data.
+        </div>
+      </article>
+
+      <!-- ML Assessment Zone Selector -->
+      <article class="panel ml-selector-panel" id="ml-zone-panel">
+        <h2>ML Assessment Zones</h2>
+        <p class="ml-selector-sub">200 synthetic demonstration assessment zones · LOC_001–LOC_200</p>
+        <select class="ml-zone-select" id="mlZoneSelect" onchange="selectMlZone(this.value)">
+          <option value="">— Select an ML assessment zone —</option>
+        </select>
+        <div class="ml-disclosure"><b>Prototype ML assessment zone — synthetic demonstration data.</b> These zones are not real geographic monitoring sites. Risk outputs use an August 2024 prototype snapshot.</div>
+        <div id="mlZoneDetail"></div>
+      </article>
+    </section>
+
+    <section class="bottom-grid">
+      <article class="panel table-panel" id="site-table"><div class="table-heading"><div><h2>Published sample records</h2><p class="panel-sub">Source observations · choose a row to inspect the reading</p></div><button onclick="document.getElementById('stateSelect').value='All';filterState('All')">Show all locations ↗</button></div><div class="table-wrap"><table class="observations"><thead><tr><th>Location</th><th>State</th><th>Sample / water body</th><th>Recorded signal</th><th>Source period</th><th>Screening</th></tr></thead><tbody id="observationRows"></tbody></table><div class="empty-state" id="emptyState"><strong>No cited sample records loaded for this state yet.</strong>This is a data coverage gap in the prototype, not evidence that the water is safe or contaminated.</div></div></article>
+      <article class="panel coverage-panel" id="coverage"><div class="coverage-title"><div><h2>Published evidence coverage</h2><p class="panel-sub">Where this prototype has published evidence loaded</p></div><small>8 states</small></div><div class="coverage-list" id="coverageList"></div></article>
+    </section>
+  </main>
+</div><div class="toast" id="toast" role="status"></div>
+<script src="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.js"></script>
+<script>
+const states=['Arunachal Pradesh','Assam','Manipur','Meghalaya','Mizoram','Nagaland','Sikkim','Tripura'];
+const mlDisplayZones = {
+  'LOC_001': { state: 'Assam', coords: [26.1, 91.5] },
+  'LOC_002': { state: 'Assam', coords: [26.4, 92.1] },
+  'LOC_003': { state: 'Assam', coords: [26.6, 92.8] },
+  'LOC_004': { state: 'Assam', coords: [26.8, 93.4] },
+  'LOC_005': { state: 'Assam', coords: [27.0, 94.0] },
+  'LOC_006': { state: 'Assam', coords: [27.2, 94.6] },
+  'LOC_088': { state: 'Assam', coords: [26.3, 91.8] },
+  'LOC_008': { state: 'Arunachal Pradesh', coords: [27.8, 94.5] },
+  'LOC_009': { state: 'Arunachal Pradesh', coords: [28.0, 95.0] },
+  'LOC_010': { state: 'Arunachal Pradesh', coords: [28.2, 95.5] },
+  'LOC_011': { state: 'Arunachal Pradesh', coords: [27.6, 93.8] },
+  'LOC_012': { state: 'Arunachal Pradesh', coords: [27.4, 93.2] },
+  'LOC_013': { state: 'Arunachal Pradesh', coords: [27.2, 92.6] },
+  'LOC_014': { state: 'Manipur', coords: [24.8, 93.8] },
+  'LOC_015': { state: 'Manipur', coords: [24.6, 93.6] },
+  'LOC_016': { state: 'Manipur', coords: [24.4, 93.9] },
+  'LOC_017': { state: 'Manipur', coords: [25.0, 94.0] },
+  'LOC_018': { state: 'Manipur', coords: [25.2, 94.2] },
+  'LOC_019': { state: 'Manipur', coords: [24.2, 93.7] },
+  'LOC_020': { state: 'Meghalaya', coords: [25.5, 91.0] },
+  'LOC_021': { state: 'Meghalaya', coords: [25.3, 91.5] },
+  'LOC_022': { state: 'Meghalaya', coords: [25.7, 92.0] },
+  'LOC_023': { state: 'Meghalaya', coords: [25.4, 92.5] },
+  'LOC_024': { state: 'Meghalaya', coords: [25.2, 90.5] },
+  'LOC_025': { state: 'Meghalaya', coords: [25.8, 90.8] },
+  'LOC_026': { state: 'Mizoram', coords: [23.8, 92.8] },
+  'LOC_027': { state: 'Mizoram', coords: [23.5, 92.9] },
+  'LOC_028': { state: 'Mizoram', coords: [23.2, 92.7] },
+  'LOC_029': { state: 'Mizoram', coords: [22.8, 92.8] },
+  'LOC_030': { state: 'Mizoram', coords: [22.5, 93.0] },
+  'LOC_031': { state: 'Mizoram', coords: [24.0, 92.6] },
+  'LOC_032': { state: 'Nagaland', coords: [26.0, 94.0] },
+  'LOC_033': { state: 'Nagaland', coords: [26.3, 94.2] },
+  'LOC_034': { state: 'Nagaland', coords: [26.5, 94.5] },
+  'LOC_035': { state: 'Nagaland', coords: [25.8, 93.8] },
+  'LOC_036': { state: 'Nagaland', coords: [26.7, 94.8] },
+  'LOC_037': { state: 'Nagaland', coords: [25.6, 94.4] },
+  'LOC_038': { state: 'Sikkim', coords: [27.3, 88.3] },
+  'LOC_039': { state: 'Sikkim', coords: [27.5, 88.5] },
+  'LOC_040': { state: 'Sikkim', coords: [27.7, 88.6] },
+  'LOC_041': { state: 'Sikkim', coords: [27.2, 88.7] },
+  'LOC_042': { state: 'Sikkim', coords: [27.4, 88.2] },
+  'LOC_043': { state: 'Sikkim', coords: [27.8, 88.4] },
+  'LOC_044': { state: 'Tripura', coords: [23.8, 91.5] },
+  'LOC_045': { state: 'Tripura', coords: [23.5, 91.6] },
+  'LOC_046': { state: 'Tripura', coords: [23.3, 91.4] },
+  'LOC_047': { state: 'Tripura', coords: [24.0, 91.8] },
+  'LOC_048': { state: 'Tripura', coords: [24.2, 92.0] },
+  'LOC_049': { state: 'Tripura', coords: [23.1, 91.5] },
+  'LOC_050': { state: 'Tripura', coords: [23.6, 91.8] }
+};
+const sources={assam:'https://www.jocpr.com/articles/arsenic-contamination-in-ground-water-is-a-serious-threat-in-the-north-karimganj-block-of-karimganj-district-southern-pa.pdf',meghalaya:'https://cpcb.nic.in/NGT/Report-NGT-15.01.2019.pdf'};
+const fallbackPlaces=[
+ {id:'sadarashi',place:'Sadarashi GP',state:'Assam',district:'North Karimganj',kind:'Hand pump',coords:[24.8871,92.3166],sample:'SD-12',period:'Apr–Jun 2014 · published 2015',status:'flagged',summary:'Arsenic 93.05 µg/L · Iron 8.56 mg/L',sourceType:'Groundwater sample',sourceLabel:'Research study · 195 hand-pump samples',source:sources.assam,notes:'The study reported Sadarashi as the most affected of the four sampled Gaon Panchayats. This row is one named sample, not a current village-wide measurement.',readings:[{name:'Arsenic',value:'93.05 µg/L',reference:'Reference: 10 µg/L acceptable limit'}, {name:'Iron',value:'8.56 mg/L',reference:'Reference: 0.3 mg/L acceptable limit'}]},
+ {id:'akbarpur',place:'Akbarpur GP',state:'Assam',district:'North Karimganj',kind:'Hand pump',coords:[24.904,92.365],sample:'AP-2',period:'Apr–Jun 2014 · published 2015',status:'flagged',summary:'Arsenic 51.24 µg/L · Iron 5.98 mg/L',sourceType:'Groundwater sample',sourceLabel:'Research study · North Karimganj block',source:sources.assam,notes:'The paper analyzed groundwater samples from hand pumps in four Gaon Panchayats. Values here are the recorded sample identifier shown, not a current village-wide status.',readings:[{name:'Arsenic',value:'51.24 µg/L',reference:'Reference: 10 µg/L acceptable limit'}, {name:'Iron',value:'5.98 mg/L',reference:'Reference: 0.3 mg/L acceptable limit'}]},
+ {id:'north-karimganj',place:'North Karimganj GP',state:'Assam',district:'North Karimganj',kind:'Hand pump',coords:[24.874,92.354],sample:'NK-14',period:'Apr–Jun 2014 · published 2015',status:'flagged',summary:'Arsenic 28.61 µg/L · Iron 26.27 mg/L',sourceType:'Groundwater sample',sourceLabel:'Research study · North Karimganj block',source:sources.assam,notes:'This historical hand-pump result exceeds the arsenic reference value used in the study. Re-sample before drawing conclusions about present-day supply.',readings:[{name:'Arsenic',value:'28.61 µg/L',reference:'Reference: 10 µg/L acceptable limit'}, {name:'Iron',value:'26.27 mg/L',reference:'Reference: 0.3 mg/L acceptable limit'}]},
+ {id:'purahuria',place:'Purahuria GP',state:'Assam',district:'North Karimganj',kind:'Hand pump',coords:[24.8505,92.2852],sample:'PH-33',period:'Apr–Jun 2014 · published 2015',status:'flagged',summary:'Arsenic 71.14 µg/L · Iron 15.69 mg/L',sourceType:'Groundwater sample',sourceLabel:'Research study · North Karimganj block',source:sources.assam,notes:'The study measured arsenic above 10 µg/L in this sample. It is an old sample result and does not establish current drinking-water safety.',readings:[{name:'Arsenic',value:'71.14 µg/L',reference:'Reference: 10 µg/L acceptable limit'}, {name:'Iron',value:'15.69 mg/L',reference:'Reference: 0.3 mg/L acceptable limit'}]},
+ {id:'rymbai',place:'Kalipai River · Rymbai',state:'Meghalaya',district:'East Jaintia Hills',kind:'River monitoring site',coords:[25.3252,92.31673],sample:'CPCB/State joint sample',period:'Reported in 2019 report',status:'flagged',summary:'pH 2.51 · Iron 4.2 mg/L · Sulphate 100.2 mg/L',sourceType:'River-water sample',sourceLabel:'CPCB / State Board report to NGT',source:sources.meghalaya,notes:'The report identifies these East Jaintia Hills river samples as below drinking-water standards. River monitoring is not a household-tap test; the report links very acidic water to mine drainage in the catchment.',readings:[{name:'pH',value:'2.51',reference:'Drinking-water reference range: 6.5–8.5'}, {name:'Iron',value:'4.2 mg/L',reference:'Reference: 0.3 mg/L acceptable limit'}, {name:'Sulphate',value:'100.2 mg/L',reference:'Reported concentration'}]},
+ {id:'mookhlot',place:'Waikhyrwai River · Mookhlot',state:'Meghalaya',district:'East Jaintia Hills',kind:'River monitoring site',coords:[25.348229,92.42338],sample:'CPCB station 4313',period:'Reported in 2019 report',status:'flagged',summary:'pH 2.6 · Iron 4.2 mg/L · Sulphate 99.9 mg/L',sourceType:'River-water sample',sourceLabel:'CPCB / State Board report to NGT',source:sources.meghalaya,notes:'The cited report lists a highly acidic river-water result at Mookhlot. Treat it as historical environmental monitoring and arrange fresh sampling to assess current conditions.',readings:[{name:'pH',value:'2.6',reference:'Drinking-water reference range: 6.5–8.5'}, {name:'Iron',value:'4.2 mg/L',reference:'Reference: 0.3 mg/L acceptable limit'}, {name:'Sulphate',value:'99.9 mg/L',reference:'Reported concentration'}]},
+ {id:'moolamylliang',place:'Kwai River · Moolamylliang',state:'Meghalaya',district:'East Jaintia Hills',kind:'River monitoring site',coords:[25.38251,92.45122],sample:'Reported location',period:'Reported in 2019 report',status:'flagged',summary:'pH 3.71 · Iron 1.0 mg/L · Sulphate 79.3 mg/L',sourceType:'River-water sample',sourceLabel:'CPCB / State Board report to NGT',source:sources.meghalaya,notes:'The report records acidic river water at this named locality. The map pin is approximate to the locality; this reading does not represent every water source in the village.',readings:[{name:'pH',value:'3.71',reference:'Drinking-water reference range: 6.5–8.5'}, {name:'Iron',value:'1.0 mg/L',reference:'Reference: 0.3 mg/L acceptable limit'}, {name:'Sulphate',value:'79.3 mg/L',reference:'Reported concentration'}]},
+ {id:'mihmyntdu',place:'Myntdu River · Mihmyntdu',state:'Meghalaya',district:'West Jaintia Hills',kind:'River monitoring site',coords:[25.434337,92.204576],sample:'Reported location',period:'Reported in 2019 report',status:'ok',summary:'pH 7.1 · Iron 0.30 mg/L · Sulphate 9.7 mg/L',sourceType:'River-water sample',sourceLabel:'CPCB / State Board report to NGT',source:sources.meghalaya,notes:'No exceedance appears in the three reported values displayed here. That limited historical result is not a declaration that this river or nearby supplies are safe today.',readings:[{name:'pH',value:'7.1',reference:'Drinking-water reference range: 6.5–8.5'}, {name:'Iron',value:'0.30 mg/L',reference:'Reference: 0.3 mg/L acceptable limit'}, {name:'Sulphate',value:'9.7 mg/L',reference:'Reported concentration'}]}
+];
+const cpcbPrsSource='https://cpcb.nic.in/openpdffile.php?id=UmVwb3J0RmlsZXMvMTc3N18xNzYwNjgxNDA4X21lZGlhcGhvdG80MzkyLnBkZg%3D%3D';
+const prsSites=[
+ ['namchik-kharsang','Namchik River · Kharsang','Arunachal Pradesh','Changlang',[27.12,95.72],'3.2','V','CPCB NWMP station 3100'],
+ ['senki-chandranagar','Senki River · Chandranagar','Arunachal Pradesh','Itanagar Capital Region',[27.12,93.64],'3.2','V','CPCB NWMP station 3095'],
+ ['dibang-roing','Dibang River · Roing upstream','Arunachal Pradesh','Lower Dibang Valley',[28.15,95.84],'3.6','V','CPCB NWMP station 3106'],
+ ['subansiri-gerukamukh','Subansiri River · Gerukamukh','Arunachal Pradesh','Gerukamukh area',[27.42,94.25],'3.1','V','CPCB NWMP station 3097'],
+ ['chakpi-chakpikaron','Chakpi River · Chakpikaron','Manipur','Chandel',[24.22,94.04],'3.3','V','CPCB PRS location'],
+ ['ijei-noney','Ijei River · Noney Bridge','Manipur','Noney',[24.99,93.58],'3.4','V','CPCB PRS location'],
+ ['irang-tamenglong','Irang River · Tamenglong','Manipur','Tamenglong',[24.99,93.50],'3.6','V','CPCB PRS location'],
+ ['khujairok-moreh','Khujairok River · Elora Hotel Road, Moreh','Manipur','Tengnoupal',[24.25,94.31],'4.5','V','CPCB PRS location'],
+ ['leimakhong-kanto','Leimakhong River · Kanto Awang Leikai','Manipur','Imphal West',[24.96,93.88],'3.5','V','CPCB PRS location'],
+ ['maha-komlathabi','Maha River · Komlathabi Bazar','Manipur','Tengnoupal',[24.38,94.06],'3.5','V','CPCB PRS location'],
+ ['sekmai-kakching','Sekmai River · Kakching','Manipur','Kakching',[24.50,93.98],'3.7','V','CPCB PRS location'],
+ ['thongjaorok-bridge','Thongjaorok River · Thongjaorok Bridge','Manipur','Noney area',[24.96,93.59],'3.5','V','CPCB PRS location'],
+ ['tupul-noney','Tupul River · Tupul Bridge','Manipur','Noney',[24.95,93.60],'3.1','V','CPCB PRS location'],
+ ['barak-tamenglong','Barak River · Senapati–NH 53 reach','Manipur','Tamenglong',[24.98,93.49],'3.4','V','CPCB PRS stretch'],
+ ['imphal-samurou','Imphal River · Awang Sekmai–Samurou reach','Manipur','Imphal West',[24.83,93.82],'4.1','V','CPCB PRS stretch'],
+ ['iril-lilong','Iril River · Kangla Siphai–Lilong reach','Manipur','Thoubal',[24.70,93.91],'3.4','V','CPCB PRS stretch'],
+ ['khuga-rengkai','Khuga River · Tuitha Dam–Rengkai reach','Manipur','Churachandpur',[24.33,93.67],'4.6','V','CPCB PRS stretch'],
+ ['kongba-iranpham','Kongba River · Irong–Iranpham reach','Manipur','Thoubal',[24.67,93.95],'3.5','V','CPCB PRS stretch'],
+ ['manipur-ethai','Manipur River · Thoubal–Ethai Bridge reach','Manipur','Thoubal',[24.62,93.95],'4.6','V','CPCB PRS stretch'],
+ ['nambul-bishnupur','Nambul River · Singda Dam–Bishnupur reach','Manipur','Bishnupur',[24.63,93.78],'5.6','V','CPCB PRS stretch'],
+ ['thoubal-yaripok','Thoubal River · Shong Kong–Yaripok reach','Manipur','Thoubal',[24.62,94.01],'4.6','V','CPCB PRS stretch'],
+ ['wangjing-heirok','Wangjing River · Wangjing–Heirok reach','Manipur','Thoubal',[24.61,94.02],'3.5','V','CPCB PRS stretch'],
+ ['chite-armed-veng','Chite Stream · Armed Veng reach','Mizoram','Aizawl',[23.74,92.72],'29.0','II','CPCB PRS location'],
+ ['tuikual-reiek-kai','Tuikual Stream · Reiek Kai reach','Mizoram','Aizawl',[23.73,92.73],'29.1','II','CPCB PRS location'],
+ ['lawibual-iti-veng','Lawibual Stream · ITI Veng','Mizoram','Aizawl',[23.75,92.72],'14.3','III','CPCB NWMP location'],
+ ['tuipui-river','Tuipui River · monitored reach','Mizoram','Mizoram (reported reach)',[22.35,92.76],'5.6','V','CPCB PRS location'],
+ ['sanuo-new-secretariat','Sanuo Ru · below New Secretariat','Nagaland','Kohima',[25.67,94.11],'3.4','V','CPCB NWMP station 2890'],
+ ['maney-khola-adampool','Maney Khola · Adampool','Sikkim','Gangtok',[27.34,88.60],'22.0','II','CPCB PRS reach'],
+ ['rangpo-river','Rangpo River · dam site–power house reach','Sikkim','Pakyong',[27.18,88.53],'22.0','II','CPCB PRS reach'],
+ ['ranichu-ranipool','Ranichu · Ranipool confluence','Sikkim','Gangtok',[27.28,88.60],'8.8','IV','CPCB PRS reach'],
+ ['haora-dashamighat','Haora River · Dashamighat','Tripura','West Tripura',[23.84,91.28],'3.3','V','CPCB PRS location']
+];
+function makePrsSite(row){const [id,place,state,district,coords,bod,priority,sample]=row;return {id,place,state,district,kind:'River reach · CPCB PRS',coords,sample,period:'2022–23 data · CPCB 2025 assessment',status:'flagged',summary:`BOD ${bod} mg/L · Priority ${priority}`,sourceType:'River-water BOD screen',sourceLabel:'CPCB · polluted-river assessment 2025',source:cpcbPrsSource,notes:`CPCB's 2025 polluted-river assessment, based on monitoring in 2022 and 2023, lists this location/reach as Priority ${priority}; the reported maximum BOD is ${bod} mg/L. CPCB uses BOD above 3 mg/L as its outdoor-bathing pollution-screen trigger. This indicates organic pollution; it does not test pathogens or establish drinking-water safety. The map pin is approximate to the named locality or reach.`,readings:[{name:'Maximum BOD',value:`${bod} mg/L`,reference:'CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)'},{name:'Priority class',value:`Class ${priority}`,reference:'CPCB class based on the reported maximum BOD'}]};}
+fallbackPlaces.push(...prsSites.map(makePrsSite));
+const cpcb2022='https://cpcb.nic.in/wqm/2022/WQuality_River-Data-2022.pdf';
+const cpcb2023='https://cpcb.nic.in/wqm/2023/WQuality_River-Data-2023.pdf';
+const cpcb2022Minor='https://cpcb.nic.in/wqm/2022/Water_Quality_data_of_Med_Min_River_2022.pdf';
+const cpcb2020='https://cpcb.nic.in/wqm/2020/WQuality_River-Data-2020.pdf';
+fallbackPlaces.push(
+ {id:'bereng-chowkham',place:'Bereng River · Chowkham',state:'Arunachal Pradesh',district:'Namsai',kind:'CPCB river monitoring site',coords:[27.67,95.82],sample:'CPCB NWMP',period:'2022 sample · CPCB river data',status:'ok',summary:'BOD 1.5–2.4 mg/L · pH / DO shown in range',sourceType:'River-water sample',sourceLabel:'CPCB · river water quality 2022',source:cpcb2022,notes:'The cited CPCB 2022 table shows BOD 1.5–2.4 mg/L, pH 6.77–8.1 and dissolved oxygen 7.2–9.5 mg/L. These shown readings do not cross the CPCB polluted-river BOD trigger. This is one historical river sample record, not a current or household drinking-water safety result.',readings:[{name:'BOD',value:'1.5–2.4 mg/L',reference:'CPCB PRS trigger: >3 mg/L'},{name:'pH',value:'6.77–8.1',reference:'Shown range: 6.5–8.5'},{name:'Dissolved oxygen',value:'7.2–9.5 mg/L',reference:'Shown range is above 5 mg/L'}]},
+ {id:'tlawng-pialthleng',place:'Tlawng River · Pialthleng Zotlang',state:'Mizoram',district:'Lunglei',coords:[22.89,92.75],kind:'CPCB river monitoring site',sample:'CPCB NWMP',period:'2023 sample · CPCB river data',status:'ok',summary:'BOD 1.1–1.3 mg/L · pH / DO shown in range',sourceType:'River-water sample',sourceLabel:'CPCB · river water quality 2023',source:cpcb2023,notes:'The cited CPCB 2023 table shows BOD 1.1–1.3 mg/L, pH 7.3–8.0 and dissolved oxygen 6.2–9.2 mg/L. No exceedance is apparent in those displayed indicators. Coliform results are not shown for this record; it is not evidence of pathogen-free or currently safe drinking water.',readings:[{name:'BOD',value:'1.1–1.3 mg/L',reference:'CPCB PRS trigger: >3 mg/L'},{name:'pH',value:'7.3–8.0',reference:'Shown range: 6.5–8.5'},{name:'Dissolved oxygen',value:'6.2–9.2 mg/L',reference:'Shown range is above 5 mg/L'}]},
+ {id:'rangit-jorethang',place:'Rangit River · Jorethang',state:'Sikkim',district:'Namchi',coords:[27.11,88.32],kind:'CPCB river monitoring site',sample:'CPCB NWMP',period:'2022 sample · CPCB river data',status:'ok',summary:'BOD 1.2–2.7 mg/L · coliform also reported',sourceType:'River-water sample',sourceLabel:'CPCB · river water quality 2022',source:cpcb2022,notes:'The cited CPCB 2022 table shows BOD 1.2–2.7 mg/L, pH 6.5–7.5, dissolved oxygen 8.0–9.8 mg/L, faecal coliform 45–98 and total coliform 65–170 (as reported in that table). The shown BOD is below the PRS trigger. This dated sample cannot establish current safety at other sources or locations.',readings:[{name:'BOD',value:'1.2–2.7 mg/L',reference:'CPCB PRS trigger: >3 mg/L'},{name:'pH',value:'6.5–7.5',reference:'Shown range: 6.5–8.5'},{name:'Dissolved oxygen',value:'8.0–9.8 mg/L',reference:'Shown range is above 5 mg/L'},{name:'Faecal coliform',value:'45–98 MPN/100 mL',reference:'Historical CPCB table result'}]},
+ {id:'juri-krishnapur',place:'Juri River · Krishnapur, downstream Dharmanagar',state:'Tripura',district:'North Tripura',coords:[24.37,92.17],kind:'CPCB river monitoring site',sample:'CPCB NWMP',period:'2022 sample · CPCB medium/minor river data',status:'ok',summary:'BOD 1.3–2.2 mg/L · coliform also reported',sourceType:'River-water sample',sourceLabel:'CPCB · medium/minor river data 2022',source:cpcb2022Minor,notes:'The cited CPCB 2022 table shows BOD 1.3–2.2 mg/L, pH 7.1–7.8, dissolved oxygen 5.4–6.5 mg/L, faecal coliform 27–58 and total coliform 94–170 (as reported). The displayed BOD is below the PRS trigger; these dated river readings do not certify present-day or household drinking-water safety.',readings:[{name:'BOD',value:'1.3–2.2 mg/L',reference:'CPCB PRS trigger: >3 mg/L'},{name:'pH',value:'7.1–7.8',reference:'Shown range: 6.5–8.5'},{name:'Dissolved oxygen',value:'5.4–6.5 mg/L',reference:'Historical CPCB table result'},{name:'Faecal coliform',value:'27–58 MPN/100 mL',reference:'Historical CPCB table result'}]},
+ {id:'chathe-medziphema',place:'Chathe River · Medziphema',state:'Nagaland',district:'Chümoukedima',coords:[25.75,93.87],kind:'CPCB river monitoring site',sample:'CPCB NWMP',period:'2020 sample · CPCB river data',status:'ok',summary:'BOD 1.4–2.7 mg/L · pH / DO shown in range',sourceType:'River-water sample',sourceLabel:'CPCB · river water quality 2020',source:cpcb2020,notes:'This older CPCB 2020 table shows BOD 1.4–2.7 mg/L, pH 7.2–8.3 and dissolved oxygen 5.4–7.4 mg/L. The shown values are below the CPCB PRS BOD trigger, but the result predates the 2022–23 assessment and is not a current safety determination. The latest assessment separately lists Sanuo Ru below New Secretariat as a BOD-flagged location.',readings:[{name:'BOD',value:'1.4–2.7 mg/L',reference:'CPCB PRS trigger: >3 mg/L'},{name:'pH',value:'7.2–8.3',reference:'Shown range: 6.5–8.5'},{name:'Dissolved oxygen',value:'5.4–7.4 mg/L',reference:'Historical CPCB table result'}]}
+);
+
+/* ========== STATE ========== */
+let places=fallbackPlaces;          // historical/evidence only
+let allApiPlaces=[];                // all 244 from API (for ML zone lookup)
+let selectedId=fallbackPlaces[0].id, selectedState='All', map=null, markers=[], toastTimer=null, backendConnected=false, detailRequestId=0, historyRequestId=0;
+let currentView='overview';         // 'overview' | 'ml-zones'
+const API_BASE=window.location.protocol==='file:'?'http://localhost:8000/api/v1':`${window.location.origin}/api/v1`;
+
+function escapeHtml(value){return String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');}
+function statusLabel(place){return place.status==='ok'?'No exceedance in shown metrics':place.status==='flagged'?'Historical exceedance in cited source':'No published screening result';}
+function statusClass(place){return place.status==='ok'?'ok':place.status==='flagged'?'flagged':'unavailable';}
+function isHistoricalPlace(p){return !p.id.startsWith('LOC_');}
+function historicalPlaces(){return places.filter(isHistoricalPlace);}
+function rowsForState(state){return historicalPlaces().filter(p=>state==='All'||p.state===state);}
+function setConnectionState(state,message){const tag=document.getElementById('connectionTag');tag.className=`data-tag ${state}`;tag.innerHTML=`<span></span>${escapeHtml(message)}`;}
+
+function normalizeApiPlace(location,risk){
+  const sample=risk.published_observation??null;
+  const locType = location.location_type || (location.location_id.startsWith('LOC_') ? 'ML_ASSESSMENT_ZONE' : 'HISTORICAL_EVIDENCE');
+  return {
+    id:location.location_id,
+    locationType: locType,
+    place:location.location_name??'Location name unavailable',
+    state:location.state??'State unavailable',
+    district:location.district??'District unavailable',
+    kind:sample?.kind??'Monitoring location',
+    coords:[location.latitude,location.longitude],
+    sample:sample?.sample??'Sample not available',
+    period:sample?.period??'Period not reported',
+    status:sample?.screening_status??'unavailable',
+    summary:sample?.summary??'No published sample linked',
+    sourceType:sample?.kind??'Evidence status unavailable',
+    sourceLabel:sample?.source_label??'No source linked',
+    source:sample?.source_url??null,
+    notes:sample?'This is a historical published sample. Current ML risk is demonstrated using synthetic data, and present-day conditions require field testing.':'No published water sample is linked to this location.',
+    readings:(sample?.readings??[]).map(r=>({name:r.parameter??r.name??'Parameter',value:r.value??'Not reported',reference:r.reference??'Reference unavailable'})),
+    riskProbability:risk.risk_probability??null,
+    riskLevel:risk.risk_level??null,
+    priorityScore:risk.priority_score??null,
+    priorityLevel:risk.priority_level??null,
+    reliabilityScore:typeof risk.reliability==='number'?risk.reliability:(risk.reliability?.score??risk.confidence??null),
+    dataFreshnessDays:risk.data_freshness_days??null,
+    verificationStatus:'NOT_STARTED',
+    historyCount:null,
+    topRiskDrivers:risk.top_risk_drivers??[]
+  };
+}
+
+async function loadFromApi(){
+  const previousPlace=places.find(p=>p.id===selectedId);
+  const [locationsResponse,riskResponse]=await Promise.all([fetch(`${API_BASE}/locations`),fetch(`${API_BASE}/risk`)]);
+  if(!locationsResponse.ok||!riskResponse.ok)throw new Error('The API returned an error');
+  const [locationPayload,riskPayload]=await Promise.all([locationsResponse.json(),riskResponse.json()]);
+  if(!Array.isArray(locationPayload.locations)||!Array.isArray(riskPayload.locations))throw new Error('The API response is missing its locations list');
+  const riskById=new Map(riskPayload.locations.map(item=>[item.location_id,item]));
+  allApiPlaces=locationPayload.locations.map(location=>normalizeApiPlace(location,riskById.get(location.location_id)??{}));
+
+  // Only historical/evidence locations go into 'places' (used for map, table, detail)
+  places=allApiPlaces.filter(p=>!p.id.startsWith('LOC_'));
+
+  if(previousPlace){
+    const matchedPlace=places.find(p=>p.place===previousPlace.place);
+    if(matchedPlace)selectedId=matchedPlace.id;
+  }
+  backendConnected=true;
+  const hCount=places.length;
+  const mCount=allApiPlaces.length - hCount;
+  setConnectionState('connected',`Backend connected · ${hCount} evidence + ${mCount} ML zones`);
+
+  // Populate ML zone selector
+  populateMlZoneSelector();
+  
+  if (map && window.maplibregl) {
+    renderMarkers();
+  }
+}
+
+function populateMlZoneSelector(){
+  const sel=document.getElementById('mlZoneSelect');
+  const mlZones=allApiPlaces.filter(p=>p.id.startsWith('LOC_'));
+  sel.innerHTML='<option value="">— Select an ML assessment zone —</option>';
+  mlZones.sort((a,b)=>{
+    const na=parseInt(a.id.split('_')[1]);
+    const nb=parseInt(b.id.split('_')[1]);
+    return na-nb;
+  });
+  for(const z of mlZones){
+    const opt=document.createElement('option');
+    opt.value=z.id;
+    opt.textContent=`${z.id} — ${z.state}`;
+    sel.appendChild(opt);
+  }
+  document.getElementById('mlZoneCount').textContent=String(mlZones.length).padStart(2,'0');
+}
+
+function formatScore(value,kind){if(value===null||value===undefined||!Number.isFinite(Number(value)))return 'Not available';const score=Number(value);if(kind==='probability')return `${Math.round(score*100)}%`;return `${Math.round(score*100)}/100`;}
+
+function renderSelectedPlace(p){
+  const isML = p.id.startsWith('LOC_');
+  document.getElementById('detailKicker').textContent = isML ? 'ML Assessment Zone' : 'Selected water site';
+  document.getElementById('detailTitle').textContent=p.sample&&p.sample!=='Sample not available'?`${p.place} · ${p.sample}`:p.place;
+  document.getElementById('placeMeta').textContent=`${p.district} · ${p.state} · ${p.kind}`;
+  document.getElementById('detailState').textContent=p.state.toUpperCase();
+
+  if (isML) {
+    // For ML zones, show ML data
+    document.getElementById('detailRisk').textContent=p.riskProbability===null?'Not available':`${formatScore(p.riskProbability,'probability')}${p.riskLevel?` · ${p.riskLevel}`:''}`;
+    document.getElementById('detailPriority').textContent=p.priorityScore===null?'Not available':`${formatScore(p.priorityScore,'score')}${p.priorityLevel?` · ${p.priorityLevel}`:''}`;
+    document.getElementById('detailReliability').textContent=p.reliabilityScore===null?'Not available':formatScore(p.reliabilityScore,'score');
+    document.getElementById('modelNote').textContent='August 2024 snapshot · synthetic demonstration data. Not current or live risk.';
+  } else {
+    // For historical locations, do NOT show ML risk
+    document.getElementById('detailRisk').textContent='Not available';
+    document.getElementById('detailPriority').textContent='Not available';
+    document.getElementById('detailReliability').textContent='Not available';
+    document.getElementById('modelNote').textContent='ML risk is not applicable to this historical evidence location.';
+  }
+
+  // SHAP drivers
+  if (isML && p.topRiskDrivers && p.topRiskDrivers.length > 0) {
+    document.getElementById('riskDriversTitle').style.display = '';
+    const labelMap = {'month':'Seasonal pattern','cases_trend':'Recent disease-case trend','e_coli':'E. coli contamination signal','bod':'Biochemical oxygen demand (BOD)','historical_cases':'Historical disease cases','rainfall_3d':'Recent 3-day rainfall','rainfall_7d':'Recent 7-day rainfall','rainfall_14d':'Recent 14-day rainfall','flood_event':'Recent flood event','water_quality':'Water-quality signal','sensor_reliability':'Sensor reliability','rainfall_mm':'Total rainfall','data_completeness':'Data completeness','data_freshness_days':'Data freshness','source_consistency':'Source consistency','population_exposure':'Population exposure','cases_change':'Case count change','total_coliform':'Total coliform','fecal_coliform':'Fecal coliform','dissolved_oxygen':'Dissolved oxygen','electrical_conductivity':'Electrical conductivity','nitrate':'Nitrate','tds':'Total dissolved solids','ph':'pH level','turbidity':'Turbidity','flood_duration_days':'Flood duration','flood_severity':'Flood severity','rainfall_change_7d':'7-day rainfall change','rainfall_change_14d':'14-day rainfall change'};
+    document.getElementById('riskDrivers').innerHTML = p.topRiskDrivers.map(d => {
+      const match = d.match(/(.*?)\s*\(([-.\d]+)\)/);
+      if (match) {
+        const rawName = match[1].trim();
+        const val = parseFloat(match[2]);
+        const humanName = labelMap[rawName] || rawName;
+        const impact = val > 0 ? 'Increasing risk' : (val < 0 ? 'Reducing risk' : 'Neutral risk');
+        return '<div style="padding:4px 0;">• ' + escapeHtml(humanName + ' — ' + impact) + '</div>';
+      }
+      return '<div style="padding:4px 0;">• ' + escapeHtml(d) + '</div>';
+    }).join('');
+  } else if (isML) {
+    document.getElementById('riskDriversTitle').style.display = '';
+    document.getElementById('riskDrivers').innerHTML = 'SHAP explanation loading or not available for this ML zone.';
+  } else {
+    document.getElementById('riskDriversTitle').style.display = 'none';
+    document.getElementById('riskDrivers').innerHTML = 'SHAP explanation not available for this historical evidence location.';
+  }
+
+  document.getElementById('sampleContext').textContent=p.period??'Not available';
+  document.getElementById('sourceType').textContent=p.sourceType;
+  document.getElementById('sourceLabel').textContent=p.sourceLabel;
+  const sourceLink=document.getElementById('sourceLink');
+  if(p.source){
+    sourceLink.href=p.source;sourceLink.hidden=false;
+  }else{
+    sourceLink.removeAttribute('href');sourceLink.hidden=true;
+  }
+  document.getElementById('statusText').textContent=statusLabel(p);
+  document.getElementById('statusBanner').className=`status-banner ${statusClass(p)}`;
+  document.getElementById('readings').innerHTML=p.readings.length?p.readings.map(r=>`<div class="reading"><span class="reading-name">${escapeHtml(r.name)}</span><strong class="reading-value">${escapeHtml(r.value)}</strong><span class="reading-ref">${escapeHtml(r.reference)}</span></div>`).join(''):'<div class="reading"><span class="reading-name">Historical readings</span><strong class="reading-value">Not available</strong><span class="reading-ref">No sample values were supplied for this location.</span></div>';
+  document.getElementById('detailNote').textContent=`Context: ${p.notes}`;
+  document.getElementById('verificationStatus').textContent=(p.verificationStatus??'NOT_STARTED').replaceAll('_',' ').toLowerCase();
+  document.getElementById('historySummary').textContent=p.historyCount===null?'Loading…':`${p.historyCount} published ${p.historyCount===1?'record':'records'}`;
+
+  // Disease trend chart
+  const dtc = document.getElementById('diseaseTrendsContainer');
+  if (dtc) {
+    if (p.diseaseHistory && p.diseaseHistory.length > 0) {
+      const history = [...p.diseaseHistory].sort((a,b) => new Date(a.date) - new Date(b.date));
+      const values = history.map(h => parseFloat(h.disease_cases) || 0);
+      const maxValOrig = Math.max(...values, 10);
+      const ticks = 4;
+      const tickStep = Math.ceil(maxValOrig / (ticks - 1) / 10) * 10;
+      const maxVal = tickStep * (ticks - 1);
+      const minVal = 0;
+      const width = 600, height = 160, padX = 40, padY = 20, padTop = 10, padRight = 10;
+      const chartW = width - padX - padRight;
+      const chartH = height - padY - padTop;
+      const xStep = history.length > 1 ? chartW / (history.length - 1) : 0;
+      
+      const points = values.map((v, i) => {
+        const x = padX + i * xStep;
+        const y = padTop + chartH - ((v - minVal) / (maxVal - minVal)) * chartH;
+        return x + ',' + y;
+      }).join(' ');
+      
+      const circles = values.map((v, i) => {
+        const x = padX + i * xStep;
+        const y = padTop + chartH - ((v - minVal) / (maxVal - minVal)) * chartH;
+        const d = new Date(history[i].date);
+        const str = d.toLocaleString('default', { month: 'short', year: 'numeric' });
+        return `<circle cx="${x}" cy="${y}" r="2.5" fill="#39866a" stroke="#fff" stroke-width="0.5"><title>${str} — ${v} cases</title></circle>`;
+      }).join('');
+      
+      let yAxis = '';
+      for(let i=0; i<ticks; i++) {
+        const val = i * tickStep;
+        const y = padTop + chartH - (i / (ticks - 1)) * chartH;
+        yAxis += `<line x1="${padX}" y1="${y}" x2="${width - padRight}" y2="${y}" stroke="#eee" stroke-width="1" /><text x="${padX - 5}" y="${y + 3}" font-size="10" fill="#888" text-anchor="end">${val}</text>`;
+      }
+      
+      const dates = history.map((h, i) => {
+        const d = new Date(h.date);
+        const month = d.toLocaleString('default', { month: 'short' });
+        if((month === 'Jan') || i === history.length - 1) {
+           const str = d.toLocaleString('default', { month: 'short', year: 'numeric' });
+           const x = padX + i * xStep;
+           const anchor = i === history.length - 1 ? 'end' : 'middle';
+           return `<line x1="${x}" y1="${padTop + chartH}" x2="${x}" y2="${padTop + chartH + 4}" stroke="#ddd" /><text x="${x}" y="${padTop + chartH + 14}" font-size="10" fill="#888" text-anchor="${anchor}">${str}</text>`;
+        }
+        return '';
+      }).join('');
+
+      dtc.innerHTML = `
+        <svg viewBox="0 0 ${width} ${height}" style="width:100%; height:auto; display:block; overflow:visible; font-family:sans-serif;">
+          ${yAxis}
+          <polyline fill="none" stroke="#39866a" stroke-width="2" points="${points}" />
+          ${circles}
+          ${dates}
+          <line x1="${padX}" y1="${padTop + chartH}" x2="${width - padRight}" y2="${padTop + chartH}" stroke="#ccc" stroke-width="1" />
+        </svg>
+      `;
+    } else if (isML) {
+      dtc.innerHTML = 'Loading disease trend data for this ML assessment zone...';
+    } else {
+      dtc.innerHTML = 'No ML disease trend data available for this historical evidence location.';
+    }
+  }
+}
+
+function renderStateControls(){
+  const evidencePlaces = historicalPlaces();
+  document.getElementById('stateList').innerHTML=states.map(s=>{const n=evidencePlaces.filter(p=>p.state===s).length;return `<button class="state-chip ${n?'has-data':''} ${selectedState===s?'active':''}" data-state="${escapeHtml(s)}"><i class="state-dot"></i>${escapeHtml(s)}</button>`}).join('');
+  document.querySelectorAll('[data-state]').forEach(b=>b.addEventListener('click',()=>{document.getElementById('stateSelect').value=b.dataset.state;filterState(b.dataset.state)}));
+  // Coverage list: only count historical evidence locations
+  document.getElementById('coverageList').innerHTML=states.map(s=>{const n=evidencePlaces.filter(p=>p.state===s).length;return `<div class="coverage-row"><div class="coverage-state"><i class="${n?'ready':'planned'}"></i><strong>${escapeHtml(s)}</strong></div><small>${n?`${n} published evidence ${n===1?'site':'sites'}`:'No published evidence yet'}</small></div>`}).join('');
+}
+
+function renderRows(){
+  const list=rowsForState(selectedState);
+  const body=document.getElementById('observationRows');
+  body.innerHTML=list.map(p=>{const badge=p.status==='ok'?'Within shown refs':p.status==='flagged'?'Historical flag':'No sample';const badgeClass=p.status==='ok'?'ok':p.status==='flagged'?'':'neutral';return `<tr data-place-row="${escapeHtml(p.id)}" class="${p.id===selectedId?'selected':''}"><td><b>${escapeHtml(p.place)}</b></td><td>${escapeHtml(p.state)}</td><td class="parameter">${escapeHtml(p.sample)}</td><td>${escapeHtml(p.summary)}</td><td class="source-date">${escapeHtml((p.period??'Period unavailable').split('·')[0].trim())}</td><td><span class="flag ${badgeClass}">${badge}</span></td></tr>`}).join('');
+  document.getElementById('emptyState').style.display=list.length?'none':'block';
+  body.style.display=list.length?'':'none';
+  // Counts: only historical
+  document.getElementById('siteCount').textContent=String(list.length).padStart(2,'0');
+  document.getElementById('flaggedCount').textContent=String(list.filter(p=>p.status==='flagged'&&p.kind.includes('CPCB PRS')).length).padStart(2,'0');
+  document.getElementById('stateCount').textContent=String(new Set(historicalPlaces().map(p=>p.state)).size).padStart(2,'0');
+  document.querySelectorAll('[data-place-row]').forEach(row=>row.addEventListener('click',()=>selectPlace(row.dataset.placeRow,true)));
+}
+
+function selectPlace(id,pan){
+  const p=allApiPlaces.find(x=>x.id===id) || fallbackPlaces.find(x=>x.id===id);
+  if(!p)return;
+  selectedId=id;detailRequestId++;historyRequestId++;
+  renderSelectedPlace(p);renderRows();
+  if(map&&pan&&Number.isFinite(p.coords[0])&&Number.isFinite(p.coords[1]))map.flyTo({center:[p.coords[1],p.coords[0]],zoom:Math.max(map.getZoom(),8),duration:450});
+  const selectedMarker=markers.find(x=>x.id===id);
+  if(selectedMarker&&selectedMarker.marker.getPopup()&&!selectedMarker.marker.getPopup().isOpen())selectedMarker.marker.togglePopup();
+  if(backendConnected){loadRiskDetail(id);loadHistory(id);}
+}
+
+async function loadRiskDetail(id){
+  const requestId=++detailRequestId;
+  try{
+    const response=await fetch(`${API_BASE}/risk/${encodeURIComponent(id)}`);
+    if(!response.ok)throw new Error('Could not load location details');
+    const detail=await response.json();
+    if(requestId!==detailRequestId||selectedId!==id)return;
+    const p=allApiPlaces.find(x=>x.id===id) || fallbackPlaces.find(x=>x.id===id);
+    if(!p)return;
+    // Only apply ML data for historical locations if it exists (but per requirements, we don't show it)
+    // For historical locations, keep risk fields null
+    if(!p.id.startsWith('LOC_')){
+      p.verificationStatus=detail.verification?.verification_status??'NOT_STARTED';
+      if(detail.published_observation?.readings)p.readings=detail.published_observation.readings.map(r=>({name:r.parameter??r.name??'Parameter',value:r.value??'Not reported',reference:r.reference??'Reference unavailable'}));
+    } else {
+      p.riskProbability=detail.risk?.probability??null;
+      p.riskLevel=detail.risk?.level??null;
+      p.priorityScore=detail.priority?.score??null;
+      p.priorityLevel=detail.priority?.level??null;
+      p.reliabilityScore=detail.reliability?.score??null;
+      p.verificationStatus=detail.verification?.verification_status??'NOT_STARTED';
+      p.topRiskDrivers=detail.top_risk_drivers??[];
+    }
+    renderSelectedPlace(p);
+  }catch(error){console.warn('Risk detail request failed:',error);}
+}
+
+async function loadHistory(id){
+  const requestId=++historyRequestId;
+  try{
+    const response=await fetch(`${API_BASE}/locations/${encodeURIComponent(id)}/history`);
+    if(!response.ok)throw new Error('Could not load history');
+    const data=await response.json();
+    if(requestId!==historyRequestId||selectedId!==id)return;
+    const p=allApiPlaces.find(x=>x.id===id) || fallbackPlaces.find(x=>x.id===id);
+    if(!p)return;
+    p.historyCount=Array.isArray(data.history)?data.history.length:0;
+    // Fix: use correct record_type 'SYNTHETIC_ML_HISTORY' (not 'SYNTHETIC_DISEASE_CASES')
+    p.diseaseHistory = Array.isArray(data.history) ? data.history.filter(h => h.record_type === 'SYNTHETIC_ML_HISTORY') : [];
+    renderSelectedPlace(p);
+  }catch(error){
+    const p=allApiPlaces.find(x=>x.id===id) || fallbackPlaces.find(x=>x.id===id);
+    if(p&&selectedId===id){p.historyCount=0; p.diseaseHistory = []; renderSelectedPlace(p);}
+  }
+}
+
+function filterState(state){
+  selectedState=state;renderStateControls();renderRows();
+  const list=rowsForState(state);
+  document.getElementById('mapSubtitle').textContent=state==='All'?'Historical/public sample locations · select a marker for details':list.length?`${state} · ${list.length} published evidence ${list.length===1?'location':'locations'}`:`${state} · no published evidence rows loaded in this prototype`;
+  if(list.length&&!list.some(p=>p.id===selectedId))selectPlace(list[0].id,false);
+  if(map){
+    const located=list.filter(p=>Number.isFinite(p.coords[0])&&Number.isFinite(p.coords[1]));
+    if(located.length){const bounds=new maplibregl.LngLatBounds();located.forEach(p=>bounds.extend([p.coords[1],p.coords[0]]));map.fitBounds(bounds,{padding:36,maxZoom:8,duration:450});}
+    else if(!list.length){const center=state==='Sikkim'?[88.5,27.5]:state==='Arunachal Pradesh'?[94.2,28.2]:state==='Nagaland'?[94.5,26.1]:state==='Manipur'?[93.9,24.7]:state==='Mizoram'?[92.8,23.3]:state==='Tripura'?[91.5,23.8]:[91.5,26.8];map.flyTo({center,zoom:7,duration:450});}
+    renderMarkers();
+  }
+}
+
+function renderMarkers(){
+  if(!map)return;markers.forEach(x=>x.marker.remove());markers=[];
+  
+  // Render historical/evidence locations
+  const shown=rowsForState(selectedState).filter(p=>Number.isFinite(p.coords[0])&&Number.isFinite(p.coords[1]));
+  shown.forEach(p=>{
+    const el=document.createElement('button');el.type='button';
+    el.className=`nw-marker ${p.status==='ok'?'ok':p.status==='flagged'?'flagged':'review'}`;
+    el.setAttribute('aria-label',`${p.place}: ${p.summary}`);
+    const popup=new maplibregl.Popup({offset:12,closeButton:false}).setHTML(`<b>${escapeHtml(p.place)}</b><br>${escapeHtml(p.state)} · ${escapeHtml(p.kind)}<br>${escapeHtml(p.summary)}<br><small>${escapeHtml(p.period)}</small><br><small>Historical published observation</small>`);
+    const marker=new maplibregl.Marker({element:el,anchor:'center'}).setLngLat([p.coords[1],p.coords[0]]).setPopup(popup).addTo(map);
+    el.addEventListener('click',event=>{event.stopPropagation();selectPlace(p.id,false);});
+    markers.push({id:p.id,marker});
+  });
+
+  // Render 50 selected ML display markers
+  Object.keys(mlDisplayZones).forEach(locId => {
+    const mlZoneInfo = mlDisplayZones[locId];
+    if (selectedState !== 'All' && mlZoneInfo.state !== selectedState) return;
+    
+    // Find the actual ML data from allApiPlaces
+    const mlData = allApiPlaces.find(p => p.id === locId);
+    if (!mlData) return; // if backend not loaded yet, don't show
+    
+    const riskLvl = mlData.riskLevel || 'Unknown';
+    const rProb = mlData.riskProbability != null ? Math.round(mlData.riskProbability * 100) + '%' : 'N/A';
+    
+    const el = document.createElement('button'); el.type='button';
+    el.className = `nw-ml-marker ${riskLvl}`;
+    el.setAttribute('aria-label', `${locId}: Risk ${riskLvl}`);
+    const popup = new maplibregl.Popup({offset:12,closeButton:false}).setHTML(`<b>${escapeHtml(locId)}</b><br>State: ${escapeHtml(mlZoneInfo.state)}<br>Risk level: ${escapeHtml(riskLvl)} (${rProb})<br><small style="color:var(--amber)">Prototype demonstration geography</small>`);
+    const marker = new maplibregl.Marker({element:el,anchor:'center'}).setLngLat([mlZoneInfo.coords[1], mlZoneInfo.coords[0]]).setPopup(popup).addTo(map);
+    el.addEventListener('click',event=>{event.stopPropagation();selectPlace(locId,false);});
+    markers.push({id:locId,marker});
+  });
+}
+
+function initMap(){
+  const fallback=document.getElementById('mapFallback');
+  if(!window.maplibregl){fallback.hidden=false;return;}
+  let loaded=false;
+  try{
+    map=new maplibregl.Map({container:'map',style:'https://tiles.openfreemap.org/styles/positron',center:[92.35,26.25],zoom:6,attributionControl:false,scrollZoom:false});
+    map.addControl(new maplibregl.NavigationControl({showCompass:false}),'top-left');
+    map.addControl(new maplibregl.AttributionControl({compact:true,customAttribution:'© OpenFreeMap · © OpenStreetMap contributors'}),'bottom-right');
+    map.on('error',event=>{const message=event.error&&event.error.message||'';if(/style|fetch|403|404|webgl|network|tile/i.test(message))fallback.hidden=false;});
+    map.on('load',()=>{loaded=true;fallback.hidden=true;renderMarkers();});
+    setTimeout(()=>{if(!loaded)fallback.hidden=false;else map&&map.resize();},10000);
+    setTimeout(()=>map&&map.resize(),200);
+  }catch(error){console.error('Map initialization failed:',error);fallback.hidden=false;}
+}
+
+/* ========== ML ZONE SELECTOR ========== */
+function selectMlZone(locId){
+  const container=document.getElementById('mlZoneDetail');
+  if(!locId){container.innerHTML='';return;}
+  if(!backendConnected){container.innerHTML='<div class="ml-disclosure">Backend not connected. Cannot load ML assessment data.</div>';return;}
+
+  container.innerHTML='<div style="padding:12px;color:var(--teal);font-size:11px;font-weight:bold;">Details loaded in the main panel ↗</div>';
+  selectPlace(locId, false);
+}
+
+/* ========== NAV VIEWS ========== */
+function showView(view){
+  currentView=view;
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  if(view==='overview'){
+    document.querySelectorAll('.nav button')[0].classList.add('active');
+  } else if(view==='ml-zones'){
+    document.querySelectorAll('.nav button')[1].classList.add('active');
+    document.getElementById('ml-zone-panel').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+
+function showToast(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2600)}
+
+async function requestRetest(){const p=places.find(x=>x.id===selectedId);if(!p)return;if(!backendConnected){showToast('Backend is offline; no verification action was saved.');return;}const button=document.getElementById('verifyButton');button.disabled=true;try{const response=await fetch(`${API_BASE}/locations/${encodeURIComponent(p.id)}/verification`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({verification_status:'PLANNED',recommended_verification_priority:null,reason_for_priority:'A user requested a fresh field test after reviewing the published sample.',verification_date:null,actual_field_result:null})});if(!response.ok)throw new Error('The API could not save the verification plan');const result=await response.json();p.verificationStatus=result.verification_status;renderSelectedPlace(p);showToast('Field test marked as planned. No test result was entered.');}catch(error){showToast('Could not save the field-test plan. Check that the backend is running.');}finally{button.disabled=false;}}
+
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});}
+
+async function initializeDashboard(){
+  try{await loadFromApi();}catch(error){
+    console.warn('Backend unavailable; showing embedded prototype sample data:',error);
+    places=fallbackPlaces;
+    backendConnected=false;
+    setConnectionState('offline','Backend offline · demo sample data');
+  }
+  if(!places.some(p=>p.id===selectedId))selectedId=places[0]?.id??null;
+  renderStateControls();renderRows();
+  if(selectedId)selectPlace(selectedId,false);
+  initMap();
+}
+
+async function uploadCsv(file){if(!file)return;const st=document.getElementById('datasetStatus');const err=document.getElementById('datasetErrors');st.textContent='Status: Uploading...';err.style.display='none';try{const text=await file.text();const res=await fetch(API_BASE+'/dataset/upload',{method:'POST',body:text});if(!res.ok)throw new Error('Upload failed');st.textContent='Status: UPLOAD_RECEIVED';document.getElementById('validateBtn').disabled=false;document.getElementById('validateBtn').style.opacity='1';}catch(e){st.textContent='Status: ERROR';err.textContent=e.message;err.style.display='block';}}
+async function validateCsv(){const st=document.getElementById('datasetStatus');const err=document.getElementById('datasetErrors');st.textContent='Status: VALIDATING...';err.style.display='none';try{const res=await fetch(API_BASE+'/dataset/validate',{method:'POST'});const data=await res.json();if(!res.ok){st.textContent='Status: VALIDATION_FAILED';err.innerHTML=data.errors?data.errors.join('<br>'):'Validation error';err.style.display='block';return;}st.textContent='Status: READY_FOR_ANALYSIS';document.getElementById('analyzeBtn').disabled=false;document.getElementById('analyzeBtn').style.opacity='1';}catch(e){st.textContent='Status: ERROR';err.textContent=e.message;err.style.display='block';}}
+async function analyzeCsv(){const st=document.getElementById('datasetStatus');const err=document.getElementById('datasetErrors');st.textContent='Status: ANALYSIS_RUNNING...';err.style.display='none';document.getElementById('analyzeBtn').disabled=true;document.getElementById('analyzeBtn').style.opacity='0.5';try{const res=await fetch(API_BASE+'/dataset/analyze',{method:'POST'});if(!res.ok)throw new Error('Analysis trigger failed');setTimeout(async ()=>{st.textContent='Status: Prototype analysis using precomputed V2 ML model outputs';await loadFromApi();if(selectedId){selectPlace(selectedId,false);}},3000);}catch(e){st.textContent='Status: ERROR';err.textContent=e.message;err.style.display='block';document.getElementById('analyzeBtn').disabled=false;document.getElementById('analyzeBtn').style.opacity='1';}}
+document.getElementById('stateSelect').addEventListener('change',e=>filterState(e.target.value));initializeDashboard();
+</script>
+</body>
+</html>

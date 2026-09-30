@@ -1,0 +1,33 @@
+# Datasets and training
+DATA SETS/
+raw/
+data/
+models/
+src/
+.venv/
+predictions/
+xgb_v2_final_test_predictions.csv
+xgb_*.csv
+
+# Local and test data
+backend/data/disease_trends.json
+backend/data/location_mapping.json
+backend/data/verification.json
+backend/server.mjs.bak
+REAL_ML_LOCATION_COVERAGE.csv
+
+# Directories
+scratch/
+reports/
+.vscode/
+.idea/
+.gemini/
+node_modules/
+logs/
+backups/
+
+# Secrets
+.env
+*.pem
+credentials/
+keys/
