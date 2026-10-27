@@ -1,0 +1,14 @@
+{
+  "LOC_001": [
+    {
+      "verification_id": "9f28e29a-331a-4d35-803e-baed9a919bbb",
+      "location_id": "LOC_001",
+      "verification_status": "PLANNED",
+      "recommended_verification_priority": "HIGH",
+      "reason_for_priority": "Apple UI verification test",
+      "verification_date": "2026-10-30",
+      "actual_field_result": null,
+      "created_at": "2026-10-27T16:36:09.927Z"
+    }
+  ]
+}

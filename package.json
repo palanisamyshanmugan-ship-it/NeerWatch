@@ -1,0 +1,28 @@
+{
+  "name": "neerwatch",
+  "version": "1.0.0",
+  "description": "NeerWatch - AI-Powered Northeast India Water Quality & Epidemic Risk Monitoring Platform with Apple-Inspired Liquid Glass UI",
+  "main": "backend/server.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server.mjs",
+    "dev": "node backend/server.mjs",
+    "test": "node --check backend/server.mjs"
+  },
+  "keywords": [
+    "water-quality",
+    "epidemic-monitoring",
+    "xgboost",
+    "shap",
+    "apple-ui",
+    "liquid-glass",
+    "dashboard",
+    "leaflet",
+    "northeast-india"
+  ],
+  "author": "NeerWatch Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

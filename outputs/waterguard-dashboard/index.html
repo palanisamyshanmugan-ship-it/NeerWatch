@@ -1,0 +1,2826 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1d1d1f" />
+  <meta name="description" content="NeerWatch — Apple-inspired AI-powered water quality intelligence and early warning system for Northeast India. Track contamination, ML risk assessments, and field verification." />
+  <title>NeerWatch | Northeast India Water Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.css" />
+  <style>
+    /* ===== APPLE-INSPIRED LIQUID GLASS DESIGN SYSTEM (apple.com/in) ===== */
+    :root {
+      --apple-bg: #f5f5f7;
+      --apple-white: #ffffff;
+      --apple-black: #1d1d1f;
+      --apple-gray: #86868b;
+      --apple-gray-light: #d2d2d7;
+      --apple-gray-bg: #fbfbfd;
+      --apple-border: rgba(0, 0, 0, 0.08);
+      --apple-border-light: rgba(0, 0, 0, 0.04);
+      --apple-blue: #0071e3;
+      --apple-blue-hover: #0077ed;
+      --apple-blue-soft: rgba(0, 113, 227, 0.08);
+      --apple-nav-bg: rgba(22, 22, 23, 0.82);
+      --apple-nav-text: #f5f5f7;
+      --apple-card-radius: 20px;
+      --apple-btn-radius: 980px;
+      --apple-red: #ff3b30;
+      --apple-red-bg: #fff5f5;
+      --apple-amber: #ff9500;
+      --apple-amber-bg: #fff9f0;
+      --apple-green: #34c759;
+      --apple-green-bg: #f0fff4;
+      --apple-teal: #5ac8fa;
+      --apple-indigo: #5856d6;
+      --content-max: 1200px;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", sans-serif;
+
+      /* Liquid Glass Tokens (Optimized for Silky-Smooth Performance) */
+      --glass-surface: rgba(255, 255, 255, 0.78);
+      --glass-surface-elevated: rgba(255, 255, 255, 0.9);
+      --glass-border: rgba(255, 255, 255, 0.85);
+      --glass-border-subtle: rgba(255, 255, 255, 0.5);
+      --glass-blur: blur(14px);
+      --glass-shadow: 0 8px 24px 0 rgba(0, 113, 227, 0.05), 0 2px 6px 0 rgba(0, 0, 0, 0.02);
+      --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.02);
+    }
+
+    /* ===== RESET & BASE STYLES ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: var(--apple-bg);
+    }
+    body {
+      font-family: var(--font);
+      background: var(--apple-bg);
+      color: var(--apple-black);
+      line-height: 1.47059;
+      letter-spacing: -0.022em;
+      overflow-x: hidden;
+      position: relative;
+    }
+    button, select, input, textarea {
+      font-family: inherit;
+      color: inherit;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      outline: none;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    img, svg {
+      display: block;
+    }
+
+    /* ===== AMBIENT LIQUID GLASS MESH BACKGROUND (Hardware-Accelerated) ===== */
+    .liquid-mesh-container {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      opacity: 0.55;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    .liquid-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    .liquid-orb-1 {
+      top: -6%;
+      left: 10%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(90, 200, 250, 0.32) 0%, rgba(0, 113, 227, 0.08) 45%, transparent 70%);
+      animation: smoothFloat1 30s ease-in-out infinite alternate;
+    }
+    .liquid-orb-2 {
+      top: 45%;
+      right: 5%;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(88, 86, 214, 0.22) 0%, rgba(90, 200, 250, 0.08) 50%, transparent 70%);
+      animation: smoothFloat2 36s ease-in-out infinite alternate;
+    }
+    @keyframes smoothFloat1 {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(45px, -35px, 0); }
+    }
+    @keyframes smoothFloat2 {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-35px, 40px, 0); }
+    }
+
+    /* ===== GLOBAL APPLE NAVIGATION BAR ===== */
+    .global-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 9999;
+      height: 48px;
+      background: var(--apple-nav-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      transform: translateZ(0);
+    }
+    .global-nav-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--apple-nav-text);
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: -0.03em;
+      transition: opacity 0.2s;
+    }
+    .nav-brand:hover { opacity: 0.9; }
+    .apple-logo {
+      width: 15px;
+      height: 18px;
+      fill: #ffffff;
+      opacity: 0.95;
+    }
+    .brand-drop {
+      display: inline-block;
+      font-size: 15px;
+      line-height: 1;
+      transform: translateZ(0);
+    }
+    @keyframes liquidDropPulse {
+      0%, 100% { transform: scale(1) translateY(0); filter: drop-shadow(0 0 6px rgba(90, 200, 250, 0.7)); }
+      50% { transform: scale(1.18) translateY(-1px); filter: drop-shadow(0 0 14px rgba(90, 200, 250, 1)); }
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .nav-links button {
+      padding: 6px 13px;
+      color: rgba(245, 245, 247, 0.8);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      border-radius: var(--apple-btn-radius);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+      position: relative;
+    }
+    .nav-links button:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+    }
+    .nav-links button.active {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.2);
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0.5px rgba(255, 255, 255, 0.4);
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .connection-pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 13px;
+      border-radius: var(--apple-btn-radius);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 0.5px solid rgba(255, 255, 255, 0.14);
+      color: rgba(245, 245, 247, 0.8);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      transition: all 0.25s ease;
+      box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.2);
+    }
+    .connection-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--apple-amber);
+      transition: background 0.3s ease;
+    }
+    .connection-pill.connected {
+      background: rgba(52, 199, 89, 0.14);
+      border-color: rgba(52, 199, 89, 0.3);
+      color: #e3ffe8;
+    }
+    .connection-pill.connected .connection-dot {
+      background: var(--apple-green);
+      box-shadow: 0 0 10px rgba(52, 199, 89, 0.9);
+      animation: greenPulse 2.5s infinite;
+    }
+    @keyframes greenPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.25); opacity: 0.75; }
+    }
+    .connection-pill.offline {
+      background: rgba(255, 59, 48, 0.12);
+      border-color: rgba(255, 59, 48, 0.3);
+      color: #ffe3e3;
+    }
+    .connection-pill.offline .connection-dot {
+      background: var(--apple-red);
+    }
+    .state-select-nav {
+      appearance: none;
+      padding: 6px 28px 6px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--apple-btn-radius);
+      background: rgba(255, 255, 255, 0.09);
+      backdrop-filter: blur(10px);
+      color: rgba(245, 245, 247, 0.95);
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'%3E%3Cpath d='M1 1l3 3 3-3' stroke='rgba(245,245,247,0.7)' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: calc(100% - 10px) center;
+      transition: all 0.2s ease;
+      box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.2);
+    }
+    .state-select-nav:hover {
+      border-color: rgba(255, 255, 255, 0.4);
+      background-color: rgba(255, 255, 255, 0.16);
+    }
+    .state-select-nav:focus {
+      outline: none;
+      border-color: var(--apple-blue);
+      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.35);
+    }
+    .state-select-nav option {
+      background: #1d1d1f;
+      color: #f5f5f7;
+    }
+
+    /* ===== HERO SECTION (Liquid Glass Product Stage) ===== */
+    .hero {
+      margin-top: 48px;
+      background: radial-gradient(circle at 50% 15%, #182e4b 0%, #0c182b 45%, #03060a 100%);
+      padding: 105px 22px 85px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      color: #ffffff;
+      z-index: 1;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -180px; left: 50%;
+      width: 950px; height: 950px;
+      transform: translateX(-50%) translateZ(0);
+      background: radial-gradient(circle, rgba(90, 200, 250, 0.18) 0%, rgba(0, 113, 227, 0.06) 45%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 18px;
+      border-radius: var(--apple-btn-radius);
+      background: rgba(90, 200, 250, 0.12);
+      border: 1px solid rgba(90, 200, 250, 0.3);
+      color: var(--apple-teal);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 4px 16px rgba(90, 200, 250, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    }
+    .hero h1 {
+      font-size: clamp(44px, 6.8vw, 70px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #5ac8fa 0%, #64d2ff 35%, #30d158 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 20px rgba(90, 200, 250, 0.35));
+    }
+    .hero-sub {
+      max-width: 630px;
+      margin: 0 auto 34px;
+      color: rgba(245, 245, 247, 0.75);
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: -0.015em;
+    }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    /* Liquid Glass Pill Action Buttons */
+    .hero-btn-primary {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: var(--apple-btn-radius);
+      background: linear-gradient(180deg, #0077ed 0%, #0060c2 100%);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: #ffffff;
+      font-size: 14.5px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 
+        0 4px 16px rgba(0, 113, 227, 0.4),
+        inset 0 1px 1.5px rgba(255, 255, 255, 0.75);
+    }
+    .hero-btn-primary::after, .action-btn::after, .dataset-btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      transform: skewX(-20deg);
+      pointer-events: none;
+      transition: left 0.5s ease;
+    }
+    .hero-btn-primary:hover::after, .action-btn:hover::after, .dataset-btn:hover::after {
+      left: 160%;
+    }
+    .hero-btn-primary:hover {
+      background: linear-gradient(180deg, #0080ff 0%, #0068d4 100%);
+      transform: translateY(-1.5px);
+      box-shadow: 0 6px 22px rgba(0, 113, 227, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.95);
+    }
+    .hero-btn-secondary {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: var(--apple-btn-radius);
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      font-size: 14.5px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      transition: transform 0.2s ease, background 0.2s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    }
+    .hero-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-1.5px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      padding-top: 42px;
+      border-top: 0.5px solid rgba(255, 255, 255, 0.14);
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .hero-stat {
+      text-align: center;
+      flex: 1;
+      position: relative;
+    }
+    .hero-stat-value {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      color: #ffffff;
+      line-height: 1.1;
+      text-shadow: 0 2px 12px rgba(90, 200, 250, 0.3);
+      transition: transform 0.2s ease;
+    }
+    .hero-stat:hover .hero-stat-value {
+      transform: scale(1.04);
+    }
+    .hero-stat-label {
+      margin-top: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(245, 245, 247, 0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Organic Liquid Glass Wave (Smooth Static Wave) */
+    .hero-liquid-wave {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 38px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* ===== INFORMATIONAL ADVISORY BANNER ===== */
+    .info-banner {
+      max-width: var(--content-max);
+      margin: -24px auto 0;
+      padding: 0 22px;
+      position: relative;
+      z-index: 10;
+    }
+    .info-banner-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 24px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid rgba(255, 149, 0, 0.3);
+      box-shadow: 
+        0 8px 30px rgba(0, 0, 0, 0.05),
+        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+      color: #5c4314;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .info-banner-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255, 149, 0, 0.16);
+      display: grid;
+      place-items: center;
+      color: var(--apple-amber);
+      font-weight: 700;
+      font-size: 13px;
+      margin-top: 1px;
+      box-shadow: 0 0 10px rgba(255, 149, 0, 0.3);
+    }
+    .info-banner b { color: #3b2800; font-weight: 600; }
+
+    /* ===== STATE SELECTION CHIPS BAR (Liquid Glass Carousel) ===== */
+    .states-bar {
+      max-width: var(--content-max);
+      margin: 36px auto 0;
+      padding: 0 22px;
+      position: relative;
+      z-index: 2;
+    }
+    .states-bar-inner {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      overflow-x: auto;
+      padding: 6px 0;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .states-bar-inner::-webkit-scrollbar { display: none; }
+    .states-bar-label {
+      flex-shrink: 0;
+      color: var(--apple-gray);
+      font-size: 12px;
+      font-weight: 600;
+      margin-right: 6px;
+      letter-spacing: -0.01em;
+    }
+    .state-chip {
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 18px;
+      border: 1px solid var(--glass-border);
+      border-radius: var(--apple-btn-radius);
+      background: rgba(255, 255, 255, 0.68);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      color: var(--apple-black);
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+      box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.02),
+        inset 0 1px 1px rgba(255, 255, 255, 0.95);
+    }
+    .state-chip:hover {
+      border-color: rgba(0, 113, 227, 0.6);
+      color: var(--apple-blue);
+      background: rgba(255, 255, 255, 0.92);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 113, 227, 0.16), inset 0 1px 1px #ffffff;
+    }
+    .state-chip.active {
+      background: linear-gradient(135deg, #1d1d1f 0%, #2c2c2e 100%);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+      transform: translateY(-1px);
+    }
+    .state-chip .state-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-right: 7px;
+      background: var(--apple-gray-light);
+    }
+    .state-chip.has-data .state-dot {
+      background: var(--apple-green);
+      box-shadow: 0 0 6px rgba(52, 199, 89, 0.6);
+    }
+    .state-chip.active .state-dot {
+      background: var(--apple-teal);
+      box-shadow: 0 0 8px rgba(90, 200, 250, 0.9);
+    }
+
+    /* ===== CONTENT WRAPPER ===== */
+    .content-wrap {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 24px 22px 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===== LIQUID GLASS CARD COMPONENT (Optimized for 60/120fps) ===== */
+    .apple-card {
+      position: relative;
+      background: var(--glass-surface);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: var(--apple-card-radius);
+      border: 1px solid var(--glass-border);
+      box-shadow: 
+        var(--glass-shadow),
+        var(--glass-specular);
+      overflow: hidden;
+      transform: translateZ(0);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .apple-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, transparent 55%);
+      pointer-events: none;
+      border-radius: inherit;
+      opacity: 0.65;
+      transition: opacity 0.25s ease;
+    }
+    .apple-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 
+        0 14px 36px rgba(0, 113, 227, 0.08),
+        0 3px 10px rgba(0, 0, 0, 0.03),
+        inset 0 1px 1.5px rgba(255, 255, 255, 1);
+      border-color: rgba(90, 200, 250, 0.45);
+    }
+    .apple-card:hover::before { opacity: 1; }
+
+    /* ===== MAIN GRID (Map + Details) ===== */
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(380px, 0.85fr);
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    /* ===== MAP PANEL ===== */
+    .map-panel {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+    }
+    .map-panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      gap: 16px;
+    }
+    .map-panel-head h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+    .map-panel-sub {
+      margin-top: 4px;
+      color: var(--apple-gray);
+      font-size: 13px;
+    }
+    .map-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--apple-gray);
+      white-space: nowrap;
+    }
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .map-frame {
+      position: relative;
+      height: 420px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #e5e9ec;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    .map-fallback {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      text-align: center;
+      background: linear-gradient(135deg, #f0f2f5, #e4e8ec);
+      color: var(--apple-gray);
+      font-size: 14px;
+    }
+    .map-fallback b {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--apple-black);
+      margin-bottom: 6px;
+    }
+    .map-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-top: 14px;
+      color: var(--apple-gray);
+      font-size: 11.5px;
+      line-height: 1.45;
+    }
+    .map-foot a {
+      color: var(--apple-blue);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .map-foot a:hover { text-decoration: underline; }
+
+    /* ===== DETAIL INSPECTOR PANEL ===== */
+    .detail-panel {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+    }
+    .detail-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--apple-blue);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .detail-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .detail-title {
+      font-size: 23px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: var(--apple-black);
+    }
+    .place-meta {
+      margin-top: 4px;
+      color: var(--apple-gray);
+      font-size: 13px;
+    }
+    .state-badge {
+      flex-shrink: 0;
+      padding: 4px 10px;
+      border-radius: var(--apple-btn-radius);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--apple-border);
+      color: var(--apple-black);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    /* ===== LIQUID GLASS 3-METRIC SNAPSHOT GRID (Apple Health Style) ===== */
+    .risk-snapshot {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 4px 0 14px;
+    }
+    .risk-snapshot > div {
+      position: relative;
+      padding: 13px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.02),
+        inset 0 1px 1px rgba(255, 255, 255, 0.95);
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .risk-snapshot > div:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(90, 200, 250, 0.45);
+      box-shadow: 0 6px 16px rgba(0, 113, 227, 0.1), inset 0 1px 1.5px rgba(255, 255, 255, 1);
+    }
+    .risk-snapshot span {
+      display: block;
+      color: var(--apple-gray);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .risk-snapshot strong {
+      display: block;
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--apple-black);
+      overflow-wrap: anywhere;
+    }
+    .model-note {
+      margin: 0 0 14px;
+      color: var(--apple-gray);
+      font-size: 11.5px;
+      line-height: 1.45;
+    }
+
+    /* ===== SHAP EXPLANATION CARD ===== */
+    .readings-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 16px 0 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--apple-black);
+      letter-spacing: -0.01em;
+    }
+    .readings-title span {
+      color: var(--apple-gray);
+      font-size: 11px;
+      font-weight: 400;
+    }
+    #riskDrivers {
+      margin-bottom: 14px;
+      font-size: 12px;
+      background: rgba(255, 149, 0, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 149, 0, 0.2);
+      border-radius: 14px;
+      padding: 12px 16px;
+      color: #5c4314;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    }
+
+    /* ===== READINGS & SAMPLE METRICS ===== */
+    .sample-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 0.5px solid var(--apple-border);
+      color: var(--apple-gray);
+      font-size: 12.5px;
+    }
+    .sample-line strong {
+      color: var(--apple-black);
+      font-weight: 600;
+      text-align: right;
+    }
+    .status-banner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 14px 0;
+      padding: 11px 16px;
+      border-radius: 14px;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      backdrop-filter: blur(10px);
+    }
+    .status-banner.flagged { 
+      background: rgba(255, 59, 48, 0.1); 
+      color: #d70015; 
+      border: 1px solid rgba(255, 59, 48, 0.22);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6);
+    }
+    .status-banner.watch { 
+      background: rgba(255, 149, 0, 0.1); 
+      color: #a36800; 
+      border: 1px solid rgba(255, 149, 0, 0.22); 
+    }
+    .status-banner.ok { 
+      background: rgba(52, 199, 89, 0.1); 
+      color: #248a3d; 
+      border: 1px solid rgba(52, 199, 89, 0.22);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6);
+    }
+    .status-banner.unavailable { 
+      background: rgba(0, 0, 0, 0.04); 
+      color: var(--apple-gray); 
+      border: 1px solid var(--apple-border); 
+    }
+    .status-mark {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .reading {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3px 10px;
+      padding: 9px 0;
+      border-top: 0.5px solid rgba(0, 0, 0, 0.05);
+    }
+    .reading-name { color: #444; font-size: 12.5px; font-weight: 500; }
+    .reading-value { font-size: 13.5px; font-weight: 700; text-align: right; color: var(--apple-black); }
+    .reading-ref { grid-column: 1/-1; color: var(--apple-gray); font-size: 10.5px; }
+    .why-note {
+      margin: 14px 0 0;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.03);
+      color: #555;
+      font-size: 12px;
+      line-height: 1.5;
+      border: 1px solid var(--apple-border-light);
+    }
+    .why-note b { color: var(--apple-black); }
+    .source-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 0.5px solid var(--apple-border);
+      font-size: 11.5px;
+      color: var(--apple-gray);
+    }
+    .source-row a {
+      color: var(--apple-blue);
+      font-weight: 600;
+    }
+    .source-row a:hover { text-decoration: underline; }
+
+    /* Action button */
+    .action-btn {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      margin-top: 18px;
+      padding: 13px;
+      border-radius: var(--apple-btn-radius);
+      background: linear-gradient(180deg, #0077ed 0%, #0060c2 100%);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      transition: all 0.25s ease;
+      box-shadow: 
+        0 4px 16px rgba(0, 113, 227, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.7);
+    }
+    .action-btn:hover {
+      background: linear-gradient(180deg, #0080ff 0%, #0068d4 100%);
+      box-shadow: 0 6px 24px rgba(0, 113, 227, 0.5), inset 0 1px 1.5px #fff;
+      transform: translateY(-1.5px);
+    }
+    .action-btn:active {
+      transform: translateY(0);
+    }
+
+    /* ===== SECONDARY GRID (Disease Trends + ML Zones) ===== */
+    .secondary-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(380px, 0.85fr);
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .card-head {
+      padding: 26px 26px 0;
+    }
+    .card-head h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+    .card-head-sub {
+      margin-top: 4px;
+      color: var(--apple-gray);
+      font-size: 13px;
+    }
+    .card-body {
+      padding: 20px 26px 26px;
+    }
+
+    /* ML Zone Select */
+    .ml-zone-select {
+      width: 100%;
+      padding: 11px 36px 11px 16px;
+      border: 1px solid var(--apple-gray-light);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      color: var(--apple-black);
+      font-size: 14px;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2386868b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: calc(100% - 14px) center;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    }
+    .ml-zone-select:focus {
+      outline: none;
+      border-color: var(--apple-blue);
+      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.18);
+    }
+    .ml-disclosure {
+      margin: 14px 0 0;
+      padding: 13px 16px;
+      border-radius: 14px;
+      background: rgba(255, 149, 0, 0.08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 149, 0, 0.2);
+      color: #634710;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .ml-disclosure b { color: #3d2a02; font-weight: 600; }
+
+    /* ===== BOTTOM GRID (Table + Evidence Coverage) ===== */
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(340px, 0.8fr);
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .table-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 26px 16px;
+      border-bottom: 0.5px solid var(--apple-border-light);
+    }
+    .table-heading h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+    .table-heading button {
+      color: var(--apple-blue);
+      font-size: 13px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .table-heading button:hover {
+      text-decoration: underline;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      max-height: 480px;
+    }
+    .observations {
+      width: 100%;
+      border-collapse: collapse;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+    .observations th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      padding: 12px 18px;
+      background: rgba(245, 245, 247, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: var(--apple-gray);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: left;
+      border-bottom: 0.5px solid var(--apple-border);
+    }
+    .observations td {
+      padding: 13px 18px;
+      border-top: 0.5px solid rgba(0, 0, 0, 0.04);
+      color: #333336;
+    }
+    .observations tr {
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .observations tbody tr:hover {
+      background: rgba(0, 113, 227, 0.05);
+    }
+    .observations tbody tr.selected {
+      background: rgba(0, 113, 227, 0.09);
+      font-weight: 500;
+    }
+    .observations .parameter {
+      font-weight: 600;
+      color: var(--apple-black);
+    }
+    .flag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: var(--apple-btn-radius);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .flag {
+      background: rgba(255, 59, 48, 0.12);
+      color: #d70015;
+      border: 1px solid rgba(255, 59, 48, 0.2);
+    }
+    .flag.ok {
+      background: rgba(52, 199, 89, 0.12);
+      color: #248a3d;
+      border: 1px solid rgba(52, 199, 89, 0.2);
+    }
+    .flag.neutral {
+      background: rgba(0, 0, 0, 0.04);
+      color: var(--apple-gray);
+      border: 1px solid var(--apple-border);
+    }
+    .source-date {
+      color: var(--apple-gray);
+      font-size: 12px;
+    }
+
+    /* ===== EVIDENCE COVERAGE PANEL ===== */
+    .coverage-panel {
+      padding: 26px;
+    }
+    .coverage-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .coverage-title h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+    .coverage-title small {
+      color: var(--apple-gray);
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .coverage-list {
+      margin-top: 8px;
+    }
+    .coverage-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: center;
+      padding: 12px 0;
+      border-top: 0.5px solid rgba(0, 0, 0, 0.05);
+      font-size: 13.5px;
+    }
+    .coverage-state {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .coverage-state i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--apple-gray-light);
+    }
+    .coverage-state i.ready {
+      background: var(--apple-green);
+      box-shadow: 0 0 8px rgba(52, 199, 89, 0.6);
+    }
+    .coverage-state i.planned {
+      background: var(--apple-amber);
+    }
+    .coverage-row small {
+      color: var(--apple-gray);
+      font-size: 12px;
+    }
+
+    /* ===== DATASET ANALYSIS WORKFLOW (Liquid Glass Step Card) ===== */
+    .dataset-panel {
+      margin-bottom: 28px;
+    }
+    .dataset-panel-inner {
+      padding: 28px;
+    }
+    .dataset-panel h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 4px;
+    }
+    .dataset-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .dataset-step-card {
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.02),
+        inset 0 1px 1px rgba(255, 255, 255, 0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .dataset-step-card:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 10px 24px rgba(0, 113, 227, 0.08), inset 0 1px 1px #fff;
+    }
+    .step-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--apple-white);
+      border: 1px solid var(--apple-gray-light);
+      display: grid;
+      place-items: center;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--apple-black);
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    .dataset-step-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+    .dataset-step-card p {
+      font-size: 12px;
+      color: var(--apple-gray);
+      line-height: 1.45;
+      margin-bottom: 16px;
+    }
+    .dataset-btn {
+      width: 100%;
+      padding: 10px 16px;
+      border-radius: var(--apple-btn-radius);
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--apple-gray-light);
+      color: var(--apple-black);
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+    .dataset-btn:hover:not(:disabled) {
+      background: var(--apple-blue);
+      border-color: var(--apple-blue);
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0, 113, 227, 0.35);
+    }
+    .dataset-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+    .dataset-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border-radius: var(--apple-btn-radius);
+      background: rgba(0, 113, 227, 0.1);
+      backdrop-filter: blur(10px);
+      color: var(--apple-blue);
+      font-size: 12.5px;
+      font-weight: 600;
+      margin-top: 16px;
+      border: 1px solid rgba(0, 113, 227, 0.2);
+    }
+    .dataset-errors {
+      color: var(--apple-red);
+      font-size: 12px;
+      margin-top: 10px;
+      display: none;
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: rgba(255, 59, 48, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 59, 48, 0.25);
+    }
+
+    /* ===== FIELD VERIFICATION ADVISORY NOTE ===== */
+    .verification-note {
+      margin-bottom: 36px;
+    }
+    .verification-note-inner {
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .verification-note-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0, 113, 227, 0.15), rgba(90, 200, 250, 0.1));
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      box-shadow: 0 4px 16px rgba(0, 113, 227, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    }
+    .verification-note h3 {
+      font-size: 16.5px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      letter-spacing: -0.015em;
+    }
+    .verification-note p {
+      color: var(--apple-gray);
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    /* ===== APPLE FOOTER DIRECTORY (apple.com/in Style) ===== */
+    .site-footer {
+      background: var(--apple-bg);
+      border-top: 0.5px solid var(--apple-gray-light);
+      padding: 44px 22px 52px;
+      color: var(--apple-gray);
+      font-size: 12px;
+      position: relative;
+      z-index: 2;
+    }
+    .footer-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+    .footer-legal-top {
+      padding-bottom: 24px;
+      border-bottom: 0.5px solid var(--apple-gray-light);
+      margin-bottom: 28px;
+      line-height: 1.6;
+      font-size: 11.5px;
+    }
+    .footer-legal-top b {
+      color: var(--apple-black);
+      font-weight: 600;
+    }
+    .footer-columns {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      padding-bottom: 28px;
+      border-bottom: 0.5px solid var(--apple-gray-light);
+      margin-bottom: 22px;
+    }
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--apple-black);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .footer-col p, .footer-col a {
+      display: block;
+      font-size: 12px;
+      color: var(--apple-gray);
+      line-height: 2.1;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover {
+      color: var(--apple-black);
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-size: 11.5px;
+      color: var(--apple-gray);
+    }
+    .footer-bottom a {
+      color: var(--apple-gray);
+      margin: 0 8px;
+    }
+    .footer-bottom a:hover {
+      color: var(--apple-black);
+    }
+
+    /* ===== MAPLIBRE OVERRIDES (Apple Map Styling) ===== */
+    .maplibregl-map { font-family: var(--font) !important; }
+    .maplibregl-popup-content {
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.92) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      font-size: 13px;
+      line-height: 1.5;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18) !important;
+      border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    }
+    .maplibregl-popup-content b { font-weight: 700; color: #1d1d1f; }
+    .maplibregl-ctrl-attrib { font-size: 9.5px !important; }
+    .maplibregl-ctrl-group {
+      border-radius: 12px !important;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.8) !important;
+      background: rgba(255, 255, 255, 0.8) !important;
+      backdrop-filter: blur(14px) !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    }
+    .nw-marker {
+      width: 18px;
+      height: 18px;
+      border: 3px solid white;
+      border-radius: 50%;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.28);
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nw-marker:hover { transform: scale(1.4); }
+    .nw-marker.flagged { background: var(--apple-red); }
+    .nw-marker.review { background: var(--apple-amber); }
+    .nw-marker.ok { background: var(--apple-green); }
+    .nw-ml-marker {
+      width: 15px;
+      height: 15px;
+      border: 2px solid white;
+      border-radius: 4px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.28);
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nw-ml-marker:hover { transform: scale(1.4); }
+    .nw-ml-marker.High { background: var(--apple-red); }
+    .nw-ml-marker.Medium { background: var(--apple-amber); }
+    .nw-ml-marker.Low { background: var(--apple-green); }
+
+    /* ===== APPLE MODAL SHEET (Liquid Glass Verification Modal) ===== */
+    .apple-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .apple-modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .apple-modal-sheet {
+      width: 100%;
+      max-width: 490px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(28px) saturate(200%);
+      -webkit-backdrop-filter: blur(28px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 26px;
+      box-shadow: 
+        0 24px 70px rgba(0, 0, 0, 0.28),
+        inset 0 1px 1px rgba(255, 255, 255, 1);
+      padding: 32px;
+      transform: translateY(24px) scale(0.96);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-modal-overlay.open .apple-modal-sheet {
+      transform: translateY(0) scale(1);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+    .modal-header h3 {
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .modal-close-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.05);
+      color: var(--apple-gray);
+      display: grid;
+      place-items: center;
+      font-size: 17px;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+    .modal-close-btn:hover {
+      background: rgba(0, 0, 0, 0.12);
+      color: var(--apple-black);
+    }
+    .modal-form-group {
+      margin-bottom: 16px;
+    }
+    .modal-form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--apple-gray);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .modal-input, .modal-select, .modal-textarea {
+      width: 100%;
+      padding: 11px 15px;
+      border: 1px solid var(--apple-gray-light);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(8px);
+      font-size: 14px;
+      transition: all 0.2s;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.03);
+    }
+    .modal-input:focus, .modal-select:focus, .modal-textarea:focus {
+      outline: none;
+      background: #ffffff;
+      border-color: var(--apple-blue);
+      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
+    }
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 26px;
+    }
+    .modal-btn-confirm {
+      flex: 1;
+      padding: 12px;
+      border-radius: var(--apple-btn-radius);
+      background: linear-gradient(180deg, #0077ed 0%, #0060c2 100%);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(0, 113, 227, 0.35);
+    }
+    .modal-btn-confirm:hover { 
+      background: linear-gradient(180deg, #0080ff 0%, #0068d4 100%);
+      transform: translateY(-1px);
+    }
+    .modal-btn-cancel {
+      padding: 12px 22px;
+      border-radius: var(--apple-btn-radius);
+      background: rgba(0, 0, 0, 0.06);
+      color: var(--apple-black);
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .modal-btn-cancel:hover { background: rgba(0, 0, 0, 0.12); }
+
+    /* ===== TOAST NOTIFICATION ===== */
+    .toast {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 10001;
+      padding: 14px 24px;
+      border-radius: var(--apple-btn-radius);
+      background: rgba(29, 29, 31, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      font-size: 13.5px;
+      font-weight: 500;
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      transform: translateY(18px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE BREAKPOINTS ===== */
+    @media (max-width: 1080px) {
+      .main-grid, .secondary-grid, .bottom-grid {
+        grid-template-columns: minmax(0, 1.25fr) minmax(340px, 0.85fr);
+      }
+      .dataset-steps-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 860px) {
+      .hero { padding: 85px 20px 55px; }
+      .hero h1 { font-size: 38px; }
+      .hero-sub { font-size: 16px; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+      .hero-stat-value { font-size: 34px; }
+      .main-grid, .secondary-grid, .bottom-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .footer-columns { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 65px 16px 45px; }
+      .hero h1 { font-size: 30px; }
+      .hero-actions { flex-direction: column; width: 100%; }
+      .hero-btn-primary, .hero-btn-secondary { width: 100%; justify-content: center; }
+      .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      .content-wrap { padding: 20px 14px 60px; }
+      .map-frame { height: 300px; }
+      .risk-snapshot { grid-template-columns: 1fr; }
+      .observations { min-width: 640px; }
+      .footer-columns { grid-template-columns: 1fr; }
+      .states-bar-label { display: none; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    .map-fallback[hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+
+<!-- ===== AMBIENT LIQUID GLASS MESH BACKGROUND ===== -->
+<div class="liquid-mesh-container" aria-hidden="true">
+  <div class="liquid-orb liquid-orb-1"></div>
+  <div class="liquid-orb liquid-orb-2"></div>
+</div>
+
+<!-- ===== APPLE GLOBAL NAVIGATION ===== -->
+<nav class="global-nav" role="navigation" aria-label="Main navigation">
+  <div class="global-nav-inner">
+    <a href="#" class="nav-brand" aria-label="NeerWatch home">
+      <svg class="apple-logo" viewBox="0 0 170 170" aria-hidden="true">
+        <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.59-7.71-11.68-14.01-6.73-10.37-12.06-22.37-15.99-36.01-3.92-13.64-5.89-26.68-5.89-39.12 0-14.56 3.75-26.79 11.24-36.68 7.49-9.89 17.06-14.93 28.71-15.14 4.57 0 9.77 1.25 15.61 3.76 5.84 2.5 9.77 3.82 11.78 3.94 1.79-.12 5.89-1.5 12.3-4.14 6.42-2.63 11.96-3.83 16.63-3.6 12.83.66 23.11 5.3 30.84 13.94-11.19 6.75-16.69 16.03-16.5 27.84.18 9.38 3.84 17.26 10.99 23.63 7.15 6.37 15.61 9.94 25.37 10.72-2.39 7.4-5.46 14.65-9.21 21.75zM119.22 31.81c0-7.39 2.66-14.28 7.97-20.67 5.32-6.39 12-10.42 20.06-12.09.22 1.34.33 2.57.33 3.69 0 7.39-2.73 14.39-8.19 21.01-5.45 6.62-12.23 10.43-20.34 11.44-.11-1.12-.17-2.12-.17-3.38z"/>
+      </svg>
+      <span>NeerWatch</span>
+      <span class="brand-drop">💧</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <button class="active" onclick="showView('overview')">Overview</button>
+      <button onclick="scrollToSection('map')">Evidence Map</button>
+      <button onclick="showView('ml-zones')">ML Assessment</button>
+      <button onclick="scrollToSection('site-table')">Water Sites</button>
+      <button onclick="scrollToSection('disease-trends')">Disease Trends</button>
+      <button onclick="scrollToSection('coverage')">Coverage</button>
+      <button onclick="scrollToSection('dataset-workflow')">Dataset Pipeline</button>
+    </div>
+    <div class="nav-right">
+      <div class="connection-pill loading" id="connectionTag">
+        <span class="connection-dot"></span>
+        <span>Connecting…</span>
+      </div>
+      <select class="state-select-nav" id="stateSelect" aria-label="Filter by state">
+        <option value="All">All 8 States</option>
+        <option value="Assam">Assam</option>
+        <option value="Meghalaya">Meghalaya</option>
+        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+        <option value="Manipur">Manipur</option>
+        <option value="Mizoram">Mizoram</option>
+        <option value="Nagaland">Nagaland</option>
+        <option value="Sikkim">Sikkim</option>
+        <option value="Tripura">Tripura</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== APPLE HERO SECTION ===== -->
+<section class="hero" id="overview">
+  <div class="hero-eyebrow">
+    <span>💧</span>
+    <span>Northeast India · Regional Water Intelligence</span>
+  </div>
+  <h1>Water quality.<br/><span>Early warning.</span></h1>
+  <p class="hero-sub">Find documented contamination signals and determine where fresh water verification testing should happen first. AI-powered precision monitoring across 8 Northeast states.</p>
+  <div class="hero-actions">
+    <button class="hero-btn-primary" onclick="scrollToSection('map')">Explore Evidence Map ›</button>
+    <button class="hero-btn-secondary" onclick="showView('ml-zones')">Inspect 200 ML Zones ›</button>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-value" id="stateCount">08</div>
+      <div class="hero-stat-label">States Monitored</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-value" id="siteCount">44</div>
+      <div class="hero-stat-label">Evidence Sites</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-value" id="mlZoneCount">200</div>
+      <div class="hero-stat-label">ML Risk Zones</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-value" id="flaggedCount">00</div>
+      <div class="hero-stat-label">CPCB BOD Flags</div>
+    </div>
+  </div>
+  <!-- Organic Liquid Wave Divider (Smooth Static Wave) -->
+  <div class="hero-liquid-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 50" preserveAspectRatio="none" style="width:100%; height:100%; display:block;">
+      <path fill="var(--apple-bg)" d="M0,20 C320,44 580,4 840,24 C1100,44 1280,10 1440,20 L1440,50 L0,50 Z"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== ADVISORY BANNER ===== -->
+<div class="info-banner">
+  <div class="info-banner-inner">
+    <span class="info-banner-icon">i</span>
+    <span><b>How to read this intelligence platform:</b> Historical water-quality observations are shown separately from the prototype ML assessment. ML risk, reliability score, and verification priority are computed by the XGBoost prototype model using synthetic demonstration data. Field testing is required before making current water-safety decisions. CPCB river flags use BOD &gt;3 mg/L against its outdoor-bathing criterion as an organic-pollution screen. "No exceedance" applies strictly to displayed parameters and sample dates.</span>
+  </div>
+</div>
+
+<!-- ===== STATE CHIPS BAR ===== -->
+<div class="states-bar">
+  <div class="states-bar-inner">
+    <span class="states-bar-label">Filter state:</span>
+    <div id="stateList"></div>
+  </div>
+</div>
+
+<!-- ===== MAIN CONTENT CONTAINER ===== -->
+<div class="content-wrap">
+
+  <!-- MAP + DETAILS PANEL -->
+  <section class="main-grid">
+    <article class="apple-card map-panel">
+      <div class="map-panel-head">
+        <div>
+          <h2>North East Evidence Map</h2>
+          <p class="map-panel-sub" id="mapSubtitle">Historical/public sample locations · select a marker for details</p>
+        </div>
+        <div class="map-legend">
+          <span class="legend-item"><i class="legend-dot" style="background:var(--apple-red)"></i>Historical exceedance</span>
+          <span class="legend-item"><i class="legend-dot" style="background:var(--apple-green)"></i>Published sample</span>
+          <span class="legend-item"><i class="legend-dot" style="background:var(--apple-amber); border-radius:3px; width:9px; height:9px;"></i>ML assessment zone</span>
+        </div>
+      </div>
+      <div class="map-frame">
+        <div id="map" style="height:100%;width:100%"></div>
+        <div class="map-fallback" id="mapFallback" hidden>
+          <div>
+            <b>Interactive Map is Loading</b>
+            <span>Location records and water quality readings are available in the table below.</span>
+          </div>
+        </div>
+      </div>
+      <div class="map-foot">
+        <span><b>Prototype ML assessment zones — synthetic demonstration geography.</b> These markers represent model assessment zones and are not real monitoring stations or sampling coordinates.</span>
+        <a href="https://cpcb.nic.in/wqm/WQMN_list.pdf" target="_blank" rel="noreferrer">CPCB Stations Directory ↗</a>
+      </div>
+    </article>
+
+    <aside class="apple-card detail-panel" aria-live="polite">
+      <div class="detail-kicker" id="detailKicker">Selected water site</div>
+      <div class="detail-title-row">
+        <div>
+          <div class="detail-title" id="detailTitle">Loading locations…</div>
+          <p class="place-meta" id="placeMeta">Connecting to the API</p>
+        </div>
+        <span class="state-badge" id="detailState">—</span>
+      </div>
+      <div class="risk-snapshot">
+        <div><span>ML Risk</span><strong id="detailRisk">Not available</strong></div>
+        <div><span>Priority</span><strong id="detailPriority">Not available</strong></div>
+        <div><span>Reliability</span><strong id="detailReliability">Not available</strong></div>
+      </div>
+      <p class="model-note" id="modelNote">These model outputs will appear when the ML service is connected.</p>
+      
+      <div class="readings-title" id="riskDriversTitle" style="color:var(--apple-amber); display:none;">Why this risk? <span>SHAP feature contributions</span></div>
+      <div id="riskDrivers" style="display:none;"></div>
+      
+      <div class="sample-line"><span>Published sample period</span><strong id="sampleContext">Not available</strong></div>
+      <div class="sample-line"><span>Historical observations</span><strong id="historySummary">Loading…</strong></div>
+      <div class="status-banner unavailable" id="statusBanner"><i class="status-mark"></i><span id="statusText">Historical sample status unavailable</span></div>
+      <div class="readings-title">Observed Historical Water Quality <span id="sourceType">Published source data</span></div>
+      <div id="readings"></div>
+      <div class="why-note" id="detailNote"></div>
+      <div class="sample-line"><span>Verification status</span><strong id="verificationStatus">Not started</strong></div>
+      <div class="source-row"><span id="sourceLabel">Source unavailable</span><a id="sourceLink" href="#" target="_blank" rel="noreferrer" hidden>Open source ↗</a></div>
+      <button class="action-btn" id="verifyButton" onclick="openVerificationModal()">Plan a Fresh Field Test</button>
+    </aside>
+  </section>
+
+  <!-- SECONDARY GRID: DISEASE TRENDS (Apple Health Style) + ML ZONE SELECTOR -->
+  <section class="secondary-grid">
+    <article class="apple-card" id="disease-trends">
+      <div class="card-head">
+        <h2>Disease Trends & Analysis</h2>
+        <p class="card-head-sub">Monthly case trajectory — Apple Health style visualization of synthetic demonstration series</p>
+      </div>
+      <div class="card-body" id="diseaseTrendsContainer">
+        Select an ML assessment zone from the list or map to view disease trend data.
+      </div>
+    </article>
+
+    <article class="apple-card" id="ml-zone-panel">
+      <div class="card-head">
+        <h2>ML Assessment Zones</h2>
+        <p class="card-head-sub">200 synthetic demonstration assessment zones · LOC_001–LOC_200</p>
+      </div>
+      <div class="card-body">
+        <select class="ml-zone-select" id="mlZoneSelect" onchange="selectMlZone(this.value)">
+          <option value="">— Select an ML assessment zone —</option>
+        </select>
+        <div class="ml-disclosure"><b>Prototype ML assessment zone — synthetic demonstration data.</b> These zones are not real geographic monitoring sites. Risk outputs use an August 2024 prototype snapshot.</div>
+        <div id="mlZoneDetail"></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- BOTTOM GRID: PUBLISHED SAMPLE TABLE + EVIDENCE COVERAGE -->
+  <section class="bottom-grid">
+    <article class="apple-card" id="site-table">
+      <div class="table-heading">
+        <div>
+          <h2>Published Sample Records</h2>
+          <p class="card-head-sub">Source observations · choose a row to inspect the reading</p>
+        </div>
+        <button onclick="document.getElementById('stateSelect').value='All';filterState('All')">Show all locations ↗</button>
+      </div>
+      <div class="table-wrap">
+        <table class="observations">
+          <thead>
+            <tr>
+              <th>Location</th>
+              <th>State</th>
+              <th>Sample / Water Body</th>
+              <th>Recorded Signal</th>
+              <th>Source Period</th>
+              <th>Screening</th>
+            </tr>
+          </thead>
+          <tbody id="observationRows"></tbody>
+        </table>
+        <div class="empty-state" id="emptyState">
+          <strong>No cited sample records loaded for this state yet.</strong>
+          This is a data coverage gap in the prototype, not evidence that the water is safe or contaminated.
+        </div>
+      </div>
+    </article>
+
+    <article class="apple-card coverage-panel" id="coverage">
+      <div class="coverage-title">
+        <div>
+          <h2>Evidence Coverage</h2>
+          <p class="card-head-sub">Where this prototype has published evidence loaded</p>
+        </div>
+        <small>8 states</small>
+      </div>
+      <div class="coverage-list" id="coverageList"></div>
+    </article>
+  </section>
+
+  <!-- DATASET ANALYSIS WORKFLOW PANEL -->
+  <section class="dataset-panel apple-card" id="dataset-workflow">
+    <div class="dataset-panel-inner">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;">
+        <div>
+          <h2>Dataset Analysis Pipeline</h2>
+          <p class="card-head-sub">Upload, validate, and run prototype ML inference on new water quality observations</p>
+        </div>
+        <div class="dataset-status" id="datasetStatus">Status: Waiting for upload</div>
+      </div>
+      <div class="dataset-errors" id="datasetErrors"></div>
+      
+      <div class="dataset-steps-grid">
+        <div class="dataset-step-card">
+          <div>
+            <div class="step-num">1</div>
+            <h3>Upload Dataset</h3>
+            <p>Provide a tabular CSV containing monitored Northeast water parameters, locations, and sample dates.</p>
+          </div>
+          <input type="file" id="csvFileInput" accept=".csv" style="display:none" onchange="uploadCsv(this.files[0])">
+          <button class="dataset-btn" onclick="document.getElementById('csvFileInput').click()">Choose CSV File</button>
+        </div>
+
+        <div class="dataset-step-card">
+          <div>
+            <div class="step-num">2</div>
+            <h3>Validate Schema</h3>
+            <p>Verifies required fields (location_id, state, date) and validates data integrity for downstream models.</p>
+          </div>
+          <button class="dataset-btn" id="validateBtn" disabled onclick="validateCsv()">Validate Dataset</button>
+        </div>
+
+        <div class="dataset-step-card">
+          <div>
+            <div class="step-num">3</div>
+            <h3>Run ML Analysis</h3>
+            <p>Executes XGBoost inference pipeline to update contamination risk, reliability, and priority scores.</p>
+          </div>
+          <button class="dataset-btn" id="analyzeBtn" disabled onclick="analyzeCsv()">Run Prototype Analysis</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIELD VERIFICATION ADVISORY NOTE -->
+  <section class="verification-note apple-card">
+    <div class="verification-note-inner">
+      <div class="verification-note-icon">💧</div>
+      <div>
+        <h3>Field verification protocol</h3>
+        <p>Published samples identify priority geographical sites to revisit. Before taking public health or water consumption actions, dispatch field personnel with calibrated testing kits for current laboratory verification.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ===== APPLE FIELD VERIFICATION MODAL SHEET ===== -->
+<div class="apple-modal-overlay" id="verificationModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="apple-modal-sheet">
+    <div class="modal-header">
+      <h3 id="modalTitle">Plan Field Verification</h3>
+      <button class="modal-close-btn" onclick="closeVerificationModal()" aria-label="Close modal">×</button>
+    </div>
+    <div class="modal-form-group">
+      <label for="modalLocationName">Target Location</label>
+      <input type="text" id="modalLocationName" class="modal-input" readonly />
+    </div>
+    <div class="modal-form-group">
+      <label for="modalStatusSelect">Verification Status</label>
+      <select id="modalStatusSelect" class="modal-select">
+        <option value="PLANNED">PLANNED — Schedule test kit</option>
+        <option value="IN_PROGRESS">IN_PROGRESS — Field team dispatched</option>
+        <option value="COMPLETED">COMPLETED — Test completed</option>
+        <option value="NOT_STARTED">NOT_STARTED — Reset to unassigned</option>
+      </select>
+    </div>
+    <div class="modal-form-group">
+      <label for="modalPrioritySelect">Recommended Priority</label>
+      <select id="modalPrioritySelect" class="modal-select">
+        <option value="">Default (Auto / None)</option>
+        <option value="VERY_HIGH">VERY_HIGH — Immediate attention</option>
+        <option value="HIGH">HIGH — High priority</option>
+        <option value="MEDIUM">MEDIUM — Standard priority</option>
+        <option value="LOW">LOW — Routine check</option>
+      </select>
+    </div>
+    <div class="modal-form-group">
+      <label for="modalDateInput">Scheduled Verification Date</label>
+      <input type="date" id="modalDateInput" class="modal-input" />
+    </div>
+    <div class="modal-form-group">
+      <label for="modalReasonInput">Reason / Operational Notes</label>
+      <textarea id="modalReasonInput" class="modal-textarea" rows="2" placeholder="e.g. Follow-up testing scheduled following historical exceedance alert..."></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-btn-cancel" onclick="closeVerificationModal()">Cancel</button>
+      <button class="modal-btn-confirm" id="modalSubmitBtn" onclick="submitVerificationForm()">Save Plan</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER (Apple.com/in Directory Style) ===== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-legal-top">
+      <b>Important Disclaimer:</b> NeerWatch is a prototype water-borne disease early warning and water-intelligence demonstration platform. Historical water-quality observations are drawn from cited published environmental monitoring reports and describe past conditions at the sampled location. Machine learning risk assessments utilize synthetic demonstration data based on an August 2024 prototype model snapshot. No information presented on this dashboard constitutes a definitive drinking-water safety certificate. Always arrange local laboratory testing before making public health decisions.
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>About NeerWatch</h4>
+        <p>AI-Powered Water Intelligence</p>
+        <p>Regional Early Warning Platform</p>
+        <p>Prototype ML Pipeline v2</p>
+        <p>Open Environmental Data</p>
+      </div>
+      <div class="footer-col">
+        <h4>Data Sources</h4>
+        <a href="https://cpcb.nic.in" target="_blank" rel="noreferrer">Central Pollution Control Board</a>
+        <a href="https://cpcb.nic.in/wqm/WQMN_list.pdf" target="_blank" rel="noreferrer">NWMP Station Directory</a>
+        <a href="https://cpcb.nic.in/NGT/Report-NGT-15.01.2019.pdf" target="_blank" rel="noreferrer">Meghalaya NGT Environmental Report</a>
+        <a href="https://www.jocpr.com" target="_blank" rel="noreferrer">Assam Groundwater Research Study</a>
+      </div>
+      <div class="footer-col">
+        <h4>Regional Coverage</h4>
+        <p>Assam · Meghalaya · Arunachal Pradesh</p>
+        <p>Manipur · Mizoram · Nagaland</p>
+        <p>Sikkim · Tripura</p>
+        <p>244 Sampled Locations Loaded</p>
+      </div>
+      <div class="footer-col">
+        <h4>Verification & Protocol</h4>
+        <p>Field Testing Protocol</p>
+        <p>XGBoost Risk Classification</p>
+        <p>SHAP Contributor Analysis</p>
+        <p>CPCB Outdoor-Bathing Criteria</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>Copyright © 2026 NeerWatch Inc. All rights reserved. Built with Apple design principles for Northeast India.</div>
+      <div>
+        <a href="#">Privacy Policy</a> ·
+        <a href="#">Terms of Use</a> ·
+        <a href="#">Data Methodology</a> ·
+        <a href="#">India</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.js"></script>
+<script>
+const states = ['Arunachal Pradesh', 'Assam', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Sikkim', 'Tripura'];
+
+const mlDisplayZones = {
+  'LOC_001': { state: 'Assam', coords: [26.1, 91.5] },
+  'LOC_002': { state: 'Assam', coords: [26.4, 92.1] },
+  'LOC_003': { state: 'Assam', coords: [26.6, 92.8] },
+  'LOC_004': { state: 'Assam', coords: [26.8, 93.4] },
+  'LOC_005': { state: 'Assam', coords: [27.0, 94.0] },
+  'LOC_006': { state: 'Assam', coords: [27.2, 94.6] },
+  'LOC_088': { state: 'Assam', coords: [26.3, 91.8] },
+  'LOC_008': { state: 'Arunachal Pradesh', coords: [27.8, 94.5] },
+  'LOC_009': { state: 'Arunachal Pradesh', coords: [28.0, 95.0] },
+  'LOC_010': { state: 'Arunachal Pradesh', coords: [28.2, 95.5] },
+  'LOC_011': { state: 'Arunachal Pradesh', coords: [27.6, 93.8] },
+  'LOC_012': { state: 'Arunachal Pradesh', coords: [27.4, 93.2] },
+  'LOC_013': { state: 'Arunachal Pradesh', coords: [27.2, 92.6] },
+  'LOC_014': { state: 'Manipur', coords: [24.8, 93.8] },
+  'LOC_015': { state: 'Manipur', coords: [24.6, 93.6] },
+  'LOC_016': { state: 'Manipur', coords: [24.4, 93.9] },
+  'LOC_017': { state: 'Manipur', coords: [25.0, 94.0] },
+  'LOC_018': { state: 'Manipur', coords: [25.2, 94.2] },
+  'LOC_019': { state: 'Manipur', coords: [24.2, 93.7] },
+  'LOC_020': { state: 'Meghalaya', coords: [25.5, 91.0] },
+  'LOC_021': { state: 'Meghalaya', coords: [25.3, 91.5] },
+  'LOC_022': { state: 'Meghalaya', coords: [25.7, 92.0] },
+  'LOC_023': { state: 'Meghalaya', coords: [25.4, 92.5] },
+  'LOC_024': { state: 'Meghalaya', coords: [25.2, 90.5] },
+  'LOC_025': { state: 'Meghalaya', coords: [25.8, 90.8] },
+  'LOC_026': { state: 'Mizoram', coords: [23.8, 92.8] },
+  'LOC_027': { state: 'Mizoram', coords: [23.5, 92.9] },
+  'LOC_028': { state: 'Mizoram', coords: [23.2, 92.7] },
+  'LOC_029': { state: 'Mizoram', coords: [22.8, 92.8] },
+  'LOC_030': { state: 'Mizoram', coords: [22.5, 93.0] },
+  'LOC_031': { state: 'Mizoram', coords: [24.0, 92.6] },
+  'LOC_032': { state: 'Nagaland', coords: [26.0, 94.0] },
+  'LOC_033': { state: 'Nagaland', coords: [26.3, 94.2] },
+  'LOC_034': { state: 'Nagaland', coords: [26.5, 94.5] },
+  'LOC_035': { state: 'Nagaland', coords: [25.8, 93.8] },
+  'LOC_036': { state: 'Nagaland', coords: [26.7, 94.8] },
+  'LOC_037': { state: 'Nagaland', coords: [25.6, 94.4] },
+  'LOC_038': { state: 'Sikkim', coords: [27.3, 88.3] },
+  'LOC_039': { state: 'Sikkim', coords: [27.5, 88.5] },
+  'LOC_040': { state: 'Sikkim', coords: [27.7, 88.6] },
+  'LOC_041': { state: 'Sikkim', coords: [27.2, 88.7] },
+  'LOC_042': { state: 'Sikkim', coords: [27.4, 88.2] },
+  'LOC_043': { state: 'Sikkim', coords: [27.8, 88.4] },
+  'LOC_044': { state: 'Tripura', coords: [23.8, 91.5] },
+  'LOC_045': { state: 'Tripura', coords: [23.5, 91.6] },
+  'LOC_046': { state: 'Tripura', coords: [23.3, 91.4] },
+  'LOC_047': { state: 'Tripura', coords: [24.0, 91.8] },
+  'LOC_048': { state: 'Tripura', coords: [24.2, 92.0] },
+  'LOC_049': { state: 'Tripura', coords: [23.1, 91.5] },
+  'LOC_050': { state: 'Tripura', coords: [23.6, 91.8] }
+};
+
+const sources = {
+  assam: 'https://www.jocpr.com/articles/arsenic-contamination-in-ground-water-is-a-serious-threat-in-the-north-karimganj-block-of-karimganj-district-southern-pa.pdf',
+  meghalaya: 'https://cpcb.nic.in/NGT/Report-NGT-15.01.2019.pdf'
+};
+
+const fallbackPlaces = [
+  { id: 'sadarashi', place: 'Sadarashi GP', state: 'Assam', district: 'North Karimganj', kind: 'Hand pump', coords: [24.8871, 92.3166], sample: 'SD-12', period: 'Apr–Jun 2014 · published 2015', status: 'flagged', summary: 'Arsenic 93.05 µg/L · Iron 8.56 mg/L', sourceType: 'Groundwater sample', sourceLabel: 'Research study · 195 hand-pump samples', source: sources.assam, notes: 'The study reported Sadarashi as the most affected of the four sampled Gaon Panchayats. This row is one named sample, not a current village-wide measurement.', readings: [{ name: 'Arsenic', value: '93.05 µg/L', reference: 'Reference: 10 µg/L acceptable limit' }, { name: 'Iron', value: '8.56 mg/L', reference: 'Reference: 0.3 mg/L acceptable limit' }] },
+  { id: 'akbarpur', place: 'Akbarpur GP', state: 'Assam', district: 'North Karimganj', kind: 'Hand pump', coords: [24.904, 92.365], sample: 'AP-2', period: 'Apr–Jun 2014 · published 2015', status: 'flagged', summary: 'Arsenic 51.24 µg/L · Iron 5.98 mg/L', sourceType: 'Groundwater sample', sourceLabel: 'Research study · North Karimganj block', source: sources.assam, notes: 'The paper analyzed groundwater samples from hand pumps in four Gaon Panchayats. Values here are the recorded sample identifier shown, not a current village-wide status.', readings: [{ name: 'Arsenic', value: '51.24 µg/L', reference: 'Reference: 10 µg/L acceptable limit' }, { name: 'Iron', value: '5.98 mg/L', reference: 'Reference: 0.3 mg/L acceptable limit' }] },
+  { id: 'north-karimganj', place: 'North Karimganj GP', state: 'Assam', district: 'North Karimganj', kind: 'Hand pump', coords: [24.874, 92.354], sample: 'NK-14', period: 'Apr–Jun 2014 · published 2015', status: 'flagged', summary: 'Arsenic 28.61 µg/L · Iron 26.27 mg/L', sourceType: 'Groundwater sample', sourceLabel: 'Research study · North Karimganj block', source: sources.assam, notes: 'This historical hand-pump result exceeds the arsenic reference value used in the study. Re-sample before drawing conclusions about present-day supply.', readings: [{ name: 'Arsenic', value: '28.61 µg/L', reference: 'Reference: 10 µg/L acceptable limit' }, { name: 'Iron', value: '26.27 mg/L', reference: 'Reference: 0.3 mg/L acceptable limit' }] },
+  { id: 'purahuria', place: 'Purahuria GP', state: 'Assam', district: 'North Karimganj', kind: 'Hand pump', coords: [24.8505, 92.2852], sample: 'PH-33', period: 'Apr–Jun 2014 · published 2015', status: 'flagged', summary: 'Arsenic 71.14 µg/L · Iron 15.69 mg/L', sourceType: 'Groundwater sample', sourceLabel: 'Research study · North Karimganj block', source: sources.assam, notes: 'The study measured arsenic above 10 µg/L in this sample. It is an old sample result and does not establish current drinking-water safety.', readings: [{ name: 'Arsenic', value: '71.14 µg/L', reference: 'Reference: 10 µg/L acceptable limit' }, { name: 'Iron', value: '15.69 mg/L', reference: 'Reference: 0.3 mg/L acceptable limit' }] },
+  { id: 'rymbai', place: 'Kalipai River · Rymbai', state: 'Meghalaya', district: 'East Jaintia Hills', kind: 'River monitoring site', coords: [25.3252, 92.31673], sample: 'CPCB/State joint sample', period: 'Reported in 2019 report', status: 'flagged', summary: 'pH 2.51 · Iron 4.2 mg/L · Sulphate 100.2 mg/L', sourceType: 'River-water sample', sourceLabel: 'CPCB / State Board report to NGT', source: sources.meghalaya, notes: 'The report identifies these East Jaintia Hills river samples as below drinking-water standards. River monitoring is not a household-tap test; the report links very acidic water to mine drainage in the catchment.', readings: [{ name: 'pH', value: '2.51', reference: 'Drinking-water reference range: 6.5–8.5' }, { name: 'Iron', value: '4.2 mg/L', reference: 'Reference: 0.3 mg/L acceptable limit' }, { name: 'Sulphate', value: '100.2 mg/L', reference: 'Reported concentration' }] },
+  { id: 'mookhlot', place: 'Waikhyrwai River · Mookhlot', state: 'Meghalaya', district: 'East Jaintia Hills', kind: 'River monitoring site', coords: [25.348229, 92.42338], sample: 'CPCB station 4313', period: 'Reported in 2019 report', status: 'flagged', summary: 'pH 2.6 · Iron 4.2 mg/L · Sulphate 99.9 mg/L', sourceType: 'River-water sample', sourceLabel: 'CPCB / State Board report to NGT', source: sources.meghalaya, notes: 'The cited report lists a highly acidic river-water result at Mookhlot. Treat it as historical environmental monitoring and arrange fresh sampling to assess current conditions.', readings: [{ name: 'pH', value: '2.6', reference: 'Drinking-water reference range: 6.5–8.5' }, { name: 'Iron', value: '4.2 mg/L', reference: 'Reference: 0.3 mg/L acceptable limit' }, { name: 'Sulphate', value: '99.9 mg/L', reference: 'Reported concentration' }] },
+  { id: 'moolamylliang', place: 'Kwai River · Moolamylliang', state: 'Meghalaya', district: 'East Jaintia Hills', kind: 'River monitoring site', coords: [25.38251, 92.45122], sample: 'Reported location', period: 'Reported in 2019 report', status: 'flagged', summary: 'pH 3.71 · Iron 1.0 mg/L · Sulphate 79.3 mg/L', sourceType: 'River-water sample', sourceLabel: 'CPCB / State Board report to NGT', source: sources.meghalaya, notes: 'The report records acidic river water at this named locality. The map pin is approximate to the locality; this reading does not represent every water source in the village.', readings: [{ name: 'pH', value: '3.71', reference: 'Drinking-water reference range: 6.5–8.5' }, { name: 'Iron', value: '1.0 mg/L', reference: 'Reference: 0.3 mg/L acceptable limit' }, { name: 'Sulphate', value: '79.3 mg/L', reference: 'Reported concentration' }] },
+  { id: 'mihmyntdu', place: 'Myntdu River · Mihmyntdu', state: 'Meghalaya', district: 'West Jaintia Hills', kind: 'River monitoring site', coords: [25.434337, 92.204576], sample: 'Reported location', period: 'Reported in 2019 report', status: 'ok', summary: 'pH 7.1 · Iron 0.30 mg/L · Sulphate 9.7 mg/L', sourceType: 'River-water sample', sourceLabel: 'CPCB / State Board report to NGT', source: sources.meghalaya, notes: 'No exceedance appears in the three reported values displayed here. That limited historical result is not a declaration that this river or nearby supplies are safe today.', readings: [{ name: 'pH', value: '7.1', reference: 'Drinking-water reference range: 6.5–8.5' }, { name: 'Iron', value: '0.30 mg/L', reference: 'Reference: 0.3 mg/L acceptable limit' }, { name: 'Sulphate', value: '9.7 mg/L', reference: 'Reported concentration' }] }
+];
+
+const cpcbPrsSource = 'https://cpcb.nic.in/openpdffile.php?id=UmVwb3J0RmlsZXMvMTc3N18xNzYwNjgxNDA4X21lZGlhcGhvdG80MzkyLnBkZg%3D%3D';
+const prsSites = [
+  ['namchik-kharsang', 'Namchik River · Kharsang', 'Arunachal Pradesh', 'Changlang', [27.12, 95.72], '3.2', 'V', 'CPCB NWMP station 3100'],
+  ['senki-chandranagar', 'Senki River · Chandranagar', 'Arunachal Pradesh', 'Itanagar Capital Region', [27.12, 93.64], '3.2', 'V', 'CPCB NWMP station 3095'],
+  ['dibang-roing', 'Dibang River · Roing upstream', 'Arunachal Pradesh', 'Lower Dibang Valley', [28.15, 95.84], '3.6', 'V', 'CPCB NWMP station 3106'],
+  ['subansiri-gerukamukh', 'Subansiri River · Gerukamukh', 'Arunachal Pradesh', 'Gerukamukh area', [27.42, 94.25], '3.1', 'V', 'CPCB NWMP station 3097'],
+  ['chakpi-chakpikaron', 'Chakpi River · Chakpikaron', 'Manipur', 'Chandel', [24.22, 94.04], '3.3', 'V', 'CPCB PRS location'],
+  ['ijei-noney', 'Ijei River · Noney Bridge', 'Manipur', 'Noney', [24.99, 93.58], '3.4', 'V', 'CPCB PRS location'],
+  ['irang-tamenglong', 'Irang River · Tamenglong', 'Manipur', 'Tamenglong', [24.99, 93.50], '3.6', 'V', 'CPCB PRS location'],
+  ['khujairok-moreh', 'Khujairok River · Elora Hotel Road, Moreh', 'Manipur', 'Tengnoupal', [24.25, 94.31], '4.5', 'V', 'CPCB PRS location'],
+  ['leimakhong-kanto', 'Leimakhong River · Kanto Awang Leikai', 'Manipur', 'Imphal West', [24.96, 93.88], '3.5', 'V', 'CPCB PRS location'],
+  ['maha-komlathabi', 'Maha River · Komlathabi Bazar', 'Manipur', 'Tengnoupal', [24.38, 94.06], '3.5', 'V', 'CPCB PRS location'],
+  ['sekmai-kakching', 'Sekmai River · Kakching', 'Manipur', 'Kakching', [24.50, 93.98], '3.7', 'V', 'CPCB PRS location'],
+  ['thongjaorok-bridge', 'Thongjaorok River · Thongjaorok Bridge', 'Manipur', 'Noney area', [24.96, 93.59], '3.5', 'V', 'CPCB PRS location'],
+  ['tupul-noney', 'Tupul River · Tupul Bridge', 'Manipur', 'Noney', [24.95, 93.60], '3.1', 'V', 'CPCB PRS location'],
+  ['barak-tamenglong', 'Barak River · Senapati–NH 53 reach', 'Manipur', 'Tamenglong', [24.98, 93.49], '3.4', 'V', 'CPCB PRS stretch'],
+  ['imphal-samurou', 'Imphal River · Awang Sekmai–Samurou reach', 'Manipur', 'Imphal West', [24.83, 93.82], '4.1', 'V', 'CPCB PRS stretch'],
+  ['iril-lilong', 'Iril River · Kangla Siphai–Lilong reach', 'Manipur', 'Thoubal', [24.70, 93.91], '3.4', 'V', 'CPCB PRS stretch'],
+  ['khuga-rengkai', 'Khuga River · Tuitha Dam–Rengkai reach', 'Manipur', 'Churachandpur', [24.33, 93.67], '4.6', 'V', 'CPCB PRS stretch'],
+  ['kongba-iranpham', 'Kongba River · Irong–Iranpham reach', 'Manipur', 'Thoubal', [24.67, 93.95], '3.5', 'V', 'CPCB PRS stretch'],
+  ['manipur-ethai', 'Manipur River · Thoubal–Ethai Bridge reach', 'Manipur', 'Thoubal', [24.62, 93.95], '4.6', 'V', 'CPCB PRS stretch'],
+  ['nambul-bishnupur', 'Nambul River · Singda Dam–Bishnupur reach', 'Manipur', 'Bishnupur', [24.63, 93.78], '5.6', 'V', 'CPCB PRS stretch'],
+  ['thoubal-yaripok', 'Thoubal River · Shong Kong–Yaripok reach', 'Manipur', 'Thoubal', [24.62, 94.01], '4.6', 'V', 'CPCB PRS stretch'],
+  ['wangjing-heirok', 'Wangjing River · Wangjing–Heirok reach', 'Manipur', 'Thoubal', [24.61, 94.02], '3.5', 'V', 'CPCB PRS stretch'],
+  ['chite-armed-veng', 'Chite Stream · Armed Veng reach', 'Mizoram', 'Aizawl', [23.74, 92.72], '29.0', 'II', 'CPCB PRS location'],
+  ['tuikual-reiek-kai', 'Tuikual Stream · Reiek Kai reach', 'Mizoram', 'Aizawl', [23.73, 92.73], '29.1', 'II', 'CPCB PRS location'],
+  ['lawibual-iti-veng', 'Lawibual Stream · ITI Veng', 'Mizoram', 'Aizawl', [23.75, 92.72], '14.3', 'III', 'CPCB NWMP location'],
+  ['tuipui-river', 'Tuipui River · monitored reach', 'Mizoram', 'Mizoram (reported reach)', [22.35, 92.76], '5.6', 'V', 'CPCB PRS location'],
+  ['sanuo-new-secretariat', 'Sanuo Ru · below New Secretariat', 'Nagaland', 'Kohima', [25.67, 94.11], '3.4', 'V', 'CPCB NWMP station 2890'],
+  ['maney-khola-adampool', 'Maney Khola · Adampool', 'Sikkim', 'Gangtok', [27.34, 88.60], '22.0', 'II', 'CPCB PRS reach'],
+  ['rangpo-river', 'Rangpo River · dam site–power house reach', 'Sikkim', 'Pakyong', [27.18, 88.53], '22.0', 'II', 'CPCB PRS reach'],
+  ['ranichu-ranipool', 'Ranichu · Ranipool confluence', 'Sikkim', 'Gangtok', [27.28, 88.60], '8.8', 'IV', 'CPCB PRS reach'],
+  ['haora-dashamighat', 'Haora River · Dashamighat', 'Tripura', 'West Tripura', [23.84, 91.28], '3.3', 'V', 'CPCB PRS location']
+];
+
+function makePrsSite(row) {
+  const [id, place, state, district, coords, bod, priority, sample] = row;
+  return {
+    id, place, state, district,
+    kind: 'River reach · CPCB PRS',
+    coords, sample,
+    period: '2022–23 data · CPCB 2025 assessment',
+    status: 'flagged',
+    summary: `BOD ${bod} mg/L · Priority ${priority}`,
+    sourceType: 'River-water BOD screen',
+    sourceLabel: 'CPCB · polluted-river assessment 2025',
+    source: cpcbPrsSource,
+    notes: `CPCB's 2025 polluted-river assessment, based on monitoring in 2022 and 2023, lists this location/reach as Priority ${priority}; the reported maximum BOD is ${bod} mg/L. CPCB uses BOD above 3 mg/L as its outdoor-bathing pollution-screen trigger. This indicates organic pollution; it does not test pathogens or establish drinking-water safety. The map pin is approximate to the named locality or reach.`,
+    readings: [
+      { name: 'Maximum BOD', value: `${bod} mg/L`, reference: 'CPCB PRS screen: >3 mg/L (outdoor-bathing criterion)' },
+      { name: 'Priority class', value: `Class ${priority}`, reference: 'CPCB class based on the reported maximum BOD' }
+    ]
+  };
+}
+fallbackPlaces.push(...prsSites.map(makePrsSite));
+
+const cpcb2022 = 'https://cpcb.nic.in/wqm/2022/WQuality_River-Data-2022.pdf';
+const cpcb2023 = 'https://cpcb.nic.in/wqm/2023/WQuality_River-Data-2023.pdf';
+const cpcb2022Minor = 'https://cpcb.nic.in/wqm/2022/Water_Quality_data_of_Med_Min_River_2022.pdf';
+const cpcb2020 = 'https://cpcb.nic.in/wqm/2020/WQuality_River-Data-2020.pdf';
+
+fallbackPlaces.push(
+  { id: 'bereng-chowkham', place: 'Bereng River · Chowkham', state: 'Arunachal Pradesh', district: 'Namsai', kind: 'CPCB river monitoring site', coords: [27.67, 95.82], sample: 'CPCB NWMP', period: '2022 sample · CPCB river data', status: 'ok', summary: 'BOD 1.5–2.4 mg/L · pH / DO shown in range', sourceType: 'River-water sample', sourceLabel: 'CPCB · river water quality 2022', source: cpcb2022, notes: 'The cited CPCB 2022 table shows BOD 1.5–2.4 mg/L, pH 6.77–8.1 and dissolved oxygen 7.2–9.5 mg/L. These shown readings do not cross the CPCB polluted-river BOD trigger. This is one historical river sample record, not a current or household drinking-water safety result.', readings: [{ name: 'BOD', value: '1.5–2.4 mg/L', reference: 'CPCB PRS trigger: >3 mg/L' }, { name: 'pH', value: '6.77–8.1', reference: 'Shown range: 6.5–8.5' }, { name: 'Dissolved oxygen', value: '7.2–9.5 mg/L', reference: 'Shown range is above 5 mg/L' }] },
+  { id: 'tlawng-pialthleng', place: 'Tlawng River · Pialthleng Zotlang', state: 'Mizoram', district: 'Lunglei', coords: [22.89, 92.75], kind: 'CPCB river monitoring site', sample: 'CPCB NWMP', period: '2023 sample · CPCB river data', status: 'ok', summary: 'BOD 1.1–1.3 mg/L · pH / DO shown in range', sourceType: 'River-water sample', sourceLabel: 'CPCB · river water quality 2023', source: cpcb2023, notes: 'The cited CPCB 2023 table shows BOD 1.1–1.3 mg/L, pH 7.3–8.0 and dissolved oxygen 6.2–9.2 mg/L. No exceedance is apparent in those displayed indicators. Coliform results are not shown for this record; it is not evidence of pathogen-free or currently safe drinking water.', readings: [{ name: 'BOD', value: '1.1–1.3 mg/L', reference: 'CPCB PRS trigger: >3 mg/L' }, { name: 'pH', value: '7.3–8.0', reference: 'Shown range: 6.5–8.5' }, { name: 'Dissolved oxygen', value: '6.2–9.2 mg/L', reference: 'Shown range is above 5 mg/L' }] },
+  { id: 'rangit-jorethang', place: 'Rangit River · Jorethang', state: 'Sikkim', district: 'Namchi', coords: [27.11, 88.32], kind: 'CPCB river monitoring site', sample: 'CPCB NWMP', period: '2022 sample · CPCB river data', status: 'ok', summary: 'BOD 1.2–2.7 mg/L · coliform also reported', sourceType: 'River-water sample', sourceLabel: 'CPCB · river water quality 2022', source: cpcb2022, notes: 'The cited CPCB 2022 table shows BOD 1.2–2.7 mg/L, pH 6.5–7.5, dissolved oxygen 8.0–9.8 mg/L, faecal coliform 45–98 and total coliform 65–170 (as reported in that table). The shown BOD is below the PRS trigger. This dated sample cannot establish current safety at other sources or locations.', readings: [{ name: 'BOD', value: '1.2–2.7 mg/L', reference: 'CPCB PRS trigger: >3 mg/L' }, { name: 'pH', value: '6.5–7.5', reference: 'Shown range: 6.5–8.5' }, { name: 'Dissolved oxygen', value: '8.0–9.8 mg/L', reference: 'Shown range is above 5 mg/L' }, { name: 'Faecal coliform', value: '45–98 MPN/100 mL', reference: 'Historical CPCB table result' }] },
+  { id: 'juri-krishnapur', place: 'Juri River · Krishnapur, downstream Dharmanagar', state: 'Tripura', district: 'North Tripura', coords: [24.37, 92.17], kind: 'CPCB river monitoring site', sample: 'CPCB NWMP', period: '2022 sample · CPCB medium/minor river data', status: 'ok', summary: 'BOD 1.3–2.2 mg/L · coliform also reported', sourceType: 'River-water sample', sourceLabel: 'CPCB · medium/minor river data 2022', source: cpcb2022Minor, notes: 'The cited CPCB 2022 table shows BOD 1.3–2.2 mg/L, pH 7.1–7.8, dissolved oxygen 5.4–6.5 mg/L, faecal coliform 27–58 and total coliform 94–170 (as reported). The displayed BOD is below the PRS trigger; these dated river readings do not certify present-day or household drinking-water safety.', readings: [{ name: 'BOD', value: '1.3–2.2 mg/L', reference: 'CPCB PRS trigger: >3 mg/L' }, { name: 'pH', value: '7.1–7.8', reference: 'Shown range: 6.5–8.5' }, { name: 'Dissolved oxygen', value: '5.4–6.5 mg/L', reference: 'Historical CPCB table result' }, { name: 'Faecal coliform', value: '27–58 MPN/100 mL', reference: 'Historical CPCB table result' }] },
+  { id: 'chathe-medziphema', place: 'Chathe River · Medziphema', state: 'Nagaland', district: 'Chümoukedima', coords: [25.75, 93.87], kind: 'CPCB river monitoring site', sample: 'CPCB NWMP', period: '2020 sample · CPCB river data', status: 'ok', summary: 'BOD 1.4–2.7 mg/L · pH / DO shown in range', sourceType: 'River-water sample', sourceLabel: 'CPCB · river water quality 2020', source: cpcb2020, notes: 'This older CPCB 2020 table shows BOD 1.4–2.7 mg/L, pH 7.2–8.3 and dissolved oxygen 5.4–7.4 mg/L. The shown values are below the CPCB PRS BOD trigger, but the result predates the 2022–23 assessment and is not a current safety determination. The latest assessment separately lists Sanuo Ru below New Secretariat as a BOD-flagged location.', readings: [{ name: 'BOD', value: '1.4–2.7 mg/L', reference: 'CPCB PRS trigger: >3 mg/L' }, { name: 'pH', value: '7.2–8.3', reference: 'Shown range: 6.5–8.5' }, { name: 'Dissolved oxygen', value: '5.4–7.4 mg/L', reference: 'Historical CPCB table result' }] }
+);
+
+/* ========== APP STATE ========== */
+let places = fallbackPlaces;
+let allApiPlaces = [];
+let selectedId = fallbackPlaces[0].id;
+let selectedState = 'All';
+let map = null;
+let markers = [];
+let toastTimer = null;
+let backendConnected = false;
+let detailRequestId = 0;
+let historyRequestId = 0;
+let currentView = 'overview';
+const API_BASE = window.location.protocol === 'file:' ? 'http://localhost:8000/api/v1' : `${window.location.origin}/api/v1`;
+
+function escapeHtml(value) {
+  return String(value ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
+}
+function statusLabel(place) {
+  return place.status === 'ok' ? 'No exceedance in shown metrics' : place.status === 'flagged' ? 'Historical exceedance in cited source' : 'No published screening result';
+}
+function statusClass(place) {
+  return place.status === 'ok' ? 'ok' : place.status === 'flagged' ? 'flagged' : 'unavailable';
+}
+function isHistoricalPlace(p) { return !p.id.startsWith('LOC_'); }
+function historicalPlaces() { return places.filter(isHistoricalPlace); }
+function rowsForState(state) { return historicalPlaces().filter(p => state === 'All' || p.state === state); }
+
+function setConnectionState(state, message) {
+  const tag = document.getElementById('connectionTag');
+  tag.className = `connection-pill ${state}`;
+  tag.innerHTML = `<span class="connection-dot"></span><span>${escapeHtml(message)}</span>`;
+}
+
+function normalizeApiPlace(location, risk) {
+  const sample = risk.published_observation ?? null;
+  const locType = location.location_type || (location.location_id.startsWith('LOC_') ? 'ML_ASSESSMENT_ZONE' : 'HISTORICAL_EVIDENCE');
+  return {
+    id: location.location_id,
+    locationType: locType,
+    place: location.location_name ?? 'Location name unavailable',
+    state: location.state ?? 'State unavailable',
+    district: location.district ?? 'District unavailable',
+    kind: sample?.kind ?? 'Monitoring location',
+    coords: [location.latitude, location.longitude],
+    sample: sample?.sample ?? 'Sample not available',
+    period: sample?.period ?? 'Period not reported',
+    status: sample?.screening_status ?? 'unavailable',
+    summary: sample?.summary ?? 'No published sample linked',
+    sourceType: sample?.kind ?? 'Evidence status unavailable',
+    sourceLabel: sample?.source_label ?? 'No source linked',
+    source: sample?.source_url ?? null,
+    notes: sample ? 'This is a historical published sample. Current ML risk is demonstrated using synthetic data, and present-day conditions require field testing.' : 'No published water sample is linked to this location.',
+    readings: (sample?.readings ?? []).map(r => ({ name: r.parameter ?? r.name ?? 'Parameter', value: r.value ?? 'Not reported', reference: r.reference ?? 'Reference unavailable' })),
+    riskProbability: risk.risk_probability ?? null,
+    riskLevel: risk.risk_level ?? null,
+    priorityScore: risk.priority_score ?? null,
+    priorityLevel: risk.priority_level ?? null,
+    reliabilityScore: typeof risk.reliability === 'number' ? risk.reliability : (risk.reliability?.score ?? risk.confidence ?? null),
+    dataFreshnessDays: risk.data_freshness_days ?? null,
+    verificationStatus: 'NOT_STARTED',
+    historyCount: null,
+    topRiskDrivers: risk.top_risk_drivers ?? []
+  };
+}
+
+async function loadFromApi() {
+  const previousPlace = places.find(p => p.id === selectedId);
+  const [locationsResponse, riskResponse] = await Promise.all([
+    fetch(`${API_BASE}/locations`),
+    fetch(`${API_BASE}/risk`)
+  ]);
+  if (!locationsResponse.ok || !riskResponse.ok) throw new Error('The API returned an error');
+  const [locationPayload, riskPayload] = await Promise.all([
+    locationsResponse.json(),
+    riskResponse.json()
+  ]);
+  if (!Array.isArray(locationPayload.locations) || !Array.isArray(riskPayload.locations)) {
+    throw new Error('The API response is missing its locations list');
+  }
+  const riskById = new Map(riskPayload.locations.map(item => [item.location_id, item]));
+  allApiPlaces = locationPayload.locations.map(location => normalizeApiPlace(location, riskById.get(location.location_id) ?? {}));
+  places = allApiPlaces.filter(p => !p.id.startsWith('LOC_'));
+  
+  if (previousPlace) {
+    const matchedPlace = places.find(p => p.place === previousPlace.place);
+    if (matchedPlace) selectedId = matchedPlace.id;
+  }
+  backendConnected = true;
+  const hCount = places.length;
+  const mCount = allApiPlaces.length - hCount;
+  setConnectionState('connected', `Connected · ${hCount} evidence + ${mCount} ML zones`);
+  populateMlZoneSelector();
+  if (map && window.maplibregl) { renderMarkers(); }
+}
+
+function populateMlZoneSelector() {
+  const sel = document.getElementById('mlZoneSelect');
+  const mlZones = allApiPlaces.filter(p => p.id.startsWith('LOC_'));
+  sel.innerHTML = '<option value="">— Select an ML assessment zone —</option>';
+  mlZones.sort((a, b) => {
+    const na = parseInt(a.id.split('_')[1]);
+    const nb = parseInt(b.id.split('_')[1]);
+    return na - nb;
+  });
+  for (const z of mlZones) {
+    const opt = document.createElement('option');
+    opt.value = z.id;
+    opt.textContent = `${z.id} — ${z.state} (${z.district || 'Zone'})`;
+    sel.appendChild(opt);
+  }
+  document.getElementById('mlZoneCount').textContent = String(mlZones.length).padStart(2, '0');
+}
+
+function formatScore(value, kind) {
+  if (value === null || value === undefined || !Number.isFinite(Number(value))) return 'Not available';
+  const score = Number(value);
+  if (kind === 'probability') return `${Math.round(score * 100)}%`;
+  return `${Math.round(score * 100)}/100`;
+}
+
+function renderSelectedPlace(p) {
+  const isML = p.id.startsWith('LOC_');
+  document.getElementById('detailKicker').textContent = isML ? 'ML Assessment Zone' : 'Selected water site';
+  document.getElementById('detailTitle').textContent = p.sample && p.sample !== 'Sample not available' ? `${p.place} · ${p.sample}` : p.place;
+  document.getElementById('placeMeta').textContent = `${p.district} · ${p.state} · ${p.kind}`;
+  document.getElementById('detailState').textContent = p.state.toUpperCase();
+
+  if (isML) {
+    document.getElementById('detailRisk').textContent = p.riskProbability === null ? 'Not available' : `${formatScore(p.riskProbability, 'probability')}${p.riskLevel ? ` · ${p.riskLevel}` : ''}`;
+    document.getElementById('detailPriority').textContent = p.priorityScore === null ? 'Not available' : `${formatScore(p.priorityScore, 'score')}${p.priorityLevel ? ` · ${p.priorityLevel}` : ''}`;
+    document.getElementById('detailReliability').textContent = p.reliabilityScore === null ? 'Not available' : formatScore(p.reliabilityScore, 'score');
+    document.getElementById('modelNote').textContent = 'August 2024 snapshot · synthetic demonstration data. Not current live risk.';
+  } else {
+    document.getElementById('detailRisk').textContent = 'Not available';
+    document.getElementById('detailPriority').textContent = 'Not available';
+    document.getElementById('detailReliability').textContent = 'Not available';
+    document.getElementById('modelNote').textContent = 'ML risk score applies to demonstration assessment zones.';
+  }
+
+  // SHAP drivers
+  const riskTitleEl = document.getElementById('riskDriversTitle');
+  const riskDriversEl = document.getElementById('riskDrivers');
+  if (isML && p.topRiskDrivers && p.topRiskDrivers.length > 0) {
+    riskTitleEl.style.display = '';
+    riskDriversEl.style.display = '';
+    const labelMap = {
+      'month': 'Seasonal rainfall & weather pattern',
+      'cases_trend': 'Recent disease-case trajectory',
+      'e_coli': 'E. coli microbial contamination indicator',
+      'bod': 'Biochemical oxygen demand (BOD) load',
+      'historical_cases': 'Historical baseline outbreak cases',
+      'rainfall_3d': 'Heavy 3-day precipitation event',
+      'rainfall_7d': 'Accumulated 7-day rainfall',
+      'rainfall_14d': '14-day antecedent rainfall total',
+      'flood_event': 'Reported inundation or overflow event',
+      'water_quality': 'Water-quality sensor composite indicator',
+      'sensor_reliability': 'Automated sensor network reliability',
+      'rainfall_mm': 'Monthly total rainfall depth',
+      'data_completeness': 'Field telemetry completeness ratio',
+      'data_freshness_days': 'Recency of station reporting',
+      'source_consistency': 'Multi-source observation alignment'
+    };
+    riskDriversEl.innerHTML = p.topRiskDrivers.map(d => {
+      const match = d.match(/(.*?)\s*\(([-.\d]+)\)/);
+      if (match) {
+        const rawName = match[1].trim();
+        const val = parseFloat(match[2]);
+        const humanName = labelMap[rawName] || rawName;
+        const impact = val > 0 ? 'Increasing risk' : (val < 0 ? 'Mitigating risk' : 'Neutral impact');
+        return `<div style="padding:4px 0;">• <b>${escapeHtml(humanName)}</b> (${val > 0 ? '+' : ''}${val.toFixed(2)}) — <span style="color:${val > 0 ? 'var(--apple-red)' : 'var(--apple-green)'}">${impact}</span></div>`;
+      }
+      return `<div style="padding:4px 0;">• ${escapeHtml(d)}</div>`;
+    }).join('');
+  } else if (isML) {
+    riskTitleEl.style.display = '';
+    riskDriversEl.style.display = '';
+    riskDriversEl.innerHTML = 'SHAP feature explanation is being computed or unavailable for this demonstration zone.';
+  } else {
+    riskTitleEl.style.display = 'none';
+    riskDriversEl.style.display = 'none';
+  }
+
+  document.getElementById('sampleContext').textContent = p.period ?? 'Not available';
+  document.getElementById('sourceType').textContent = p.sourceType;
+  document.getElementById('sourceLabel').textContent = p.sourceLabel;
+  const sourceLink = document.getElementById('sourceLink');
+  if (p.source) {
+    sourceLink.href = p.source;
+    sourceLink.hidden = false;
+  } else {
+    sourceLink.removeAttribute('href');
+    sourceLink.hidden = true;
+  }
+  document.getElementById('statusText').textContent = statusLabel(p);
+  document.getElementById('statusBanner').className = `status-banner ${statusClass(p)}`;
+  document.getElementById('readings').innerHTML = p.readings.length
+    ? p.readings.map(r => `<div class="reading"><span class="reading-name">${escapeHtml(r.name)}</span><strong class="reading-value">${escapeHtml(r.value)}</strong><span class="reading-ref">${escapeHtml(r.reference)}</span></div>`).join('')
+    : '<div class="reading"><span class="reading-name">Historical readings</span><strong class="reading-value">Not available</strong><span class="reading-ref">No sample values were supplied for this location.</span></div>';
+  document.getElementById('detailNote').textContent = `Context: ${p.notes}`;
+  document.getElementById('verificationStatus').textContent = (p.verificationStatus ?? 'NOT_STARTED').replaceAll('_', ' ').toLowerCase();
+  document.getElementById('historySummary').textContent = p.historyCount === null ? 'Loading…' : `${p.historyCount} published ${p.historyCount === 1 ? 'record' : 'records'}`;
+
+  // Disease Trend Chart (Apple Health Style with Liquid Gradient Fill Area)
+  const dtc = document.getElementById('diseaseTrendsContainer');
+  if (dtc) {
+    if (p.diseaseHistory && p.diseaseHistory.length > 0) {
+      const history = [...p.diseaseHistory].sort((a, b) => new Date(a.date) - new Date(b.date));
+      const values = history.map(h => parseFloat(h.disease_cases) || 0);
+      const maxValOrig = Math.max(...values, 10);
+      const ticks = 4;
+      const tickStep = Math.ceil(maxValOrig / (ticks - 1) / 10) * 10;
+      const maxVal = tickStep * (ticks - 1);
+      const minVal = 0;
+      const width = 640, height = 180, padX = 45, padY = 26, padTop = 16, padRight = 16;
+      const chartW = width - padX - padRight;
+      const chartH = height - padY - padTop;
+      const xStep = history.length > 1 ? chartW / (history.length - 1) : 0;
+
+      const pointsArray = values.map((v, i) => {
+        const x = padX + i * xStep;
+        const y = padTop + chartH - ((v - minVal) / (maxVal - minVal)) * chartH;
+        return { x, y, v, date: history[i].date };
+      });
+
+      const polylinePoints = pointsArray.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+      const areaPolygonPoints = `${padX},${padTop + chartH} ` + polylinePoints + ` ${padX + (history.length - 1) * xStep},${padTop + chartH}`;
+
+      const circles = pointsArray.map((p, i) => {
+        const d = new Date(p.date);
+        const str = d.toLocaleString('default', { month: 'short', year: 'numeric' });
+        return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3" fill="#0071e3" stroke="#ffffff" stroke-width="1.5"><title>${str}: ${p.v} reported cases</title></circle>`;
+      }).join('');
+
+      let yAxis = '';
+      for (let i = 0; i < ticks; i++) {
+        const val = i * tickStep;
+        const y = padTop + chartH - (i / (ticks - 1)) * chartH;
+        yAxis += `<line x1="${padX}" y1="${y}" x2="${width - padRight}" y2="${y}" stroke="rgba(0,0,0,0.06)" stroke-width="1" stroke-dasharray="3 3"/><text x="${padX - 8}" y="${y + 4}" font-size="10.5" fill="#86868b" text-anchor="end">${val}</text>`;
+      }
+
+      const dates = history.map((h, i) => {
+        const d = new Date(h.date);
+        const month = d.toLocaleString('default', { month: 'short' });
+        if (month === 'Jan' || i === 0 || i === history.length - 1) {
+          const str = d.toLocaleString('default', { month: 'short', year: '2-digit' });
+          const x = padX + i * xStep;
+          const anchor = i === history.length - 1 ? 'end' : (i === 0 ? 'start' : 'middle');
+          return `<line x1="${x}" y1="${padTop + chartH}" x2="${x}" y2="${padTop + chartH + 5}" stroke="#d2d2d7" /><text x="${x}" y="${padTop + chartH + 18}" font-size="10.5" fill="#86868b" text-anchor="${anchor}">${str}</text>`;
+        }
+        return '';
+      }).join('');
+
+      dtc.innerHTML = `
+        <div style="margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:12px; font-weight:600; color:var(--apple-black);">Water-Borne Disease Cases Trajectory (${history.length} months)</span>
+          <span style="font-size:11px; color:var(--apple-blue); font-weight:600;">Peak: ${Math.max(...values)} cases</span>
+        </div>
+        <svg viewBox="0 0 ${width} ${height}" style="width:100%; height:auto; display:block; overflow:visible; font-family:var(--font);">
+          <defs>
+            <linearGradient id="appleChartGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0071e3" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#0071e3" stop-opacity="0.01"/>
+            </linearGradient>
+          </defs>
+          ${yAxis}
+          <polygon fill="url(#appleChartGradient)" points="${areaPolygonPoints}" />
+          <polyline fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="${polylinePoints}" />
+          ${circles}
+          ${dates}
+          <line x1="${padX}" y1="${padTop + chartH}" x2="${width - padRight}" y2="${padTop + chartH}" stroke="#d2d2d7" stroke-width="1" />
+        </svg>
+      `;
+    } else if (isML) {
+      dtc.innerHTML = '<div style="padding:24px; text-align:center; color:var(--apple-gray); font-size:13px;">Loading disease trajectory data for this ML assessment zone…</div>';
+    } else {
+      dtc.innerHTML = '<div style="padding:24px; text-align:center; color:var(--apple-gray); font-size:13px;">No ML disease time-series recorded for this historical evidence site. Select an <b>ML Assessment Zone</b> above to explore monthly trends.</div>';
+    }
+  }
+}
+
+function renderStateControls() {
+  const evidencePlaces = historicalPlaces();
+  document.getElementById('stateList').innerHTML = states.map(s => {
+    const n = evidencePlaces.filter(p => p.state === s).length;
+    return `<button class="state-chip ${n ? 'has-data' : ''} ${selectedState === s ? 'active' : ''}" data-state="${escapeHtml(s)}"><i class="state-dot"></i>${escapeHtml(s)} <small style="opacity:0.6;margin-left:4px;">${n || 0}</small></button>`;
+  }).join('');
+  
+  document.querySelectorAll('[data-state]').forEach(b => b.addEventListener('click', () => {
+    document.getElementById('stateSelect').value = b.dataset.state;
+    filterState(b.dataset.state);
+  }));
+  
+  document.getElementById('coverageList').innerHTML = states.map(s => {
+    const n = evidencePlaces.filter(p => p.state === s).length;
+    return `<div class="coverage-row"><div class="coverage-state"><i class="${n ? 'ready' : 'planned'}"></i><strong>${escapeHtml(s)}</strong></div><small>${n ? `${n} evidence ${n === 1 ? 'site' : 'sites'}` : 'Under preparation'}</small></div>`;
+  }).join('');
+}
+
+function renderRows() {
+  const list = rowsForState(selectedState);
+  const body = document.getElementById('observationRows');
+  body.innerHTML = list.map(p => {
+    const badge = p.status === 'ok' ? 'Within shown refs' : p.status === 'flagged' ? 'Historical flag' : 'No sample';
+    const badgeClass = p.status === 'ok' ? 'ok' : p.status === 'flagged' ? '' : 'neutral';
+    return `<tr data-place-row="${escapeHtml(p.id)}" class="${p.id === selectedId ? 'selected' : ''}"><td><b>${escapeHtml(p.place)}</b></td><td>${escapeHtml(p.state)}</td><td class="parameter">${escapeHtml(p.sample)}</td><td>${escapeHtml(p.summary)}</td><td class="source-date">${escapeHtml((p.period ?? 'Period unavailable').split('·')[0].trim())}</td><td><span class="flag ${badgeClass}">${badge}</span></td></tr>`;
+  }).join('');
+  document.getElementById('emptyState').style.display = list.length ? 'none' : 'block';
+  body.style.display = list.length ? '' : 'none';
+  document.getElementById('siteCount').textContent = String(list.length).padStart(2, '0');
+  document.getElementById('flaggedCount').textContent = String(list.filter(p => p.status === 'flagged' && p.kind.includes('CPCB PRS')).length).padStart(2, '0');
+  document.getElementById('stateCount').textContent = String(new Set(historicalPlaces().map(p => p.state)).size).padStart(2, '0');
+  document.querySelectorAll('[data-place-row]').forEach(row => row.addEventListener('click', () => selectPlace(row.dataset.placeRow, true)));
+}
+
+function selectPlace(id, pan) {
+  const p = allApiPlaces.find(x => x.id === id) || fallbackPlaces.find(x => x.id === id);
+  if (!p) return;
+  selectedId = id;
+  detailRequestId++;
+  historyRequestId++;
+  renderSelectedPlace(p);
+  renderRows();
+  if (map && pan && Number.isFinite(p.coords[0]) && Number.isFinite(p.coords[1])) {
+    map.flyTo({ center: [p.coords[1], p.coords[0]], zoom: Math.max(map.getZoom(), 8), duration: 450 });
+  }
+  const selectedMarker = markers.find(x => x.id === id);
+  if (selectedMarker && selectedMarker.marker.getPopup() && !selectedMarker.marker.getPopup().isOpen()) {
+    selectedMarker.marker.togglePopup();
+  }
+  if (backendConnected) {
+    loadRiskDetail(id);
+    loadHistory(id);
+  }
+}
+
+async function loadRiskDetail(id) {
+  const requestId = ++detailRequestId;
+  try {
+    const response = await fetch(`${API_BASE}/risk/${encodeURIComponent(id)}`);
+    if (!response.ok) throw new Error('Could not load location details');
+    const detail = await response.json();
+    if (requestId !== detailRequestId || selectedId !== id) return;
+    const p = allApiPlaces.find(x => x.id === id) || fallbackPlaces.find(x => x.id === id);
+    if (!p) return;
+    if (!p.id.startsWith('LOC_')) {
+      p.verificationStatus = detail.verification?.verification_status ?? 'NOT_STARTED';
+      if (detail.published_observation?.readings) {
+        p.readings = detail.published_observation.readings.map(r => ({ name: r.parameter ?? r.name ?? 'Parameter', value: r.value ?? 'Not reported', reference: r.reference ?? 'Reference unavailable' }));
+      }
+    } else {
+      p.riskProbability = detail.risk?.probability ?? null;
+      p.riskLevel = detail.risk?.level ?? null;
+      p.priorityScore = detail.priority?.score ?? null;
+      p.priorityLevel = detail.priority?.level ?? null;
+      p.reliabilityScore = detail.reliability?.score ?? null;
+      p.verificationStatus = detail.verification?.verification_status ?? 'NOT_STARTED';
+      p.topRiskDrivers = detail.top_risk_drivers ?? [];
+    }
+    renderSelectedPlace(p);
+  } catch (error) {
+    console.warn('Risk detail request failed:', error);
+  }
+}
+
+async function loadHistory(id) {
+  const requestId = ++historyRequestId;
+  try {
+    const response = await fetch(`${API_BASE}/locations/${encodeURIComponent(id)}/history`);
+    if (!response.ok) throw new Error('Could not load history');
+    const data = await response.json();
+    if (requestId !== historyRequestId || selectedId !== id) return;
+    const p = allApiPlaces.find(x => x.id === id) || fallbackPlaces.find(x => x.id === id);
+    if (!p) return;
+    p.historyCount = Array.isArray(data.history) ? data.history.length : 0;
+    p.diseaseHistory = Array.isArray(data.history) ? data.history.filter(h => h.record_type === 'SYNTHETIC_ML_HISTORY') : [];
+    renderSelectedPlace(p);
+  } catch (error) {
+    const p = allApiPlaces.find(x => x.id === id) || fallbackPlaces.find(x => x.id === id);
+    if (p && selectedId === id) {
+      p.historyCount = 0;
+      p.diseaseHistory = [];
+      renderSelectedPlace(p);
+    }
+  }
+}
+
+function filterState(state) {
+  selectedState = state;
+  renderStateControls();
+  renderRows();
+  const list = rowsForState(state);
+  document.getElementById('mapSubtitle').textContent = state === 'All'
+    ? 'Historical/public sample locations · select a marker for details'
+    : list.length ? `${state} · ${list.length} published evidence ${list.length === 1 ? 'location' : 'locations'}` : `${state} · no published evidence rows loaded in this prototype`;
+  if (list.length && !list.some(p => p.id === selectedId)) selectPlace(list[0].id, false);
+  if (map) {
+    const located = list.filter(p => Number.isFinite(p.coords[0]) && Number.isFinite(p.coords[1]));
+    if (located.length) {
+      const bounds = new maplibregl.LngLatBounds();
+      located.forEach(p => bounds.extend([p.coords[1], p.coords[0]]));
+      map.fitBounds(bounds, { padding: 40, maxZoom: 8, duration: 450 });
+    } else if (!list.length) {
+      const center = state === 'Sikkim' ? [88.5, 27.5] : state === 'Arunachal Pradesh' ? [94.2, 28.2] : state === 'Nagaland' ? [94.5, 26.1] : state === 'Manipur' ? [93.9, 24.7] : state === 'Mizoram' ? [92.8, 23.3] : state === 'Tripura' ? [91.5, 23.8] : [91.5, 26.8];
+      map.flyTo({ center, zoom: 7, duration: 450 });
+    }
+    renderMarkers();
+  }
+}
+
+function renderMarkers() {
+  if (!map) return;
+  markers.forEach(x => x.marker.remove());
+  markers = [];
+  const shown = rowsForState(selectedState).filter(p => Number.isFinite(p.coords[0]) && Number.isFinite(p.coords[1]));
+  shown.forEach(p => {
+    const el = document.createElement('button');
+    el.type = 'button';
+    el.className = `nw-marker ${p.status === 'ok' ? 'ok' : p.status === 'flagged' ? 'flagged' : 'review'}`;
+    el.setAttribute('aria-label', `${p.place}: ${p.summary}`);
+    const popup = new maplibregl.Popup({ offset: 12, closeButton: false }).setHTML(`<b>${escapeHtml(p.place)}</b><br>${escapeHtml(p.state)} · ${escapeHtml(p.kind)}<br>${escapeHtml(p.summary)}<br><small>${escapeHtml(p.period)}</small><br><small style="color:var(--apple-blue)">Historical published observation</small>`);
+    const marker = new maplibregl.Marker({ element: el, anchor: 'center' }).setLngLat([p.coords[1], p.coords[0]]).setPopup(popup).addTo(map);
+    el.addEventListener('click', event => { event.stopPropagation(); selectPlace(p.id, false); });
+    markers.push({ id: p.id, marker });
+  });
+
+  Object.keys(mlDisplayZones).forEach(locId => {
+    const mlZoneInfo = mlDisplayZones[locId];
+    if (selectedState !== 'All' && mlZoneInfo.state !== selectedState) return;
+    const mlData = allApiPlaces.find(p => p.id === locId);
+    if (!mlData) return;
+    const riskLvl = mlData.riskLevel || 'Unknown';
+    const riskClass = riskLvl === 'Unknown' ? 'Unknown' : riskLvl.charAt(0).toUpperCase() + riskLvl.slice(1).toLowerCase();
+    const rProb = mlData.riskProbability != null ? Math.round(mlData.riskProbability * 100) + '%' : 'N/A';
+    const el = document.createElement('button');
+    el.type = 'button';
+    el.className = `nw-ml-marker ${riskClass}`;
+    el.setAttribute('aria-label', `${locId}: Risk ${riskLvl}`);
+    const popup = new maplibregl.Popup({ offset: 12, closeButton: false }).setHTML(`<b>${escapeHtml(locId)}</b><br>State: ${escapeHtml(mlZoneInfo.state)}<br>Risk Level: ${escapeHtml(riskLvl)} (${rProb})<br><small style="color:var(--apple-amber)">Prototype demonstration geography</small>`);
+    const marker = new maplibregl.Marker({ element: el, anchor: 'center' }).setLngLat([mlZoneInfo.coords[1], mlZoneInfo.coords[0]]).setPopup(popup).addTo(map);
+    el.addEventListener('click', event => { event.stopPropagation(); selectPlace(locId, false); });
+    markers.push({ id: locId, marker });
+  });
+}
+
+function initMap() {
+  const fallback = document.getElementById('mapFallback');
+  if (!window.maplibregl) { fallback.hidden = false; return; }
+  let loaded = false;
+  try {
+    map = new maplibregl.Map({
+      container: 'map',
+      style: 'https://tiles.openfreemap.org/styles/positron',
+      center: [92.35, 26.25],
+      zoom: 6,
+      attributionControl: false,
+      scrollZoom: false
+    });
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-left');
+    map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: '© OpenFreeMap · © OpenStreetMap contributors' }), 'bottom-right');
+    map.on('error', event => {
+      const message = event.error && event.error.message || '';
+      if (/style|fetch|403|404|webgl|network|tile/i.test(message)) fallback.hidden = false;
+    });
+    map.on('load', () => { loaded = true; fallback.hidden = true; renderMarkers(); });
+    setTimeout(() => { if (!loaded) fallback.hidden = false; else map && map.resize(); }, 10000);
+    setTimeout(() => map && map.resize(), 200);
+  } catch (error) {
+    console.error('Map initialization failed:', error);
+    fallback.hidden = false;
+  }
+}
+
+/* ========== ML ZONE SELECTOR ========== */
+function selectMlZone(locId) {
+  const container = document.getElementById('mlZoneDetail');
+  if (!locId) { container.innerHTML = ''; return; }
+  if (!backendConnected) {
+    container.innerHTML = '<div class="ml-disclosure">Backend not connected. Cannot load ML assessment data.</div>';
+    return;
+  }
+  container.innerHTML = '<div style="padding:12px;color:var(--apple-blue);font-size:13px;font-weight:600;">Details loaded in the inspector panel ↗</div>';
+  selectPlace(locId, false);
+}
+
+/* ========== NAVIGATION VIEWS ========== */
+function showView(view) {
+  currentView = view;
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+  if (view === 'overview') {
+    document.querySelectorAll('.nav-links button')[0]?.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else if (view === 'ml-zones') {
+    document.querySelectorAll('.nav-links button')[2]?.classList.add('active');
+    document.getElementById('ml-zone-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function showToast(message) {
+  const t = document.getElementById('toast');
+  t.textContent = message;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ========== FIELD VERIFICATION MODAL FUNCTIONS ========== */
+function openVerificationModal() {
+  const p = places.find(x => x.id === selectedId) || allApiPlaces.find(x => x.id === selectedId);
+  if (!p) return;
+  document.getElementById('modalLocationName').value = `${p.place} (${p.state})`;
+  document.getElementById('modalStatusSelect').value = p.verificationStatus || 'PLANNED';
+  document.getElementById('modalPrioritySelect').value = p.priorityLevel || '';
+  document.getElementById('modalDateInput').value = new Date().toISOString().split('T')[0];
+  document.getElementById('modalReasonInput').value = `Scheduled field test following ${p.status === 'flagged' ? 'water contamination alert' : 'routine surveillance'}.`;
+  document.getElementById('verificationModal').classList.add('open');
+}
+
+function closeVerificationModal() {
+  document.getElementById('verificationModal').classList.remove('open');
+}
+
+async function submitVerificationForm() {
+  const p = places.find(x => x.id === selectedId) || allApiPlaces.find(x => x.id === selectedId);
+  if (!p) return;
+  if (!backendConnected) {
+    showToast('Backend is offline; verification plan was not saved.');
+    closeVerificationModal();
+    return;
+  }
+
+  const status = document.getElementById('modalStatusSelect').value;
+  const priority = document.getElementById('modalPrioritySelect').value || null;
+  const date = document.getElementById('modalDateInput').value || null;
+  const reason = document.getElementById('modalReasonInput').value || null;
+  const submitBtn = document.getElementById('modalSubmitBtn');
+  submitBtn.disabled = true;
+
+  try {
+    const response = await fetch(`${API_BASE}/locations/${encodeURIComponent(p.id)}/verification`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        verification_status: status,
+        recommended_verification_priority: priority,
+        reason_for_priority: reason,
+        verification_date: date,
+        actual_field_result: null
+      })
+    });
+    if (!response.ok) throw new Error('API could not save verification plan');
+    const result = await response.json();
+    p.verificationStatus = result.verification_status;
+    renderSelectedPlace(p);
+    closeVerificationModal();
+    showToast(`Field verification saved as: ${status.replaceAll('_', ' ')}`);
+  } catch (error) {
+    showToast('Could not save field verification. Verify backend is running.');
+  } finally {
+    submitBtn.disabled = false;
+  }
+}
+
+// Preserve original direct retest function for compatibility
+async function requestRetest() {
+  openVerificationModal();
+}
+
+/* ========== DATASET PIPELINE WORKFLOW ========== */
+async function uploadCsv(file) {
+  if (!file) return;
+  const st = document.getElementById('datasetStatus');
+  const err = document.getElementById('datasetErrors');
+  st.textContent = 'Status: Uploading CSV dataset...';
+  err.style.display = 'none';
+  try {
+    const text = await file.text();
+    const res = await fetch(API_BASE + '/dataset/upload', { method: 'POST', body: text });
+    if (!res.ok) throw new Error('Upload failed');
+    st.textContent = 'Status: UPLOAD_RECEIVED — Ready for validation';
+    document.getElementById('validateBtn').disabled = false;
+    showToast('Dataset received by backend.');
+  } catch (e) {
+    st.textContent = 'Status: ERROR';
+    err.textContent = e.message;
+    err.style.display = 'block';
+  }
+}
+
+async function validateCsv() {
+  const st = document.getElementById('datasetStatus');
+  const err = document.getElementById('datasetErrors');
+  st.textContent = 'Status: Validating schema & columns...';
+  err.style.display = 'none';
+  try {
+    const res = await fetch(API_BASE + '/dataset/validate', { method: 'POST' });
+    const data = await res.json();
+    if (!res.ok) {
+      st.textContent = 'Status: VALIDATION_FAILED';
+      err.innerHTML = data.errors ? data.errors.join('<br>') : 'Validation error';
+      err.style.display = 'block';
+      return;
+    }
+    st.textContent = `Status: READY_FOR_ANALYSIS (${data.rows_detected} rows validated)`;
+    document.getElementById('analyzeBtn').disabled = false;
+    showToast(`Validation successful: ${data.rows_detected} rows.`);
+  } catch (e) {
+    st.textContent = 'Status: ERROR';
+    err.textContent = e.message;
+    err.style.display = 'block';
+  }
+}
+
+async function analyzeCsv() {
+  const st = document.getElementById('datasetStatus');
+  const err = document.getElementById('datasetErrors');
+  st.textContent = 'Status: ML inference running...';
+  err.style.display = 'none';
+  document.getElementById('analyzeBtn').disabled = true;
+  try {
+    const res = await fetch(API_BASE + '/dataset/analyze', { method: 'POST' });
+    if (!res.ok) throw new Error('Analysis trigger failed');
+    setTimeout(async () => {
+      st.textContent = 'Status: Analysis complete — Model outputs updated';
+      await loadFromApi();
+      if (selectedId) { selectPlace(selectedId, false); }
+      showToast('ML prototype analysis completed!');
+    }, 3000);
+  } catch (e) {
+    st.textContent = 'Status: ERROR';
+    err.textContent = e.message;
+    err.style.display = 'block';
+    document.getElementById('analyzeBtn').disabled = false;
+  }
+}
+
+/* ========== INITIALIZE DASHBOARD ========== */
+async function initializeDashboard() {
+  try {
+    await loadFromApi();
+  } catch (error) {
+    console.warn('Backend unavailable; showing embedded prototype sample data:', error);
+    places = fallbackPlaces;
+    backendConnected = false;
+    setConnectionState('offline', 'Offline · demo sample data');
+  }
+  if (!places.some(p => p.id === selectedId)) selectedId = places[0]?.id ?? null;
+  renderStateControls();
+  renderRows();
+  if (selectedId) selectPlace(selectedId, false);
+  initMap();
+}
+
+document.getElementById('stateSelect').addEventListener('change', e => filterState(e.target.value));
+initializeDashboard();
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+# Nested duplicates & archives
+NeerWatch-master/
+*.zip
+
+# Datasets and training
+DATA SETS/
+raw/
+/data/
+models/
+src/
+.venv/
+predictions/
+xgb_v2_final_test_predictions.csv
+/xgb_*.csv
+
+# Whitelist ML deployment artifacts & backend data
+!ml-artifacts/
+!ml-artifacts/*.csv
+!backend/data/
+!backend/data/*.json
+
+# Local and test data
+backend/data/disease_trends.json
+backend/data/location_mapping.json
+backend/server.mjs.bak
+REAL_ML_LOCATION_COVERAGE.csv
+
+# Directories
+scratch/
+reports/
+.vscode/
+.idea/
+.gemini/
+node_modules/
+logs/
+backups/
+
+# System and OS files
+.DS_Store
+Thumbs.db
+npm-debug.log*
+
+# Secrets
+.env
+*.pem
+credentials/
+keys/
