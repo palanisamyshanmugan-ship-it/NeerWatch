@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node backend/server.mjs",
     "dev": "node backend/server.mjs",
-    "test": "node --check backend/server.mjs"
+    "test": "node --check backend/server.mjs",
+    "test:e2e": "node test_suite.mjs"
   },
   "keywords": [
     "water-quality",

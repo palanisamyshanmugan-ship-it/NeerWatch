@@ -2678,7 +2678,8 @@ function openVerificationModal() {
   if (!p) return;
   document.getElementById('modalLocationName').value = `${p.place} (${p.state})`;
   document.getElementById('modalStatusSelect').value = p.verificationStatus || 'PLANNED';
-  document.getElementById('modalPrioritySelect').value = p.priorityLevel || '';
+  const cleanPriority = (p.priorityLevel || '').replace(/\s*priority/i, '').trim().toUpperCase();
+  document.getElementById('modalPrioritySelect').value = cleanPriority || '';
   document.getElementById('modalDateInput').value = new Date().toISOString().split('T')[0];
   document.getElementById('modalReasonInput').value = `Scheduled field test following ${p.status === 'flagged' ? 'water contamination alert' : 'routine surveillance'}.`;
   document.getElementById('verificationModal').classList.add('open');

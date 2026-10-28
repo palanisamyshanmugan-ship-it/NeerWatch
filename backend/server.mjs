@@ -205,7 +205,7 @@ function detailFor(location, verificationRecords) {
     },
     priority: { 
       score: ml ? parseFloat(ml.priority_score) : null, 
-      level: ml ? ml.priority_level : null, 
+      level: ml ? (ml.priority_level ? ml.priority_level.replace(' Priority', '').replace(' PRIORITY', '').toUpperCase() : null) : null, 
       recommended_verification_priority: ml ? (ml.priority_level ? ml.priority_level.replace(' Priority', '').replace(' PRIORITY', '').toUpperCase() : null) : null, 
       reason: null 
     },
