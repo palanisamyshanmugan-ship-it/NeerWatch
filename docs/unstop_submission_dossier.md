@@ -1,7 +1,7 @@
 # NeerWatch — Unstop Submission Dossier
 **AI-Powered Northeast India Water Quality & Epidemic Risk Monitoring Platform**
 
-![NeerWatch Dashboard Preview](C:\Users\karth\.gemini\antigravity-ide\brain\ea3ad13b-13d1-4ce7-ba96-62ecb1d199bd\neerwatch_dashboard_mockup_1793121425447.jpg)
+![NeerWatch Dashboard Preview](../neerwatch_preview.jpg)
 
 ---
 

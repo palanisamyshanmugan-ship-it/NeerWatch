@@ -7,6 +7,8 @@ import { fileURLToPath } from 'node:url';
 const here = dirname(fileURLToPath(import.meta.url));
 const seed = JSON.parse(await readFile(resolve(here, 'data/locations.json'), 'utf8'));
 const dashboardFile = resolve(here, '../outputs/waterguard-dashboard/index.html');
+const modelStudioFile = resolve(here, '../outputs/waterguard-dashboard/model-studio.html');
+const aboutFile = resolve(here, '../outputs/waterguard-dashboard/about.html');
 const verificationFile = resolve(here, 'data/verification.json');
 let diseaseTrends = {};
 try {
@@ -15,17 +17,18 @@ try {
   console.warn('No history_v2.json found');
 }
 const PORT = Number(process.env.PORT) || 8000;
+const READ_ONLY = ['true', '1'].includes(String(process.env.NEERWATCH_READ_ONLY || '').toLowerCase());
 const stateSet = new Set(seed.states);
 const byId = new Map(seed.locations.map(location => [location.location_id, location]));
 
 // -- V2 ML INTEGRATION --
 let mlData = new Map(); // loc_id -> latest ML record
-let analysisState = { status: 'ANALYSIS_COMPLETE', errors: [] };
+let analysisState = { status: 'MODEL_SNAPSHOT_READY', errors: [] };
 let uploadedCsvText = null;
 
 function parseCSV(csvText) {
   const lines = csvText.trim().split('\n');
-  const headers = lines[0].split(',').map(h => h.trim());
+  const headers = lines[0].replace(/^\uFEFF/, '').split(',').map(h => h.trim());
   return lines.slice(1).map(line => {
     const values = line.split(',');
     const obj = {};
@@ -56,6 +59,7 @@ try {
     for (const row of shapRows) {
       if (mlData.has(row.location_id)) {
         mlData.get(row.location_id).top_positive_contributors = row.top_positive_contributors;
+        mlData.get(row.location_id).top_negative_contributors = row.top_negative_contributors;
       }
     }
   }
@@ -64,8 +68,32 @@ try {
 }
 
 function getMlRecordFor(location_id) {
-  if (analysisState.status !== 'ANALYSIS_COMPLETE') return null;
   return mlData.get(location_id) || null;
+}
+
+function checkModelSnapshot() {
+  const rows = [...mlData.values()].filter(row => row.date === '2024-08-01');
+  const errors = [];
+  const probabilityFields = ['raw_risk_probability', 'calibrated_risk_probability'];
+  const scoreFields = ['priority_score', 'reliability_component', 'data_completeness', 'sensor_reliability', 'source_consistency'];
+  for (const row of rows) {
+    for (const field of [...probabilityFields, ...scoreFields]) {
+      const value = Number(row[field]);
+      if (!Number.isFinite(value) || value < 0 || value > 1) errors.push(`${row.location_id}: invalid ${field}`);
+    }
+    if (!row.top_positive_contributors || !row.top_negative_contributors) errors.push(`${row.location_id}: SHAP contributions missing`);
+  }
+  return {
+    snapshot_status: rows.length === 200 && errors.length === 0 ? 'PASS' : 'CHECK_REQUIRED',
+    snapshot_date: '2024-08-01',
+    zones_checked: rows.length,
+    valid_predictions: rows.length - new Set(errors.map(error => error.split(':')[0])).size,
+    shap_explanations: rows.filter(row => row.top_positive_contributors && row.top_negative_contributors).length,
+    errors,
+    model_weights_available: false,
+    inference_available: false,
+    message: 'Saved prediction and SHAP CSV outputs can be inspected. This build does not include executable XGBoost weights, so uploaded rows cannot be scored with new inference.'
+  };
 }
 
 if (byId.size !== seed.locations.length) throw new Error('Duplicate location_id in locations.json');
@@ -78,7 +106,7 @@ for (const location of seed.locations) {
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Access-Control-Allow-Methods': READ_ONLY ? 'GET, OPTIONS' : 'GET, POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
   'Access-Control-Max-Age': '86400'
 };
@@ -205,7 +233,7 @@ function detailFor(location, verificationRecords) {
     },
     priority: { 
       score: ml ? parseFloat(ml.priority_score) : null, 
-      level: ml ? (ml.priority_level ? ml.priority_level.replace(' Priority', '').replace(' PRIORITY', '').toUpperCase() : null) : null, 
+      level: ml ? ml.priority_level : null, 
       recommended_verification_priority: ml ? (ml.priority_level ? ml.priority_level.replace(' Priority', '').replace(' PRIORITY', '').toUpperCase() : null) : null, 
       reason: null 
     },
@@ -252,6 +280,7 @@ function detailFor(location, verificationRecords) {
       status: 'UNAVAILABLE'
     },
     top_risk_drivers: (ml && ml.top_positive_contributors) ? ml.top_positive_contributors.split('|').map(s => s.trim()) : [],
+    top_negative_drivers: (ml && ml.top_negative_contributors) ? ml.top_negative_contributors.split('|').map(s => s.trim()) : [],
     explanation_status: (ml && ml.top_positive_contributors) ? 'AVAILABLE' : 'UNAVAILABLE',
     recommended_action: null,
     verification: {
@@ -367,7 +396,8 @@ async function handle(request, response) {
       locations_loaded: seed.locations.length,
       historical_evidence_locations: historicalCount,
       ml_assessment_zones: mlCount,
-      model_status: 'CONFIGURED'
+      model_status: 'SNAPSHOT_ONLY',
+      read_only: READ_ONLY
     });
     return;
   }
@@ -378,6 +408,26 @@ async function handle(request, response) {
     } catch (error) {
       console.error(error);
       sendError(response, 500, 'DASHBOARD_NOT_FOUND', 'Could not load the dashboard HTML file');
+    }
+    return;
+  }
+
+  if (request.method === 'GET' && (path === '/model-studio' || path === '/model-lab')) {
+    try {
+      sendHtml(response, 200, await readFile(modelStudioFile, 'utf8'));
+    } catch (error) {
+      console.error(error);
+      sendError(response, 500, 'MODEL_STUDIO_NOT_FOUND', 'Could not load the model studio page');
+    }
+    return;
+  }
+
+  if (request.method === 'GET' && path === '/about') {
+    try {
+      sendHtml(response, 200, await readFile(aboutFile, 'utf8'));
+    } catch (error) {
+      console.error(error);
+      sendError(response, 500, 'ABOUT_PAGE_NOT_FOUND', 'Could not load the NeerWatch project overview');
     }
     return;
   }
@@ -397,11 +447,16 @@ async function handle(request, response) {
     sendJson(response, 200, {
       generated_at: null,
       region: seed.region,
-      model_status: 'CONFIGURED',
+      model_status: 'SNAPSHOT_ONLY',
       message: 'Prototype ML risk outputs are generated using synthetic demonstration data. Historical water observations are returned as evidence.',
       total: locations.length,
       locations: locations.map(mapRisk)
     });
+    return;
+  }
+
+  if (request.method === 'GET' && path === '/api/v1/model/check') {
+    sendJson(response, 200, checkModelSnapshot());
     return;
   }
 
@@ -426,6 +481,7 @@ async function handle(request, response) {
 
   const verificationMatch = path.match(/^\/api\/v1\/locations\/([^/]+)\/verification$/);
   if (request.method === 'POST' && verificationMatch) {
+    if (READ_ONLY) return sendError(response, 403, 'READ_ONLY_DEPLOYMENT', 'Field verification submissions are disabled in this read-only deployment.');
     const locationId = decodeURIComponent(verificationMatch[1]);
     if (!byId.has(locationId)) return sendError(response, 404, 'LOCATION_NOT_FOUND', `No monitored location found for ${locationId}`);
     let payload;
@@ -458,10 +514,12 @@ async function handle(request, response) {
     sendJson(response, 200, {
       name: 'Northeast India Water-Borne Disease Early Warning API',
       version: '1.0.0',
-      model_status: 'CONFIGURED',
+      model_status: 'SNAPSHOT_ONLY',
+      read_only: READ_ONLY,
       endpoints: [
         'GET /api/v1/locations',
         'GET /api/v1/risk',
+        'GET /api/v1/model/check',
         'GET /api/v1/risk/{location_id}',
         'GET /api/v1/locations/{location_id}/history',
         'POST /api/v1/locations/{location_id}/verification'
@@ -471,6 +529,7 @@ async function handle(request, response) {
   }
 
   if (request.method === 'POST' && path === '/api/v1/dataset/upload') {
+    if (READ_ONLY) return sendError(response, 403, 'READ_ONLY_DEPLOYMENT', 'Dataset uploads are disabled in this read-only deployment.');
     try {
       uploadedCsvText = await readRequestText(request);
       analysisState = { status: 'UPLOAD_RECEIVED', errors: [] };
@@ -508,12 +567,14 @@ async function handle(request, response) {
     if (analysisState.status !== 'READY_FOR_ANALYSIS') {
       return sendError(response, 400, 'INVALID_STATE', 'Dataset must be validated before analysis');
     }
-    analysisState.status = 'ANALYSIS_RUNNING';
-    sendJson(response, 202, { message: 'Analysis started', status: analysisState.status });
-    
-    setTimeout(() => {
-      analysisState.status = 'ANALYSIS_COMPLETE';
-    }, 2500);
+    analysisState.status = 'INFERENCE_UNAVAILABLE';
+    analysisState.errors = ['CSV schema validation passed, but no executable XGBoost model weights are bundled; no predictions were generated.'];
+    sendJson(response, 409, {
+      message: 'New inference is unavailable in this build.',
+      status: analysisState.status,
+      errors: analysisState.errors,
+      model_check: checkModelSnapshot()
+    });
     return;
   }
 

@@ -1,15 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#1d1d1f" />
-  <meta name="description" content="NeerWatch — Apple-inspired AI-powered water quality intelligence and early warning system for Northeast India. Track contamination, ML risk assessments, and field verification." />
+  <meta name="description" content="NeerWatch — AI-powered water quality intelligence and early warning system for Northeast India. Track contamination, ML risk assessments, and field verification." />
   <title>NeerWatch | Northeast India Water Intelligence</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.css" />
   <style>
     /* ===== APPLE-INSPIRED LIQUID GLASS DESIGN SYSTEM (apple.com/in) ===== */
     :root {
@@ -37,14 +33,14 @@
       --apple-teal: #5ac8fa;
       --apple-indigo: #5856d6;
       --content-max: 1200px;
-      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", sans-serif;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, "Helvetica Neue", Arial, sans-serif;
 
       /* Liquid Glass Tokens (Optimized for Silky-Smooth Performance) */
       --glass-surface: rgba(255, 255, 255, 0.78);
       --glass-surface-elevated: rgba(255, 255, 255, 0.9);
       --glass-border: rgba(255, 255, 255, 0.85);
       --glass-border-subtle: rgba(255, 255, 255, 0.5);
-      --glass-blur: blur(14px);
+      --glass-blur: blur(4px);
       --glass-shadow: 0 8px 24px 0 rgba(0, 113, 227, 0.05), 0 2px 6px 0 rgba(0, 0, 0, 0.02);
       --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.02);
     }
@@ -92,16 +88,14 @@
       pointer-events: none;
       z-index: 0;
       overflow: hidden;
-      opacity: 0.55;
+      opacity: 0.34;
       transform: translateZ(0);
-      will-change: transform;
     }
     .liquid-orb {
       position: absolute;
       border-radius: 50%;
       pointer-events: none;
       transform: translateZ(0);
-      will-change: transform;
     }
     .liquid-orb-1 {
       top: -6%;
@@ -135,8 +129,8 @@
       z-index: 9999;
       height: 48px;
       background: var(--apple-nav-bg);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
       border-bottom: 0.5px solid rgba(255, 255, 255, 0.14);
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
       transform: translateZ(0);
@@ -161,12 +155,6 @@
       transition: opacity 0.2s;
     }
     .nav-brand:hover { opacity: 0.9; }
-    .apple-logo {
-      width: 15px;
-      height: 18px;
-      fill: #ffffff;
-      opacity: 0.95;
-    }
     .brand-drop {
       display: inline-block;
       font-size: 15px;
@@ -196,7 +184,7 @@
     .nav-links button:hover {
       color: #ffffff;
       background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(4px);
     }
     .nav-links button.active {
       color: #ffffff;
@@ -216,7 +204,7 @@
       padding: 5px 13px;
       border-radius: var(--apple-btn-radius);
       background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(5px);
       border: 0.5px solid rgba(255, 255, 255, 0.14);
       color: rgba(245, 245, 247, 0.8);
       font-size: 11px;
@@ -260,7 +248,7 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: var(--apple-btn-radius);
       background: rgba(255, 255, 255, 0.09);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(5px);
       color: rgba(245, 245, 247, 0.95);
       font-size: 11px;
       font-weight: 500;
@@ -319,7 +307,7 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       margin-bottom: 24px;
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(7px);
       box-shadow: 0 4px 16px rgba(90, 200, 250, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.4);
     }
     .hero h1 {
@@ -406,7 +394,7 @@
       font-weight: 500;
       letter-spacing: -0.01em;
       transition: transform 0.2s ease, background 0.2s ease;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(5px);
       box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3);
     }
     .hero-btn-secondary:hover {
@@ -538,8 +526,8 @@
       border: 1px solid var(--glass-border);
       border-radius: var(--apple-btn-radius);
       background: rgba(255, 255, 255, 0.68);
-      backdrop-filter: blur(14px) saturate(180%);
-      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      backdrop-filter: blur(7px) saturate(125%);
+      -webkit-backdrop-filter: blur(7px) saturate(125%);
       color: var(--apple-black);
       font-size: 12.5px;
       font-weight: 500;
@@ -759,7 +747,7 @@
       padding: 4px 10px;
       border-radius: var(--apple-btn-radius);
       background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(4px);
       border: 1px solid var(--apple-border);
       color: var(--apple-black);
       font-size: 10px;
@@ -780,8 +768,8 @@
       padding: 13px 14px;
       border-radius: 16px;
       background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
       border: 1px solid rgba(255, 255, 255, 0.95);
       box-shadow: 
         0 2px 8px rgba(0, 0, 0, 0.02),
@@ -838,7 +826,7 @@
       margin-bottom: 14px;
       font-size: 12px;
       background: rgba(255, 149, 0, 0.08);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(5px);
       border: 1px solid rgba(255, 149, 0, 0.2);
       border-radius: 14px;
       padding: 12px 16px;
@@ -871,7 +859,7 @@
       font-size: 12.5px;
       font-weight: 600;
       letter-spacing: -0.01em;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(5px);
     }
     .status-banner.flagged { 
       background: rgba(255, 59, 48, 0.1); 
@@ -998,7 +986,7 @@
       border: 1px solid var(--apple-gray-light);
       border-radius: 14px;
       background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(5px);
       color: var(--apple-black);
       font-size: 14px;
       appearance: none;
@@ -1019,7 +1007,7 @@
       padding: 13px 16px;
       border-radius: 14px;
       background: rgba(255, 149, 0, 0.08);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(4px);
       border: 1px solid rgba(255, 149, 0, 0.2);
       color: #634710;
       font-size: 12px;
@@ -1071,8 +1059,8 @@
       z-index: 2;
       padding: 12px 18px;
       background: rgba(245, 245, 247, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       color: var(--apple-gray);
       font-size: 10.5px;
       font-weight: 700;
@@ -1209,8 +1197,8 @@
       padding: 22px;
       border-radius: 18px;
       background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
       border: 1px solid rgba(255, 255, 255, 0.9);
       box-shadow: 
         0 4px 16px rgba(0, 0, 0, 0.02),
@@ -1281,7 +1269,7 @@
       padding: 7px 16px;
       border-radius: var(--apple-btn-radius);
       background: rgba(0, 113, 227, 0.1);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(5px);
       color: var(--apple-blue);
       font-size: 12.5px;
       font-weight: 600;
@@ -1296,9 +1284,11 @@
       padding: 10px 16px;
       border-radius: 12px;
       background: rgba(255, 59, 48, 0.1);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(4px);
       border: 1px solid rgba(255, 59, 48, 0.25);
     }
+    .dataset-errors.snapshot-info { color:var(--apple-black); background:var(--apple-blue-soft); border-color:var(--apple-border); line-height:1.55; }
+    .state-select-nav[hidden] { display:none!important; }
 
     /* ===== FIELD VERIFICATION ADVISORY NOTE ===== */
     .verification-note {
@@ -1405,8 +1395,8 @@
       padding: 12px 16px;
       border-radius: 16px;
       background: rgba(255, 255, 255, 0.92) !important;
-      backdrop-filter: blur(16px) !important;
-      -webkit-backdrop-filter: blur(16px) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
       font-size: 13px;
       line-height: 1.5;
       box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18) !important;
@@ -1419,7 +1409,7 @@
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.8) !important;
       background: rgba(255, 255, 255, 0.8) !important;
-      backdrop-filter: blur(14px) !important;
+      backdrop-filter: blur(7px) !important;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
     }
     .nw-marker {
@@ -1455,8 +1445,8 @@
       inset: 0;
       z-index: 10000;
       background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
       display: grid;
       place-items: center;
       padding: 20px;
@@ -1472,8 +1462,8 @@
       width: 100%;
       max-width: 490px;
       background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
+      backdrop-filter: blur(8px) saturate(125%);
+      -webkit-backdrop-filter: blur(8px) saturate(125%);
       border: 1px solid rgba(255, 255, 255, 0.9);
       border-radius: 26px;
       box-shadow: 
@@ -1531,7 +1521,7 @@
       border: 1px solid var(--apple-gray-light);
       border-radius: 14px;
       background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(4px);
       font-size: 14px;
       transition: all 0.2s;
       box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.03);
@@ -1583,8 +1573,8 @@
       padding: 14px 24px;
       border-radius: var(--apple-btn-radius);
       background: rgba(29, 29, 31, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.18);
       color: #ffffff;
       font-size: 13.5px;
@@ -1632,34 +1622,320 @@
       .footer-bottom { flex-direction: column; text-align: center; }
     }
     .map-fallback[hidden] { display: none !important; }
+
+    /* Dashboard refresh: clearer navigation, compact editorial hero, and persistent themes. */
+    .global-nav-inner { max-width: 1440px; gap: 12px; padding: 0 24px; }
+    .nav-links { flex: 1; min-width: 0; justify-content: center; gap: 1px; }
+    .nav-links button, .nav-link-anchor { padding: 7px 9px; font-size: 11px; }
+    .nav-link-anchor { color: rgba(245,245,247,.82); border-radius: 999px; transition: color .22s ease, background .22s ease; }
+    .nav-link-anchor:hover { color: #fff; background: rgba(255,255,255,.12); }
+    .nav-right { flex-shrink: 0; gap: 8px; }
+    .connection-pill { white-space: nowrap; padding: 5px 9px; font-size: 10px; }
+    .connection-pill span:last-child { overflow:hidden; text-overflow:ellipsis; }
+    .state-select-nav { max-width: 118px; padding-left: 10px; }
+    .theme-toggle { width: 32px; height: 32px; display: grid; place-items: center; flex-shrink: 0; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; color: #f5f5f7; background: rgba(255,255,255,.1); cursor: pointer; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+    .theme-toggle:hover { transform: rotate(-10deg) scale(1.05); background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.42); }
+
+    .hero { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(300px,.85fr); align-items: center; gap: 0 6vw; min-height: 440px; padding: 82px max(5vw,calc((100vw - 1240px)/2)) 72px; text-align: left; background: radial-gradient(ellipse at 22% 5%,#163a51 0%,transparent 48%), radial-gradient(ellipse at 84% 72%,#0e3a38 0%,transparent 42%), linear-gradient(125deg,#07121d,#0a1722 54%,#07131b); }
+    .hero::before { top: -360px; left: 36%; width: 900px; height: 900px; opacity: .72; }
+    .hero-eyebrow,.hero h1,.hero-sub,.hero-actions { grid-column: 1; }
+    .hero-eyebrow { justify-self: start; margin-bottom: 19px; }
+    .hero h1 { max-width: 660px; font-size: clamp(48px,5.6vw,70px); letter-spacing: -.055em; line-height: 1.01; margin-bottom: 15px; }
+    .hero-sub { max-width: 570px; margin: 0 0 22px; font-size: 16px; line-height: 1.65; }
+    .hero-actions { justify-content: flex-start; gap: 10px; margin-bottom: 0; }
+    .hero-btn-primary,.hero-btn-secondary { padding: 12px 20px; font-size: 13px; }
+    .hero-stats { grid-column: 2; grid-row: 1 / span 4; width: 100%; max-width: 420px; justify-self: end; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0; border: 0; margin: 0; }
+    .hero-stat { min-height: 112px; padding: 19px 18px; text-align: left; border: 1px solid rgba(228,248,255,.14); border-radius: 19px; background: linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.035)); backdrop-filter: blur(8px) saturate(125%); box-shadow: inset 0 1px rgba(255,255,255,.16),0 14px 36px rgba(0,0,0,.14); transition: transform .3s cubic-bezier(.2,.7,.2,1),background .3s,border-color .3s; }
+    .hero-stat:hover { transform: translateY(-4px); background: rgba(255,255,255,.14); border-color: rgba(90,200,250,.38); }
+    .hero-stat-value { font-size: 35px; text-shadow: 0 4px 24px rgba(90,200,250,.2); }
+    .hero-stat-label { font-size: 10px; letter-spacing: .075em; }
+    .hero-liquid-wave { height: 24px; }
+    .info-banner { margin-top: -13px; }
+    .info-banner-inner { border-radius: 16px; padding: 13px 18px; font-size: 12px; }
+    .states-bar { margin-top: 24px; }
+    .content-wrap { padding-top: 20px; }
+    .apple-card { border-radius: 22px; transition: transform .32s cubic-bezier(.2,.7,.2,1),box-shadow .32s,border-color .32s,background .32s; }
+    .apple-card:hover { transform: translateY(-3px); }
+    .map-panel,.detail-panel { padding: 23px; }
+    .map-frame { border-radius: 18px; }
+    .map-panel-head h2,.card-head h2,.table-heading h2 { letter-spacing: -.04em; }
+    .risk-snapshot > div { border-radius: 14px; }
+    .dataset-panel,.verification-note { border-radius: 22px; }
+    .nav-links a.nav-link-anchor { white-space: nowrap; }
+    .mobile-menu-toggle { display:none; align-items:center; gap:7px; padding:8px 11px; color:#f5f5f7; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); border-radius:999px; font-size:11px; cursor:pointer; }
+
+    .home-screen[hidden],.workspace-shell[hidden],[data-app-page][hidden] { display:none!important; }
+    .overview-launchpad { max-width:1240px; margin:26px auto 74px; padding:0 28px; }
+    .launchpad-heading { display:flex; justify-content:space-between; align-items:end; gap:18px; margin-bottom:15px; }
+    .launchpad-kicker { color:var(--apple-blue); font-size:10px; font-weight:800; letter-spacing:.14em; }
+    .launchpad-heading h2 { margin-top:6px; color:var(--apple-black); font-size:clamp(21px,2.5vw,28px); letter-spacing:-.045em; }
+    .launchpad-hint { color:var(--apple-gray); font-size:12px; }
+    .launchpad-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+    .launch-card { min-height:136px; display:grid; grid-template-columns:42px 1fr 18px; align-items:start; gap:12px; padding:19px 16px; text-align:left; border:1px solid var(--glass-border); border-radius:20px; background:var(--glass-surface); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); color:var(--apple-black); box-shadow:var(--glass-shadow),var(--glass-specular); transition:transform .32s cubic-bezier(.2,.7,.2,1),box-shadow .32s,border-color .32s,background .32s; animation:launchRise .55s both; }
+    .launch-card:nth-child(2){animation-delay:.06s}.launch-card:nth-child(3){animation-delay:.12s}.launch-card:nth-child(4){animation-delay:.18s}
+    .launch-card:hover { transform:translateY(-5px); border-color:rgba(90,200,250,.55); box-shadow:0 18px 38px rgba(0,113,227,.11),var(--glass-specular); }
+    .launch-card:active { transform:translateY(-1px) scale(.99); }
+    .launch-icon { width:40px; height:40px; display:grid; place-items:center; border-radius:14px; font-size:20px; font-weight:700; background:var(--apple-blue-soft); color:var(--apple-blue); }
+    .ml-icon { color:#118d82; background:rgba(24,183,163,.12); }.sites-icon { color:#a46a04; background:rgba(255,149,0,.13); }.data-icon { color:#6759d8; background:rgba(88,86,214,.12); }
+    .launch-copy { display:flex; flex-direction:column; gap:8px; padding-top:2px; }.launch-copy b { font-size:13px; letter-spacing:-.02em; }.launch-copy small { color:var(--apple-gray); font-size:11px; line-height:1.5; }
+    .launch-arrow { color:var(--apple-gray); font-size:17px; transition:transform .25s,color .25s; }.launch-card:hover .launch-arrow { transform:translate(2px,-2px); color:var(--apple-blue); }
+    .overview-footnote { display:flex; align-items:center; gap:10px; margin-top:17px; color:var(--apple-gray); font-size:11px; }.overview-footnote a { margin-left:auto; color:var(--apple-blue); font-weight:600; }.pulse-ring { width:8px; height:8px; flex:none; border-radius:50%; background:#2bbf87; box-shadow:0 0 0 5px rgba(43,191,135,.12); }
+    .workspace-shell { max-width:1360px; min-height:calc(100vh - 48px); margin:0 auto; padding:36px 26px 72px; }
+    .workspace-head { display:flex; align-items:center; justify-content:space-between; gap:20px; position:relative; overflow:hidden; margin:0 0 19px; padding:24px 28px; border:1px solid var(--glass-border); border-radius:24px; background:linear-gradient(120deg,var(--glass-surface-elevated),var(--glass-surface)); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); box-shadow:var(--glass-shadow),var(--glass-specular); animation:workspaceIn .42s cubic-bezier(.2,.7,.2,1) both; }
+    .workspace-head::after { content:''; position:absolute; right:-60px; top:-140px; width:300px; height:300px; background:radial-gradient(circle,rgba(90,200,250,.16),transparent 68%); pointer-events:none; }
+    .workspace-eyebrow { display:flex; align-items:center; gap:8px; color:var(--apple-gray); font-size:9px; font-weight:800; letter-spacing:.14em; }
+    .workspace-dot { width:7px; height:7px; border-radius:50%; background:var(--apple-teal); box-shadow:0 0 12px rgba(90,200,250,.72); }.workspace-separator { opacity:.42; }
+    .workspace-head h1 { margin-top:8px; color:var(--apple-black); font-size:clamp(26px,3.3vw,36px); letter-spacing:-.055em; line-height:1.1; }.workspace-head p { margin-top:6px; color:var(--apple-gray); font-size:13px; }
+    .workspace-back { position:relative; z-index:1; flex:none; padding:10px 14px; border:1px solid var(--glass-border); border-radius:999px; color:var(--apple-black); background:var(--glass-surface-elevated); font-size:11px; font-weight:600; transition:transform .2s,border-color .2s; }.workspace-back:hover { transform:translateX(-2px); border-color:rgba(90,200,250,.55); }
+    .workspace-shell .states-bar { max-width:none; margin:0 0 8px; padding:0; }
+    .workspace-shell .content-wrap { max-width:none; margin:0; padding:12px 0 28px; }
+    .workspace-shell .apple-card { animation:workspaceIn .38s cubic-bezier(.2,.7,.2,1) both; }
+    .secondary-grid.single-view,.bottom-grid.single-view { grid-template-columns:minmax(0,1fr); }
+    .ml-selection-summary { margin-top:18px; padding:18px; border:1px solid var(--glass-border); border-radius:18px; background:var(--glass-surface-elevated); box-shadow:var(--glass-shadow); animation:workspaceIn .32s both; }
+    .ml-selection-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+    .ml-selection-top h3 { font-size:19px; letter-spacing:-.04em; color:var(--apple-black); }
+    .ml-selection-top p { margin-top:4px; color:var(--apple-gray); font-size:12px; }
+    .ml-selection-badge { flex:none; padding:6px 9px; border-radius:999px; color:#08675f; background:rgba(43,191,135,.13); font-size:10px; font-weight:700; }
+    .ml-result-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; margin-top:16px; }
+    .ml-result-metric { padding:12px; border-radius:13px; background:var(--apple-gray-bg); border:1px solid var(--apple-border-light); }
+    .ml-result-metric span { display:block; color:var(--apple-gray); font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    .ml-result-metric strong { display:block; margin-top:6px; color:var(--apple-black); font-size:17px; letter-spacing:-.03em; }
+    .ml-driver-list { display:flex; flex-wrap:wrap; gap:7px; margin-top:14px; }
+    .ml-driver-chip { padding:7px 10px; border:1px solid var(--glass-border); border-radius:999px; color:var(--apple-black); background:var(--glass-surface); font-size:10px; }
+    .ml-driver-chip b { color:var(--apple-blue); }
+    @keyframes launchRise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes workspaceIn { from { opacity:0; transform:translateY(9px); } to { opacity:1; transform:translateY(0); } }
+
+    :root[data-theme="dark"] { color-scheme: dark; --apple-bg:#0b141b; --apple-white:#111e26; --apple-black:#edf4f5; --apple-gray:#9aaeb8; --apple-gray-light:#344852; --apple-gray-bg:#101d25; --apple-border:rgba(222,244,250,.12); --apple-border-light:rgba(222,244,250,.08); --apple-blue-soft:rgba(90,200,250,.13); --glass-surface:rgba(20,32,41,.78); --glass-surface-elevated:rgba(25,40,50,.91); --glass-border:rgba(224,245,250,.16); --glass-border-subtle:rgba(224,245,250,.1); --glass-shadow:0 12px 34px rgba(0,0,0,.2); --glass-specular:inset 0 1px rgba(255,255,255,.11),inset 0 -1px rgba(0,0,0,.12); }
+    :root[data-theme="dark"] body { background: radial-gradient(ellipse at 82% 0%,rgba(17,72,81,.26),transparent 34%),var(--apple-bg); color:var(--apple-black); }
+    :root[data-theme="dark"] .liquid-mesh-container { opacity:.33; }
+    :root[data-theme="dark"] .info-banner-inner { background:rgba(34,34,29,.82); color:#e8d9b7; border-color:rgba(255,190,75,.24); box-shadow:0 12px 34px #0003,inset 0 1px #ffffff15; }
+    :root[data-theme="dark"] .info-banner b { color:#ffe4a9; }
+    :root[data-theme="dark"] .state-chip { background:rgba(21,34,43,.82); border-color:var(--glass-border); color:var(--apple-black); box-shadow:inset 0 1px #ffffff12,0 4px 14px #0002; }
+    :root[data-theme="dark"] .state-chip:hover { background:rgba(30,54,65,.92); color:#8ce2ff; }
+    :root[data-theme="dark"] .state-chip.active { background:linear-gradient(135deg,#12424b,#176d69); border-color:#78d8cf7a; color:#fff; }
+    :root[data-theme="dark"] .detail-title,:root[data-theme="dark"] .map-fallback b { color:var(--apple-black); }
+    :root[data-theme="dark"] .state-badge,:root[data-theme="dark"] .risk-snapshot > div,:root[data-theme="dark"] .ml-zone-select { background:rgba(10,20,27,.72); border-color:var(--glass-border); color:var(--apple-black); }
+    :root[data-theme="dark"] .risk-snapshot > div:hover { background:rgba(30,49,60,.94); }
+    :root[data-theme="dark"] .ml-disclosure { background:rgba(76,54,17,.25); border-color:rgba(255,190,75,.2); color:#decba3; }
+    :root[data-theme="dark"] .ml-disclosure b { color:#ffe4ad; }
+    :root[data-theme="dark"] .observations th { background:rgba(17,29,37,.94); color:#b5c5cb; }
+    :root[data-theme="dark"] .observations td { color:#e3eef0; border-color:rgba(220,240,245,.08); }
+    :root[data-theme="dark"] .coverage-row { border-color:rgba(220,240,245,.1); }
+    :root[data-theme="dark"] .dataset-step-card { background:rgba(20,32,41,.78); border-color:var(--glass-border); box-shadow:inset 0 1px rgba(255,255,255,.08),0 10px 28px rgba(0,0,0,.18); }
+    :root[data-theme="dark"] .dataset-step-card:hover { background:rgba(27,45,56,.94); }
+    :root[data-theme="dark"] .dataset-btn { background:rgba(20,32,41,.85); border-color:var(--glass-border); color:var(--apple-black); }
+    :root[data-theme="dark"] .connection-pill.connected { color:#c6f4d2; }
+    :root[data-theme="dark"] .connection-pill.offline { color:#ffd2d0; }
+    :root[data-theme="dark"] .footer-bottom,:root[data-theme="dark"] .footer-col p,:root[data-theme="dark"] .footer-col a { color:#9aabb2; }
+    :root[data-theme="dark"] .verification-modal { background:rgba(15,27,35,.96); color:#edf4f5; }
+
+    @media (max-width: 1180px) {
+      .global-nav-inner { gap:7px; padding:0 12px; }
+      .nav-links button,.nav-link-anchor { padding:6px 6px; font-size:10px; }
+      .nav-brand { font-size:14px; gap:6px; }
+      .connection-pill { width:32px; height:32px; justify-content:center; padding:0; overflow:hidden; }
+      .connection-pill span:last-child { display:none; }
+      .state-select-nav { max-width:106px; }
+    }
+    @media (max-width: 980px) {
+      .global-nav { height:56px; }
+      .global-nav-inner { justify-content:space-between; }
+      .nav-links { display:none; }
+      .mobile-menu-toggle { display:inline-flex; }
+      .nav-links.mobile-open { display:flex; position:absolute; top:62px; left:12px; right:12px; flex-direction:column; align-items:stretch; padding:10px; gap:3px; border:1px solid rgba(255,255,255,.16); border-radius:18px; background:rgba(14,25,34,.92); backdrop-filter:blur(8px) saturate(125%); box-shadow:0 20px 50px #0005; }
+      .nav-links.mobile-open button,.nav-links.mobile-open .nav-link-anchor { text-align:left; padding:11px 13px; font-size:13px; }
+      .hero { margin-top:56px; grid-template-columns:1fr minmax(250px,.75fr); min-height:400px; }
+      .connection-pill { max-width:none; }
+      .launchpad-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .workspace-shell { padding:26px 18px 56px; }
+    }
+    @media (max-width: 720px) {
+      .hero { display:flex; flex-direction:column; align-items:flex-start; gap:0; min-height:unset; padding:72px 22px 56px; }
+      .hero-eyebrow,.hero h1,.hero-sub,.hero-actions,.hero-stats { width:100%; }
+      .hero h1 { font-size:clamp(42px,12vw,60px); }
+      .hero-sub { font-size:15px; }
+      .hero-actions { flex-direction:column; align-items:stretch; }
+      .hero-btn-primary,.hero-btn-secondary { justify-content:center; }
+      .hero-stats { grid-template-columns:1fr 1fr; max-width:none; margin-top:34px; }
+      .overview-launchpad { margin:24px auto 52px; padding:0 16px; }
+      .launchpad-heading { align-items:flex-start; flex-direction:column; gap:5px; }
+      .launchpad-grid { grid-template-columns:1fr; gap:9px; }
+      .launch-card { min-height:90px; align-items:center; padding:14px; }
+      .overview-footnote { align-items:flex-start; flex-wrap:wrap; }
+      .overview-footnote a { width:100%; margin:4px 0 0 18px; }
+      .workspace-shell { padding:21px 14px 42px; }
+      .workspace-head { align-items:flex-start; padding:20px 18px; border-radius:20px; }
+      .workspace-back { padding:8px 10px; font-size:10px; }
+      .hero-stat { min-height:90px; padding:15px; }
+      .hero-stat-value { font-size:29px; }
+      .info-banner { margin:12px auto 0; padding:0 14px; }
+      .info-banner-inner { padding:12px 14px; }
+      .states-bar { margin-top:18px; padding:0 14px; }
+      .nav-right { gap:7px; }
+      .connection-pill { padding:5px 7px; max-width:38px; }
+      .connection-pill span:last-child { display:none; }
+      .state-select-nav { width:112px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
+    /* Premium refinement: lighter glass, restrained lift, and compositor-friendly motion. */
+    :root { --glass-surface:rgba(255,255,255,.88); --glass-surface-elevated:rgba(255,255,255,.94); --glass-border:rgba(255,255,255,.62); --glass-border-subtle:rgba(255,255,255,.38); --glass-shadow:0 8px 24px rgba(24,48,72,.045); --glass-specular:inset 0 1px rgba(255,255,255,.68); }
+    :root[data-theme="dark"] { --glass-surface:rgba(20,32,41,.88); --glass-surface-elevated:rgba(25,40,50,.94); --glass-border:rgba(224,245,250,.14); --glass-border-subtle:rgba(224,245,250,.08); --glass-shadow:0 8px 24px rgba(0,0,0,.16); --glass-specular:inset 0 1px rgba(255,255,255,.08); }
+    .apple-card,.launch-card,.workspace-head,.hero-stat,.nav-links button,.nav-link-anchor,.hero-btn-primary,.hero-btn-secondary,.workspace-back { transition-duration:.24s; transition-timing-function:cubic-bezier(.22,1,.36,1); }
+    .apple-card:hover,.launch-card:hover { transform:translateY(-2px); }
+    .liquid-mesh-container { opacity:.3; }
+    .liquid-orb-1 { animation-duration:44s; } .liquid-orb-2 { animation-duration:52s; }
+    @media (max-width:980px) { .nav-links.mobile-open { backdrop-filter:blur(7px) saturate(125%); -webkit-backdrop-filter:blur(7px) saturate(125%); } }
+    /* Content follows a quieter editorial hierarchy; Liquid Glass stays in navigation and controls. */
+    .hero { background:linear-gradient(118deg,#07141f 0%,#0b2530 56%,#0b2d2b 100%); }
+    .hero::before { opacity:.55; }
+    .hero h1 { letter-spacing:-.065em; font-weight:650; }
+    .hero h1 span { filter:none; background-image:linear-gradient(105deg,#8bd7ff,#73e0c5); }
+    .hero-sub { max-width:590px; }
+    .hero-stat { backdrop-filter:none; -webkit-backdrop-filter:none; background:rgba(255,255,255,.075); border-color:rgba(255,255,255,.12); box-shadow:inset 0 1px rgba(255,255,255,.08); }
+    .launchpad-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .launch-card { min-height:124px; background:var(--apple-white); border-color:var(--apple-border); backdrop-filter:none; -webkit-backdrop-filter:none; box-shadow:0 4px 16px rgba(24,42,55,.045); }
+    .launch-card-feature { background:linear-gradient(135deg,var(--apple-white),var(--apple-gray-bg)); }
+    .launch-card:hover { box-shadow:0 12px 28px rgba(24,42,55,.09); }
+    .apple-card { background:var(--apple-white); backdrop-filter:none; -webkit-backdrop-filter:none; border-color:var(--apple-border); box-shadow:0 4px 18px rgba(24,42,55,.04); }
+    .apple-card::before { display:none; }
+    .apple-card:hover { box-shadow:0 8px 22px rgba(24,42,55,.065); }
+    .workspace-head { background:var(--apple-white); backdrop-filter:none; -webkit-backdrop-filter:none; box-shadow:0 4px 18px rgba(24,42,55,.04); }
+    .workspace-head::after { opacity:.38; }
+    .workspace-tabs { display:flex; align-items:center; gap:5px; overflow-x:auto; margin:0 0 17px; padding:5px; border:1px solid var(--apple-border); border-radius:15px; background:var(--apple-white); box-shadow:0 3px 12px rgba(24,42,55,.035); scrollbar-width:none; }
+    .workspace-tabs::-webkit-scrollbar { display:none; }
+    .workspace-tabs button { flex:none; padding:9px 14px; border-radius:10px; color:var(--apple-gray); font-size:12px; font-weight:600; transition:background .2s,color .2s,transform .2s; }
+    .workspace-tabs button:hover { color:var(--apple-black); background:var(--apple-gray-bg); }
+    .workspace-tabs button.active { color:var(--apple-black); background:var(--apple-gray-bg); box-shadow:inset 0 0 0 1px var(--apple-border-light); }
+    .launch-icon.test-icon { color:#087f70; background:rgba(8,127,112,.11); }
+    .apple-modal-overlay { background:rgba(6,15,22,.52); backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px); padding:14px; }
+    .apple-modal-sheet { max-width:620px; max-height:calc(100dvh - 28px); overflow:auto; padding:26px; border:1px solid var(--apple-border); border-radius:22px; background:var(--apple-white); color:var(--apple-black); backdrop-filter:none; -webkit-backdrop-filter:none; box-shadow:0 24px 64px rgba(0,0,0,.22); transform:translateY(12px) scale(.99); transition:transform .24s cubic-bezier(.22,1,.36,1); }
+    .modal-header { align-items:flex-start; margin-bottom:16px; }
+    .modal-kicker { color:var(--apple-blue); font-size:9px; font-weight:800; letter-spacing:.14em; }
+    .modal-header h3 { margin-top:5px; font-size:23px; letter-spacing:-.045em; }
+    .modal-header p { margin-top:4px; color:var(--apple-gray); font-size:12px; }
+    .field-test-context { display:grid; grid-template-columns:1fr auto; align-items:center; gap:4px 12px; margin-bottom:17px; padding:13px 15px; border:1px solid var(--apple-border); border-radius:14px; background:var(--apple-gray-bg); }
+    .field-test-context strong { font-size:13px; }
+    .field-test-context p { grid-column:1; color:var(--apple-gray); font-size:11px; }
+    .field-test-context .field-context-tag { grid-column:2; grid-row:1 / span 2; padding:6px 9px; border-radius:999px; background:var(--apple-blue-soft); color:var(--apple-blue); font-size:9px; font-weight:700; text-transform:uppercase; }
+    .modal-form-grid,.field-reading-grid { display:grid; grid-template-columns:1fr 1fr; gap:0 12px; }
+    .modal-form-group { margin-bottom:12px; }
+    .modal-form-group label { color:var(--apple-gray); font-size:9px; letter-spacing:.08em; }
+    .modal-input,.modal-select,.modal-textarea { padding:10px 12px; border-color:var(--apple-border); border-radius:11px; background:var(--apple-bg); color:var(--apple-black); backdrop-filter:none; -webkit-backdrop-filter:none; font-size:13px; box-shadow:none; }
+    .field-readings { margin:0 0 10px; padding:14px; border:1px solid var(--apple-border); border-radius:14px; background:var(--apple-bg); }
+    .field-readings-heading { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:12px; }
+    .field-readings-heading h4 { font-size:13px; letter-spacing:-.02em; }
+    .field-readings-heading p { margin-top:3px; color:var(--apple-gray); font-size:10px; line-height:1.45; }
+    .field-readings-tag { flex:none; color:var(--apple-gray); font-size:8px; font-weight:800; letter-spacing:.1em; }
+    .field-reading-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; }
+    .field-reading-grid .modal-form-group { margin:0; }
+    .field-reading-grid label { min-height:24px; }
+    .field-test-disclaimer { margin-top:4px; color:var(--apple-gray); font-size:10px; line-height:1.45; }
+    .field-test-error { margin-top:8px; padding:10px 12px; border-radius:10px; background:var(--apple-red-bg); color:#a32922; font-size:11px; }
+    .field-test-error[hidden] { display:none; }
+    .modal-actions { margin-top:16px; }
+    .modal-btn-confirm { background:linear-gradient(180deg,#087f70,#06665d); box-shadow:0 4px 12px rgba(8,127,112,.18); }
+    .modal-btn-confirm:hover { background:linear-gradient(180deg,#09917e,#087568); }
+    :root[data-theme="dark"] .launch-card,:root[data-theme="dark"] .apple-card,:root[data-theme="dark"] .workspace-head,:root[data-theme="dark"] .workspace-tabs { background:#111e26; border-color:var(--apple-border); box-shadow:0 5px 20px rgba(0,0,0,.14); }
+    :root[data-theme="dark"] .launch-card-feature { background:linear-gradient(135deg,#111e26,#142a32); }
+    :root[data-theme="dark"] .workspace-tabs button:hover,:root[data-theme="dark"] .workspace-tabs button.active { background:#1b303a; }
+    :root[data-theme="dark"] .field-test-context,:root[data-theme="dark"] .field-readings { background:#101d25; border-color:var(--apple-border); }
+    :root[data-theme="dark"] .modal-input,:root[data-theme="dark"] .modal-select,:root[data-theme="dark"] .modal-textarea { background:#101d25; color:var(--apple-black); border-color:var(--apple-border); }
+    :root[data-theme="dark"] .apple-modal-sheet { background:#111e26; border-color:var(--apple-border); color:var(--apple-black); }
+    @media(max-width:720px) { .launchpad-grid { grid-template-columns:1fr; } .workspace-tabs { margin-bottom:12px; } .field-reading-grid { grid-template-columns:1fr; } .modal-form-grid { grid-template-columns:1fr; } .apple-modal-sheet { padding:21px 17px; } }
+
+    /* NeerWatch product UI: calm, legible surfaces and a small glass control layer. */
+    :root { --apple-bg:#f4f6f7; --apple-white:#fff; --apple-black:#18252c; --apple-gray:#667780; --apple-gray-light:#d9e0e3; --apple-gray-bg:#f7f9fa; --apple-border:#e1e7e9; --apple-border-light:#edf0f1; --apple-blue:#087f78; --apple-blue-hover:#056d67; --apple-blue-soft:#e7f3f1; --content-max:1200px; --glass-blur:blur(8px); }
+    :root[data-theme="dark"] { --apple-bg:#11191d; --apple-white:#192328; --apple-black:#eff4f5; --apple-gray:#a2b0b5; --apple-gray-light:#344248; --apple-gray-bg:#202b30; --apple-border:#344147; --apple-border-light:#29353a; --apple-blue:#62c9bb; --apple-blue-hover:#7bd8cb; --apple-blue-soft:#203a38; }
+    body,:root[data-theme="dark"] body { background:var(--apple-bg); color:var(--apple-black); }
+    .liquid-mesh-container { display:none; }
+    .global-nav { height:56px; background:rgba(250,252,252,.82); border-bottom:1px solid rgba(23,42,50,.09); box-shadow:0 1px 8px rgba(20,38,45,.04); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
+    :root[data-theme="dark"] .global-nav { background:rgba(21,31,36,.86); border-bottom-color:rgba(230,242,245,.1); }
+    .global-nav-inner { max-width:1200px; height:56px; }
+    .nav-brand { color:var(--apple-black); font-size:15px; font-weight:700; letter-spacing:-.035em; }
+    .drop-logo { width:17px; height:21px; flex:none; color:var(--apple-blue); }
+    .nav-brand { display:flex; align-items:center; gap:8px; }
+    .brand-drop { display:none; }
+    .nav-links button,.nav-link-anchor { color:var(--apple-gray); font-size:12px; }
+    .nav-links button.active,.nav-links button:hover,.nav-link-anchor:hover { color:var(--apple-black); background:rgba(100,126,133,.1); }
+    .connection-pill { color:var(--apple-gray); background:transparent; border-color:var(--apple-border); }
+    .theme-toggle { width:34px; height:34px; color:var(--apple-black); background:rgba(255,255,255,.46); border:1px solid rgba(78,101,108,.18); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
+    :root[data-theme="dark"] .theme-toggle { color:var(--apple-black); background:rgba(232,245,246,.08); border-color:rgba(232,245,246,.16); }
+    .state-select-nav { color:var(--apple-black); background:transparent; border-color:var(--apple-border); }
+    .state-select-nav option { background:var(--apple-white); color:var(--apple-black); }
+    .hero { min-height:0; margin-top:56px; padding:52px max(24px,calc((100vw - 1120px)/2)) 28px; grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr); gap:0 7%; background:var(--apple-bg); color:var(--apple-black); }
+    .hero::before,.hero-liquid-wave { display:none; }
+    .hero-eyebrow { padding:0; margin:0 0 17px; border:0; border-radius:0; background:none; box-shadow:none; color:var(--apple-gray); font-size:11px; font-weight:650; letter-spacing:.04em; backdrop-filter:none; text-transform:none; }
+    .hero-eyebrow span:first-child { display:none; }
+    .hero h1 { margin:0 0 15px; color:var(--apple-black); font-size:clamp(43px,5.1vw,62px); font-weight:650; letter-spacing:-.055em; line-height:1.02; }
+    .hero h1 span { background:none; color:#087f78; -webkit-text-fill-color:currentColor; filter:none; }
+    :root[data-theme="dark"] .hero h1 span { color:#62c9bb; }
+    .hero-sub { max-width:520px; margin:0 0 23px; color:var(--apple-gray); font-size:15px; line-height:1.65; }
+    .hero-actions { gap:11px; margin:0; }
+    .hero-btn-primary { padding:11px 17px; border:1px solid #087f78; border-radius:9px; background:#087f78; box-shadow:none; font-size:12px; font-weight:650; transition:background .16s ease,transform .16s ease; }
+    .hero-btn-primary:hover { background:#066f69; box-shadow:none; transform:translateY(-1px); }
+    .hero-btn-secondary { padding:11px 14px; border:1px solid var(--apple-border); border-radius:9px; background:var(--apple-white); color:var(--apple-black); box-shadow:none; font-size:12px; backdrop-filter:none; transition:background .16s ease,border-color .16s ease; }
+    .hero-btn-secondary:hover { background:var(--apple-gray-bg); border-color:#bbc9cd; box-shadow:none; transform:none; }
+    .hero-stats { grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 18px; max-width:390px; padding:0; border:0; }
+    .hero-stat { min-height:0; padding:17px 4px 16px; border:0; border-bottom:1px solid var(--apple-border); border-radius:0; background:transparent; box-shadow:none; backdrop-filter:none; text-align:left; transition:none; }
+    .hero-stat:hover { background:transparent; border-color:var(--apple-border); transform:none; }
+    .hero-stat-value { color:var(--apple-black); font-size:29px; font-weight:620; text-shadow:none; }
+    .hero-stat-label { margin-top:4px; color:var(--apple-gray); font-size:9px; letter-spacing:.045em; }
+    .info-banner { max-width:1168px; margin:0 auto; padding:0 24px; }
+    .info-banner-inner { padding:13px 15px; border:1px solid var(--apple-border); border-radius:9px; background:var(--apple-white); box-shadow:none; color:var(--apple-gray); font-size:11px; line-height:1.55; }
+    .info-banner b { color:var(--apple-black); }
+    :root[data-theme="dark"] .info-banner-inner { background:var(--apple-white); border-color:var(--apple-border); color:var(--apple-gray); box-shadow:none; }
+    :root[data-theme="dark"] .info-banner b { color:var(--apple-black); }
+    .overview-launchpad { max-width:1168px; margin:27px auto 62px; padding:0 24px; }
+    .launchpad-heading { margin-bottom:16px; }
+    .launchpad-kicker { color:var(--apple-gray); font-size:9px; font-weight:700; letter-spacing:.1em; }
+    .launchpad-heading h2 { color:var(--apple-black); font-size:23px; font-weight:620; letter-spacing:-.035em; }
+    .launchpad-hint { color:var(--apple-gray); font-size:11px; }
+    .launch-card { min-height:122px; grid-template-columns:36px 1fr 14px; gap:11px; padding:17px 15px; border:1px solid var(--apple-border); border-radius:11px; background:var(--apple-white); color:var(--apple-black); box-shadow:0 1px 2px rgba(18,36,44,.025); animation:none; transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease; }
+    .launch-card:nth-child(n) { animation:none; }
+    .launch-card-feature,:root[data-theme="dark"] .launch-card-feature { background:var(--apple-white); }
+    .launch-card:hover { transform:translateY(-2px); border-color:#bdcfce; box-shadow:0 5px 16px rgba(18,36,44,.055); }
+    :root[data-theme="dark"] .launch-card:hover { border-color:#4d696a; box-shadow:0 5px 16px rgba(0,0,0,.18); }
+    .launch-card:active { transform:translateY(0); }
+    .launch-icon { width:34px; height:34px; border-radius:9px; font-size:17px; }
+    .launch-copy { gap:6px; }
+    .launch-copy b { font-size:12px; font-weight:650; }
+    .launch-copy small { color:var(--apple-gray); font-size:10px; line-height:1.5; }
+    .launch-arrow { font-size:14px; }
+    .overview-footnote { margin-top:15px; color:var(--apple-gray); font-size:10px; }
+    .pulse-ring { width:7px; height:7px; background:#258c72; box-shadow:none; }
+    .overview-footnote a { color:var(--apple-blue); }
+    .workspace-shell { padding-top:29px; }
+    .workspace-head,.workspace-tabs,.apple-card,.launch-card { border-radius:11px; box-shadow:none; }
+    .workspace-head { border-color:var(--apple-border); }
+    .workspace-head::after { display:none; }
+    .apple-card:hover { transform:none; }
+    .workspace-tabs { padding:4px; border-radius:9px; box-shadow:none; }
+    .workspace-tabs button { border-radius:7px; }
+    .workspace-shell .apple-card { animation:none; }
+    .launch-arrow,.workspace-back,.workspace-tabs button,.apple-card,.hero-btn-primary,.hero-btn-secondary { transition-duration:.16s; }
+    @media(max-width:980px) { .hero { grid-template-columns:minmax(0,1fr) minmax(280px,.8fr); gap:0 5%; } }
+    @media(max-width:720px) { .hero { padding:42px 20px 24px; } .hero-stats { margin-top:25px; } .overview-launchpad { margin:24px auto 45px; padding:0 16px; } .info-banner { padding:0 16px; } }
+    @media(prefers-reduced-motion:reduce) { .launch-card,.workspace-head,.hero-btn-primary,.hero-btn-secondary { animation:none!important; transition:none!important; } }
   </style>
 </head>
 <body>
 
 <!-- ===== AMBIENT LIQUID GLASS MESH BACKGROUND ===== -->
-<div class="liquid-mesh-container" aria-hidden="true">
-  <div class="liquid-orb liquid-orb-1"></div>
-  <div class="liquid-orb liquid-orb-2"></div>
-</div>
+<div class="liquid-mesh-container" aria-hidden="true"></div>
 
 <!-- ===== APPLE GLOBAL NAVIGATION ===== -->
 <nav class="global-nav" role="navigation" aria-label="Main navigation">
   <div class="global-nav-inner">
     <a href="#" class="nav-brand" aria-label="NeerWatch home">
-      <svg class="apple-logo" viewBox="0 0 170 170" aria-hidden="true">
-        <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.59-7.71-11.68-14.01-6.73-10.37-12.06-22.37-15.99-36.01-3.92-13.64-5.89-26.68-5.89-39.12 0-14.56 3.75-26.79 11.24-36.68 7.49-9.89 17.06-14.93 28.71-15.14 4.57 0 9.77 1.25 15.61 3.76 5.84 2.5 9.77 3.82 11.78 3.94 1.79-.12 5.89-1.5 12.3-4.14 6.42-2.63 11.96-3.83 16.63-3.6 12.83.66 23.11 5.3 30.84 13.94-11.19 6.75-16.69 16.03-16.5 27.84.18 9.38 3.84 17.26 10.99 23.63 7.15 6.37 15.61 9.94 25.37 10.72-2.39 7.4-5.46 14.65-9.21 21.75zM119.22 31.81c0-7.39 2.66-14.28 7.97-20.67 5.32-6.39 12-10.42 20.06-12.09.22 1.34.33 2.57.33 3.69 0 7.39-2.73 14.39-8.19 21.01-5.45 6.62-12.23 10.43-20.34 11.44-.11-1.12-.17-2.12-.17-3.38z"/>
-      </svg>
+      <svg class="drop-logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.6C9.1 5.5 5 9.7 5 14a7 7 0 1 0 14 0c0-4.3-4.1-8.5-7-12.4Z"/></svg>
       <span>NeerWatch</span>
-      <span class="brand-drop">💧</span>
     </a>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
     <div class="nav-links" id="navLinks">
-      <button class="active" onclick="showView('overview')">Overview</button>
-      <button onclick="scrollToSection('map')">Evidence Map</button>
-      <button onclick="showView('ml-zones')">ML Assessment</button>
-      <button onclick="scrollToSection('site-table')">Water Sites</button>
-      <button onclick="scrollToSection('disease-trends')">Disease Trends</button>
-      <button onclick="scrollToSection('coverage')">Coverage</button>
-      <button onclick="scrollToSection('dataset-workflow')">Dataset Pipeline</button>
+      <button class="active" data-view="overview" onclick="showView('overview')">Home</button>
+      <a class="nav-link-anchor" href="/model-studio">ML Model Studio ↗</a>
+      <a class="nav-link-anchor" href="/about">About</a>
     </div>
     <div class="nav-right">
       <div class="connection-pill loading" id="connectionTag">
@@ -1677,21 +1953,23 @@
         <option value="Sikkim">Sikkim</option>
         <option value="Tripura">Tripura</option>
       </select>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme" title="Switch theme">☾</button>
     </div>
   </div>
 </nav>
 
-<!-- ===== APPLE HERO SECTION ===== -->
+<div class="home-screen" id="overviewScreen">
+<!-- ===== OVERVIEW LANDING ===== -->
 <section class="hero" id="overview">
   <div class="hero-eyebrow">
-    <span>💧</span>
+    <span aria-hidden="true">NW</span>
     <span>Northeast India · Regional Water Intelligence</span>
   </div>
   <h1>Water quality.<br/><span>Early warning.</span></h1>
-  <p class="hero-sub">Find documented contamination signals and determine where fresh water verification testing should happen first. AI-powered precision monitoring across 8 Northeast states.</p>
+  <p class="hero-sub">Browse published water observations, review prototype risk estimates, and plan where current field testing is needed across Northeast India.</p>
   <div class="hero-actions">
-    <button class="hero-btn-primary" onclick="scrollToSection('map')">Explore Evidence Map ›</button>
-    <button class="hero-btn-secondary" onclick="showView('ml-zones')">Inspect 200 ML Zones ›</button>
+    <button class="hero-btn-primary" onclick="showView('map')">Explore evidence ›</button>
+    <a class="hero-btn-secondary" href="/model-studio">Open ML Model Studio ›</a>
   </div>
   <div class="hero-stats">
     <div class="hero-stat">
@@ -1723,12 +2001,37 @@
 <div class="info-banner">
   <div class="info-banner-inner">
     <span class="info-banner-icon">i</span>
-    <span><b>How to read this intelligence platform:</b> Historical water-quality observations are shown separately from the prototype ML assessment. ML risk, reliability score, and verification priority are computed by the XGBoost prototype model using synthetic demonstration data. Field testing is required before making current water-safety decisions. CPCB river flags use BOD &gt;3 mg/L against its outdoor-bathing criterion as an organic-pollution screen. "No exceedance" applies strictly to displayed parameters and sample dates.</span>
+    <span><b>Data note:</b> Historical samples and prototype ML outputs are separate. Risk values come from a saved synthetic snapshot; this build does not run new inference. Results are not current safety findings. Verify present-day conditions with field and laboratory testing. CPCB river flags screen BOD &gt;3 mg/L; “no exceedance” applies only to displayed parameters and sample dates.</span>
   </div>
 </div>
 
+<section class="overview-launchpad" aria-label="Choose a workspace">
+  <div class="launchpad-heading"><div><span class="launchpad-kicker">YOUR WORKSPACE</span><h2>One place to explore and act.</h2></div><span class="launchpad-hint">Choose a task. Your evidence tools stay together.</span></div>
+  <div class="launchpad-grid">
+    <button class="launch-card launch-card-feature" onclick="showView('map')"><span class="launch-icon map-icon">⌖</span><span class="launch-copy"><b>Explore water evidence</b><small>Map, published samples, trends, and coverage in one workspace</small></span><span class="launch-arrow">↗</span></button>
+    <button class="launch-card" onclick="startFieldTest()"><span class="launch-icon test-icon">＋</span><span class="launch-copy"><b>Plan a fresh field test</b><small>Select a site, set priority, and record test results</small></span><span class="launch-arrow">↗</span></button>
+    <button class="launch-card" onclick="showView('dataset')"><span class="launch-icon data-icon">⇧</span><span class="launch-copy"><b>Bring your data</b><small>Upload a CSV and check data and model readiness</small></span><span class="launch-arrow">↗</span></button>
+  </div>
+  <div class="overview-footnote"><span class="pulse-ring"></span><span>Historical measurements and prototype model estimates are clearly labeled throughout the workspace.</span><a href="/model-studio">Open ML Model Studio ↗</a></div>
+</section>
+</div>
+
+<main class="workspace-shell" id="workspaceShell" hidden>
+  <header class="workspace-head">
+    <div><div class="workspace-eyebrow"><span class="workspace-dot"></span> NEERWATCH WORKSPACE <span class="workspace-separator">/</span> <span id="workspaceCrumb">EVIDENCE MAP</span></div><h1 id="workspaceTitle">Evidence map</h1><p id="workspaceSubtitle">Explore published water observations across Northeast India.</p></div>
+    <button class="workspace-back" onclick="showView('overview')">← Home</button>
+  </header>
+
+  <nav class="workspace-tabs" aria-label="Evidence workspace sections">
+    <button type="button" data-workspace-view="map" onclick="showView('map')">Map</button>
+    <button type="button" data-workspace-view="sites" onclick="showView('sites')">Water sites</button>
+    <button type="button" data-workspace-view="trends" onclick="showView('trends')">Trends</button>
+    <button type="button" data-workspace-view="coverage" onclick="showView('coverage')">Coverage</button>
+    <button type="button" data-workspace-view="dataset" onclick="showView('dataset')">Import data</button>
+  </nav>
+
 <!-- ===== STATE CHIPS BAR ===== -->
-<div class="states-bar">
+<div class="states-bar" data-app-page="map">
   <div class="states-bar-inner">
     <span class="states-bar-label">Filter state:</span>
     <div id="stateList"></div>
@@ -1739,7 +2042,7 @@
 <div class="content-wrap">
 
   <!-- MAP + DETAILS PANEL -->
-  <section class="main-grid">
+  <section class="main-grid" data-app-page="map">
     <article class="apple-card map-panel">
       <div class="map-panel-head">
         <div>
@@ -1793,6 +2096,7 @@
       <div id="readings"></div>
       <div class="why-note" id="detailNote"></div>
       <div class="sample-line"><span>Verification status</span><strong id="verificationStatus">Not started</strong></div>
+      <div class="sample-line" id="fieldResultLine" hidden><span>Latest field readings</span><strong id="fieldResultSummary"></strong></div>
       <div class="source-row"><span id="sourceLabel">Source unavailable</span><a id="sourceLink" href="#" target="_blank" rel="noreferrer" hidden>Open source ↗</a></div>
       <button class="action-btn" id="verifyButton" onclick="openVerificationModal()">Plan a Fresh Field Test</button>
     </aside>
@@ -1800,7 +2104,7 @@
 
   <!-- SECONDARY GRID: DISEASE TRENDS (Apple Health Style) + ML ZONE SELECTOR -->
   <section class="secondary-grid">
-    <article class="apple-card" id="disease-trends">
+    <article class="apple-card" id="disease-trends" data-app-page="trends">
       <div class="card-head">
         <h2>Disease Trends & Analysis</h2>
         <p class="card-head-sub">Monthly case trajectory — Apple Health style visualization of synthetic demonstration series</p>
@@ -1810,24 +2114,11 @@
       </div>
     </article>
 
-    <article class="apple-card" id="ml-zone-panel">
-      <div class="card-head">
-        <h2>ML Assessment Zones</h2>
-        <p class="card-head-sub">200 synthetic demonstration assessment zones · LOC_001–LOC_200</p>
-      </div>
-      <div class="card-body">
-        <select class="ml-zone-select" id="mlZoneSelect" onchange="selectMlZone(this.value)">
-          <option value="">— Select an ML assessment zone —</option>
-        </select>
-        <div class="ml-disclosure"><b>Prototype ML assessment zone — synthetic demonstration data.</b> These zones are not real geographic monitoring sites. Risk outputs use an August 2024 prototype snapshot.</div>
-        <div id="mlZoneDetail"></div>
-      </div>
-    </article>
   </section>
 
   <!-- BOTTOM GRID: PUBLISHED SAMPLE TABLE + EVIDENCE COVERAGE -->
   <section class="bottom-grid">
-    <article class="apple-card" id="site-table">
+    <article class="apple-card" id="site-table" data-app-page="sites">
       <div class="table-heading">
         <div>
           <h2>Published Sample Records</h2>
@@ -1856,7 +2147,7 @@
       </div>
     </article>
 
-    <article class="apple-card coverage-panel" id="coverage">
+    <article class="apple-card coverage-panel" id="coverage" data-app-page="coverage">
       <div class="coverage-title">
         <div>
           <h2>Evidence Coverage</h2>
@@ -1869,12 +2160,12 @@
   </section>
 
   <!-- DATASET ANALYSIS WORKFLOW PANEL -->
-  <section class="dataset-panel apple-card" id="dataset-workflow">
+  <section class="dataset-panel apple-card" id="dataset-workflow" data-app-page="dataset">
     <div class="dataset-panel-inner">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;">
         <div>
-          <h2>Dataset Analysis Pipeline</h2>
-          <p class="card-head-sub">Upload, validate, and run prototype ML inference on new water quality observations</p>
+          <h2>Import and check your data</h2>
+          <p class="card-head-sub">Upload a CSV, validate its rows, and inspect whether the saved model snapshot is ready for review.</p>
         </div>
         <div class="dataset-status" id="datasetStatus">Status: Waiting for upload</div>
       </div>
@@ -1895,7 +2186,7 @@
           <div>
             <div class="step-num">2</div>
             <h3>Validate Schema</h3>
-            <p>Verifies required fields (location_id, state, date) and validates data integrity for downstream models.</p>
+            <p>Checks for the required location, state, and date columns. Feature compatibility and new model scoring are unavailable in this build.</p>
           </div>
           <button class="dataset-btn" id="validateBtn" disabled onclick="validateCsv()">Validate Dataset</button>
         </div>
@@ -1903,17 +2194,17 @@
         <div class="dataset-step-card">
           <div>
             <div class="step-num">3</div>
-            <h3>Run ML Analysis</h3>
-            <p>Executes XGBoost inference pipeline to update contamination risk, reliability, and priority scores.</p>
+            <h3>Check model readiness</h3>
+            <p>Checks the saved 200-zone prediction and explanation snapshot. New CSV rows are not scored because model weights are not bundled with this build.</p>
           </div>
-          <button class="dataset-btn" id="analyzeBtn" disabled onclick="analyzeCsv()">Run Prototype Analysis</button>
+          <button class="dataset-btn" id="analyzeBtn" disabled onclick="analyzeCsv()">Check saved snapshot</button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FIELD VERIFICATION ADVISORY NOTE -->
-  <section class="verification-note apple-card">
+  <section class="verification-note apple-card" data-app-page="map">
     <div class="verification-note-inner">
       <div class="verification-note-icon">💧</div>
       <div>
@@ -1927,11 +2218,13 @@
 
 <!-- ===== APPLE FIELD VERIFICATION MODAL SHEET ===== -->
 <div class="apple-modal-overlay" id="verificationModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="apple-modal-sheet">
+  <div class="apple-modal-sheet" role="document">
     <div class="modal-header">
-      <h3 id="modalTitle">Plan Field Verification</h3>
+      <div><span class="modal-kicker">FIELD WORKSPACE</span><h3 id="modalTitle">Plan a fresh field test</h3><p id="modalIntro">Record a site visit and save its measurements.</p></div>
       <button class="modal-close-btn" onclick="closeVerificationModal()" aria-label="Close modal">×</button>
     </div>
+    <div class="field-test-context" id="fieldTestContext"></div>
+    <div class="modal-form-grid">
     <div class="modal-form-group">
       <label for="modalLocationName">Target Location</label>
       <input type="text" id="modalLocationName" class="modal-input" readonly />
@@ -1956,16 +2249,27 @@
       </select>
     </div>
     <div class="modal-form-group">
-      <label for="modalDateInput">Scheduled Verification Date</label>
+      <label for="modalDateInput">Scheduled or sample date</label>
       <input type="date" id="modalDateInput" class="modal-input" />
     </div>
-    <div class="modal-form-group">
-      <label for="modalReasonInput">Reason / Operational Notes</label>
-      <textarea id="modalReasonInput" class="modal-textarea" rows="2" placeholder="e.g. Follow-up testing scheduled following historical exceedance alert..."></textarea>
     </div>
+    <section class="field-readings">
+      <div class="field-readings-heading"><div><h4>Field readings</h4><p>Enter only values measured with a field kit. All readings are optional while planning.</p></div><span class="field-readings-tag">OPTIONAL</span></div>
+      <div class="field-reading-grid">
+        <div class="modal-form-group"><label for="fieldPh">pH</label><input type="number" min="0" max="14" step="0.1" id="fieldPh" class="modal-input" placeholder="e.g. 7.2"></div>
+        <div class="modal-form-group"><label for="fieldTurbidity">Turbidity · NTU</label><input type="number" min="0" step="0.1" id="fieldTurbidity" class="modal-input" placeholder="e.g. 2.4"></div>
+        <div class="modal-form-group"><label for="fieldChlorine">Free chlorine · mg/L</label><input type="number" min="0" step="0.01" id="fieldChlorine" class="modal-input" placeholder="e.g. 0.3"></div>
+      </div>
+    </section>
+    <div class="modal-form-group">
+      <label for="modalReasonInput">Field notes</label>
+      <textarea id="modalReasonInput" class="modal-textarea" rows="2" placeholder="Kit ID, weather, collection point, or follow-up notes"></textarea>
+    </div>
+    <div class="field-test-error" id="fieldTestError" role="alert" hidden></div>
+    <p class="field-test-disclaimer">Prototype record only. These readings do not replace laboratory analysis or certify drinking-water safety.</p>
     <div class="modal-actions">
       <button class="modal-btn-cancel" onclick="closeVerificationModal()">Cancel</button>
-      <button class="modal-btn-confirm" id="modalSubmitBtn" onclick="submitVerificationForm()">Save Plan</button>
+      <button class="modal-btn-confirm" id="modalSubmitBtn" onclick="submitVerificationForm()">Save field test</button>
     </div>
   </div>
 </div>
@@ -2011,16 +2315,17 @@
       <div>
         <a href="#">Privacy Policy</a> ·
         <a href="#">Terms of Use</a> ·
+        <a href="/about">About NeerWatch</a> ·
         <a href="#">Data Methodology</a> ·
         <a href="#">India</a>
       </div>
     </div>
   </div>
 </footer>
+</main>
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.js"></script>
 <script>
 const states = ['Arunachal Pradesh', 'Assam', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Sikkim', 'Tripura'];
 
@@ -2171,9 +2476,12 @@ let map = null;
 let markers = [];
 let toastTimer = null;
 let backendConnected = false;
+let readOnlyDeployment = false;
 let detailRequestId = 0;
 let historyRequestId = 0;
 let currentView = 'overview';
+let mapLibraryPromise = null;
+let mapStarted = false;
 const API_BASE = window.location.protocol === 'file:' ? 'http://localhost:8000/api/v1' : `${window.location.origin}/api/v1`;
 
 function escapeHtml(value) {
@@ -2188,10 +2496,19 @@ function statusClass(place) {
 function isHistoricalPlace(p) { return !p.id.startsWith('LOC_'); }
 function historicalPlaces() { return places.filter(isHistoricalPlace); }
 function rowsForState(state) { return historicalPlaces().filter(p => state === 'All' || p.state === state); }
+function refreshOverviewStats() {
+  const evidence = historicalPlaces();
+  document.getElementById('stateCount').textContent = String(new Set(evidence.map(p => p.state)).size).padStart(2, '0');
+  document.getElementById('siteCount').textContent = String(evidence.length).padStart(2, '0');
+  document.getElementById('flaggedCount').textContent = String(evidence.filter(p => p.status === 'flagged' && p.kind.includes('CPCB PRS')).length).padStart(2, '0');
+  document.getElementById('mlZoneCount').textContent = String(allApiPlaces.filter(p => p.id.startsWith('LOC_')).length).padStart(2, '0');
+}
 
 function setConnectionState(state, message) {
   const tag = document.getElementById('connectionTag');
   tag.className = `connection-pill ${state}`;
+  tag.title = message;
+  tag.setAttribute('aria-label', message);
   tag.innerHTML = `<span class="connection-dot"></span><span>${escapeHtml(message)}</span>`;
 }
 
@@ -2222,6 +2539,7 @@ function normalizeApiPlace(location, risk) {
     reliabilityScore: typeof risk.reliability === 'number' ? risk.reliability : (risk.reliability?.score ?? risk.confidence ?? null),
     dataFreshnessDays: risk.data_freshness_days ?? null,
     verificationStatus: 'NOT_STARTED',
+    actualFieldResult: null,
     historyCount: null,
     topRiskDrivers: risk.top_risk_drivers ?? []
   };
@@ -2229,14 +2547,16 @@ function normalizeApiPlace(location, risk) {
 
 async function loadFromApi() {
   const previousPlace = places.find(p => p.id === selectedId);
-  const [locationsResponse, riskResponse] = await Promise.all([
+  const [locationsResponse, riskResponse, apiInfoResponse] = await Promise.all([
     fetch(`${API_BASE}/locations`),
-    fetch(`${API_BASE}/risk`)
+    fetch(`${API_BASE}/risk`),
+    fetch(API_BASE)
   ]);
-  if (!locationsResponse.ok || !riskResponse.ok) throw new Error('The API returned an error');
-  const [locationPayload, riskPayload] = await Promise.all([
+  if (!locationsResponse.ok || !riskResponse.ok || !apiInfoResponse.ok) throw new Error('The API returned an error');
+  const [locationPayload, riskPayload, apiInfo] = await Promise.all([
     locationsResponse.json(),
-    riskResponse.json()
+    riskResponse.json(),
+    apiInfoResponse.json()
   ]);
   if (!Array.isArray(locationPayload.locations) || !Array.isArray(riskPayload.locations)) {
     throw new Error('The API response is missing its locations list');
@@ -2250,6 +2570,7 @@ async function loadFromApi() {
     if (matchedPlace) selectedId = matchedPlace.id;
   }
   backendConnected = true;
+  readOnlyDeployment = apiInfo.read_only === true;
   const hCount = places.length;
   const mCount = allApiPlaces.length - hCount;
   setConnectionState('connected', `Connected · ${hCount} evidence + ${mCount} ML zones`);
@@ -2260,7 +2581,8 @@ async function loadFromApi() {
 function populateMlZoneSelector() {
   const sel = document.getElementById('mlZoneSelect');
   const mlZones = allApiPlaces.filter(p => p.id.startsWith('LOC_'));
-  sel.innerHTML = '<option value="">— Select an ML assessment zone —</option>';
+  if (!sel) { document.getElementById('mlZoneCount').textContent = String(mlZones.length).padStart(2, '0'); return; }
+  if (sel) sel.innerHTML = '<option value="">— Select an ML assessment zone —</option>';
   mlZones.sort((a, b) => {
     const na = parseInt(a.id.split('_')[1]);
     const nb = parseInt(b.id.split('_')[1]);
@@ -2270,7 +2592,7 @@ function populateMlZoneSelector() {
     const opt = document.createElement('option');
     opt.value = z.id;
     opt.textContent = `${z.id} — ${z.state} (${z.district || 'Zone'})`;
-    sel.appendChild(opt);
+    if (sel) sel.appendChild(opt);
   }
   document.getElementById('mlZoneCount').textContent = String(mlZones.length).padStart(2, '0');
 }
@@ -2362,6 +2684,12 @@ function renderSelectedPlace(p) {
     : '<div class="reading"><span class="reading-name">Historical readings</span><strong class="reading-value">Not available</strong><span class="reading-ref">No sample values were supplied for this location.</span></div>';
   document.getElementById('detailNote').textContent = `Context: ${p.notes}`;
   document.getElementById('verificationStatus').textContent = (p.verificationStatus ?? 'NOT_STARTED').replaceAll('_', ' ').toLowerCase();
+  const resultLine = document.getElementById('fieldResultLine');
+  const resultText = document.getElementById('fieldResultSummary');
+  const measuredValues = p.actualFieldResult?.values || {};
+  const resultItems = Object.entries(measuredValues).filter(([, value]) => Number.isFinite(Number(value))).map(([key, value]) => `${key.replaceAll('_',' ')} ${value}`);
+  resultText.textContent = resultItems.join(' · ') || 'No measurements recorded';
+  resultLine.hidden = !p.actualFieldResult;
   document.getElementById('historySummary').textContent = p.historyCount === null ? 'Loading…' : `${p.historyCount} published ${p.historyCount === 1 ? 'record' : 'records'}`;
 
   // Disease Trend Chart (Apple Health Style with Liquid Gradient Fill Area)
@@ -2508,6 +2836,7 @@ async function loadRiskDetail(id) {
     if (!p) return;
     if (!p.id.startsWith('LOC_')) {
       p.verificationStatus = detail.verification?.verification_status ?? 'NOT_STARTED';
+      p.actualFieldResult = detail.verification?.actual_field_result ?? null;
       if (detail.published_observation?.readings) {
         p.readings = detail.published_observation.readings.map(r => ({ name: r.parameter ?? r.name ?? 'Parameter', value: r.value ?? 'Not reported', reference: r.reference ?? 'Reference unavailable' }));
       }
@@ -2518,6 +2847,7 @@ async function loadRiskDetail(id) {
       p.priorityLevel = detail.priority?.level ?? null;
       p.reliabilityScore = detail.reliability?.score ?? null;
       p.verificationStatus = detail.verification?.verification_status ?? 'NOT_STARTED';
+      p.actualFieldResult = detail.verification?.actual_field_result ?? null;
       p.topRiskDrivers = detail.top_risk_drivers ?? [];
     }
     renderSelectedPlace(p);
@@ -2608,7 +2938,31 @@ function renderMarkers() {
 
 function initMap() {
   const fallback = document.getElementById('mapFallback');
-  if (!window.maplibregl) { fallback.hidden = false; return; }
+  if (map || mapStarted) return;
+  mapStarted = true;
+  if (!window.maplibregl) {
+    mapLibraryPromise = new Promise((resolve, reject) => {
+      const css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = 'https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.css';
+      document.head.appendChild(css);
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.js';
+      script.onload = resolve;
+      script.onerror = () => reject(new Error('Map library could not be loaded'));
+      document.head.appendChild(script);
+    });
+  } else {
+    mapLibraryPromise = Promise.resolve();
+  }
+  mapLibraryPromise.then(() => createEvidenceMap(fallback)).catch(() => {
+    mapStarted = false;
+    fallback.hidden = false;
+  });
+}
+
+function createEvidenceMap(fallback) {
+  if (!window.maplibregl) { fallback.hidden = false; mapStarted = false; return; }
   let loaded = false;
   try {
     map = new maplibregl.Map({
@@ -2629,6 +2983,7 @@ function initMap() {
     setTimeout(() => { if (!loaded) fallback.hidden = false; else map && map.resize(); }, 10000);
     setTimeout(() => map && map.resize(), 200);
   } catch (error) {
+    mapStarted = false;
     console.error('Map initialization failed:', error);
     fallback.hidden = false;
   }
@@ -2642,22 +2997,69 @@ function selectMlZone(locId) {
     container.innerHTML = '<div class="ml-disclosure">Backend not connected. Cannot load ML assessment data.</div>';
     return;
   }
-  container.innerHTML = '<div style="padding:12px;color:var(--apple-blue);font-size:13px;font-weight:600;">Details loaded in the inspector panel ↗</div>';
+  const zone = allApiPlaces.find(place => place.id === locId);
+  if (!zone) { container.innerHTML = '<div class="ml-disclosure">No model output is available for this zone.</div>'; return; }
+  const score = value => value == null ? 'Unavailable' : formatScore(value, 'score');
+  const probability = zone.riskProbability == null ? 'Unavailable' : formatScore(zone.riskProbability, 'probability');
+  const drivers = (zone.topRiskDrivers || []).slice(0, 3).map(driver => {
+    const match = driver.match(/^(.*?)\s*\(([-+.\d]+)\)$/);
+    return match ? `<span class="ml-driver-chip">${escapeHtml(match[1])} <b>${Number(match[2]) > 0 ? '+' : ''}${Number(match[2]).toFixed(2)}</b></span>` : `<span class="ml-driver-chip">${escapeHtml(driver)}</span>`;
+  }).join('');
+  container.innerHTML = `<div class="ml-selection-summary"><div class="ml-selection-top"><div><h3>${escapeHtml(zone.place)}</h3><p>${escapeHtml(zone.district)} · ${escapeHtml(zone.state)} · ${escapeHtml(zone.id)}</p></div><span class="ml-selection-badge">${escapeHtml(zone.riskLevel || 'UNAVAILABLE')}</span></div><div class="ml-result-grid"><div class="ml-result-metric"><span>Risk probability</span><strong>${probability}</strong></div><div class="ml-result-metric"><span>Verification priority</span><strong>${score(zone.priorityScore)}</strong></div><div class="ml-result-metric"><span>Data reliability</span><strong>${score(zone.reliabilityScore)}</strong></div></div><div class="ml-driver-list">${drivers || '<span class="ml-driver-chip">No SHAP drivers available</span>'}</div><p class="ml-disclosure"><b>Saved prototype output.</b> This synthetic August 2024 estimate is not a live measurement or current safety determination.</p></div>`;
   selectPlace(locId, false);
 }
 
 /* ========== NAVIGATION VIEWS ========== */
-function showView(view) {
+function showView(view, push = true) {
+  const labels = {
+    map: ['Evidence map', 'Explore published water observations across Northeast India.'],
+    sites: ['Water sites', 'Browse published sample records and their source periods.'],
+    trends: ['Disease trends', 'Explore the prototype’s historical and synthetic trend series.'],
+    coverage: ['Evidence coverage', 'See where published observations are available across the region.'],
+    dataset: ['Import data', 'Upload a CSV, validate its schema, and check the saved model snapshot.']
+  };
+  if (view === 'ml') { location.href = '/model-studio'; return; }
+  const allowed = new Set(['overview', ...Object.keys(labels)]);
+  if (!allowed.has(view)) view = 'overview';
   currentView = view;
-  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-  if (view === 'overview') {
-    document.querySelectorAll('.nav-links button')[0]?.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  } else if (view === 'ml-zones') {
-    document.querySelectorAll('.nav-links button')[2]?.classList.add('active');
-    document.getElementById('ml-zone-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const home = document.getElementById('overviewScreen');
+  const workspace = document.getElementById('workspaceShell');
+  home.hidden = view !== 'overview';
+  workspace.hidden = view === 'overview';
+  document.querySelectorAll('[data-app-page]').forEach(node => { node.hidden = node.dataset.appPage !== view; });
+  document.querySelectorAll('.secondary-grid,.bottom-grid').forEach(group => {
+    const visibleCount = [...group.querySelectorAll('[data-app-page]')].filter(node => !node.hidden).length;
+    group.hidden = visibleCount === 0;
+    group.classList.toggle('single-view', visibleCount === 1);
+  });
+  document.querySelectorAll('.nav-links button[data-view]').forEach(button => button.classList.toggle('active', button.dataset.view === 'overview'));
+  document.querySelectorAll('.workspace-tabs button[data-workspace-view]').forEach(button => button.classList.toggle('active', button.dataset.workspaceView === view));
+  document.getElementById('stateSelect').hidden = view === 'overview';
+  document.getElementById('workspaceTitle').textContent = labels[view]?.[0] || '';
+  document.getElementById('workspaceSubtitle').textContent = labels[view]?.[1] || '';
+  document.getElementById('workspaceCrumb').textContent = view === 'overview' ? '' : view.toUpperCase();
+  const menu = document.getElementById('navLinks');
+  menu.classList.remove('mobile-open');
+  document.getElementById('mobileMenuToggle').setAttribute('aria-expanded', 'false');
+  if (push && view !== 'overview' && location.hash !== `#/${view}`) history.pushState({ view }, '', `#/${view}`);
+  if (push && view === 'overview' && location.hash) history.pushState({ view }, '', location.pathname + location.search);
+  document.title = view === 'overview' ? 'NeerWatch | Northeast India Water Intelligence' : `${labels[view][0]} · NeerWatch`;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (view === 'map') {
+    renderRows();
+    if (selectedId) selectPlace(selectedId, false);
+    if (map) requestAnimationFrame(() => map.resize());
+    else initMap();
+  } else if (view === 'sites') {
+    renderRows();
+    if (selectedId) selectPlace(selectedId, false);
   }
 }
+
+window.addEventListener('popstate', () => {
+  const route = location.hash.match(/^#\/(map|sites|trends|coverage|dataset)$/)?.[1] || 'overview';
+  showView(route, false);
+});
 
 function showToast(message) {
   const t = document.getElementById('toast');
@@ -2674,20 +3076,52 @@ function scrollToSection(id) {
 
 /* ========== FIELD VERIFICATION MODAL FUNCTIONS ========== */
 function openVerificationModal() {
+  if (readOnlyDeployment) { showToast('This public demo is read-only; field results cannot be saved.'); return; }
   const p = places.find(x => x.id === selectedId) || allApiPlaces.find(x => x.id === selectedId);
   if (!p) return;
+  const modal = document.getElementById('verificationModal');
+  const isML = p.id.startsWith('LOC_');
   document.getElementById('modalLocationName').value = `${p.place} (${p.state})`;
-  document.getElementById('modalStatusSelect').value = p.verificationStatus || 'PLANNED';
-  const cleanPriority = (p.priorityLevel || '').replace(/\s*priority/i, '').trim().toUpperCase();
-  document.getElementById('modalPrioritySelect').value = cleanPriority || '';
-  document.getElementById('modalDateInput').value = new Date().toISOString().split('T')[0];
-  document.getElementById('modalReasonInput').value = `Scheduled field test following ${p.status === 'flagged' ? 'water contamination alert' : 'routine surveillance'}.`;
-  document.getElementById('verificationModal').classList.add('open');
+  document.getElementById('modalTitle').textContent = isML ? 'Test assessment zone' : 'Plan a fresh field test';
+  document.getElementById('modalIntro').textContent = isML ? 'This is a synthetic assessment zone. Confirm a real sampling point before dispatch.' : 'Save a site visit, then record any measurements taken with a field kit.';
+  document.getElementById('fieldTestContext').innerHTML = `<strong>${escapeHtml(p.place)}</strong><span class="field-context-tag">${isML ? 'Synthetic zone' : escapeHtml(p.state)}</span><p>${escapeHtml(isML ? `${p.district} · ${p.state} · not a real station` : `${p.district} · ${p.state} · ${p.period || 'sample period unavailable'}`)}</p>`;
+  document.getElementById('modalStatusSelect').value = ['PLANNED','IN_PROGRESS','COMPLETED'].includes(p.verificationStatus) ? p.verificationStatus : 'PLANNED';
+  document.getElementById('modalPrioritySelect').value = p.priorityLevel || '';
+  const now = new Date();
+  document.getElementById('modalDateInput').value = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+  document.getElementById('modalReasonInput').value = p.status === 'flagged' ? 'Follow-up field verification for a historical source flag.' : '';
+  document.getElementById('fieldPh').value = p.actualFieldResult?.values?.ph ?? '';
+  document.getElementById('fieldTurbidity').value = p.actualFieldResult?.values?.turbidity_ntu ?? '';
+  document.getElementById('fieldChlorine').value = p.actualFieldResult?.values?.free_chlorine_mg_l ?? '';
+  const err = document.getElementById('fieldTestError'); err.hidden = true; err.textContent = '';
+  document.getElementById('modalSubmitBtn').textContent = 'Save field test';
+  modal.classList.add('open');
+  requestAnimationFrame(() => document.getElementById('modalStatusSelect').focus());
 }
 
 function closeVerificationModal() {
   document.getElementById('verificationModal').classList.remove('open');
 }
+
+function startFieldTest() {
+  showView('map');
+  const target = places.find(place => place.status === 'flagged') || places[0];
+  if (target) { selectPlace(target.id, false); openVerificationModal(); }
+  else showToast('Loading water sites. Try again in a moment.');
+}
+
+document.getElementById('modalStatusSelect').addEventListener('change', () => {
+  const readings = ['fieldPh','fieldTurbidity','fieldChlorine'].some(id => document.getElementById(id).value !== '');
+  if (readings && document.getElementById('modalStatusSelect').value !== 'COMPLETED') {
+    const err = document.getElementById('fieldTestError'); err.hidden = false; err.textContent = 'Clear the readings or mark this visit Completed to save measured values.';
+  }
+});
+document.getElementById('verificationModal').addEventListener('click', event => {
+  if (event.target.id === 'verificationModal') closeVerificationModal();
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeVerificationModal();
+});
 
 async function submitVerificationForm() {
   const p = places.find(x => x.id === selectedId) || allApiPlaces.find(x => x.id === selectedId);
@@ -2702,6 +3136,25 @@ async function submitVerificationForm() {
   const priority = document.getElementById('modalPrioritySelect').value || null;
   const date = document.getElementById('modalDateInput').value || null;
   const reason = document.getElementById('modalReasonInput').value || null;
+  const errorBox = document.getElementById('fieldTestError');
+  const measured = [
+    ['ph', 'pH', 'fieldPh'],
+    ['turbidity_ntu', 'Turbidity (NTU)', 'fieldTurbidity'],
+    ['free_chlorine_mg_l', 'Free chlorine (mg/L)', 'fieldChlorine']
+  ].filter(([, , id]) => document.getElementById(id).value.trim() !== '');
+  if (measured.length && status !== 'COMPLETED') {
+    errorBox.hidden = false; errorBox.textContent = 'Measured values can only be saved with status Completed. Choose Completed or clear the readings.'; return;
+  }
+  if (status === 'COMPLETED' && !measured.length) {
+    errorBox.hidden = false; errorBox.textContent = 'Enter at least one measured field value before marking this test Completed.'; return;
+  }
+  errorBox.hidden = true;
+  const actualFieldResult = measured.length ? {
+    result: 'RECORDED',
+    tested_parameters: measured.map(([, label]) => label),
+    values: Object.fromEntries(measured.map(([key, , id]) => [key, Number(document.getElementById(id).value)])),
+    notes: reason
+  } : null;
   const submitBtn = document.getElementById('modalSubmitBtn');
   submitBtn.disabled = true;
 
@@ -2714,15 +3167,16 @@ async function submitVerificationForm() {
         recommended_verification_priority: priority,
         reason_for_priority: reason,
         verification_date: date,
-        actual_field_result: null
+        actual_field_result: actualFieldResult
       })
     });
     if (!response.ok) throw new Error('API could not save verification plan');
     const result = await response.json();
     p.verificationStatus = result.verification_status;
+    p.actualFieldResult = result.actual_field_result;
     renderSelectedPlace(p);
     closeVerificationModal();
-    showToast(`Field verification saved as: ${status.replaceAll('_', ' ')}`);
+    showToast(status === 'COMPLETED' ? 'Field measurements saved.' : `Field test saved as ${status.replaceAll('_', ' ').toLowerCase()}.`);
   } catch (error) {
     showToast('Could not save field verification. Verify backend is running.');
   } finally {
@@ -2740,6 +3194,13 @@ async function uploadCsv(file) {
   if (!file) return;
   const st = document.getElementById('datasetStatus');
   const err = document.getElementById('datasetErrors');
+  if (readOnlyDeployment) {
+    st.textContent = 'Status: READ_ONLY_DEMO';
+    err.className = 'dataset-errors';
+    err.textContent = 'CSV uploads are disabled in the public read-only demo.';
+    err.style.display = 'block';
+    return;
+  }
   st.textContent = 'Status: Uploading CSV dataset...';
   err.style.display = 'none';
   try {
@@ -2770,7 +3231,7 @@ async function validateCsv() {
       err.style.display = 'block';
       return;
     }
-    st.textContent = `Status: READY_FOR_ANALYSIS (${data.rows_detected} rows validated)`;
+    st.textContent = `Schema valid · ${data.rows_detected} rows`;
     document.getElementById('analyzeBtn').disabled = false;
     showToast(`Validation successful: ${data.rows_detected} rows.`);
   } catch (e) {
@@ -2783,22 +3244,24 @@ async function validateCsv() {
 async function analyzeCsv() {
   const st = document.getElementById('datasetStatus');
   const err = document.getElementById('datasetErrors');
-  st.textContent = 'Status: ML inference running...';
+  st.textContent = 'Status: Checking saved model snapshot…';
   err.style.display = 'none';
   document.getElementById('analyzeBtn').disabled = true;
   try {
-    const res = await fetch(API_BASE + '/dataset/analyze', { method: 'POST' });
-    if (!res.ok) throw new Error('Analysis trigger failed');
-    setTimeout(async () => {
-      st.textContent = 'Status: Analysis complete — Model outputs updated';
-      await loadFromApi();
-      if (selectedId) { selectPlace(selectedId, false); }
-      showToast('ML prototype analysis completed!');
-    }, 3000);
+    const res = await fetch(API_BASE + '/model/check', { cache: 'no-store' });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'Saved snapshot check failed');
+    st.textContent = `Saved snapshot: ${data.snapshot_status} · ${data.valid_predictions}/${data.zones_checked} predictions valid`;
+    err.className = 'dataset-errors snapshot-info';
+    err.textContent = data.message;
+    err.style.display = 'block';
+    showToast(data.snapshot_status === 'PASS' ? 'Saved snapshot integrity check passed.' : 'Saved snapshot needs review.');
   } catch (e) {
     st.textContent = 'Status: ERROR';
+    err.className = 'dataset-errors';
     err.textContent = e.message;
     err.style.display = 'block';
+  } finally {
     document.getElementById('analyzeBtn').disabled = false;
   }
 }
@@ -2814,13 +3277,43 @@ async function initializeDashboard() {
     setConnectionState('offline', 'Offline · demo sample data');
   }
   if (!places.some(p => p.id === selectedId)) selectedId = places[0]?.id ?? null;
-  renderStateControls();
-  renderRows();
-  if (selectedId) selectPlace(selectedId, false);
-  initMap();
+  refreshOverviewStats();
+  if (currentView !== 'overview') {
+    renderStateControls();
+    if (currentView === 'map' || currentView === 'sites') {
+      renderRows();
+      if (selectedId) selectPlace(selectedId, false);
+    }
+    if (currentView === 'map' && !mapStarted) initMap();
+  }
 }
 
 document.getElementById('stateSelect').addEventListener('change', e => filterState(e.target.value));
+function setDashboardTheme(theme, save = true) {
+  document.documentElement.dataset.theme = theme;
+  const dark = theme === 'dark';
+  const toggle = document.getElementById('themeToggle');
+  toggle.textContent = dark ? '☀' : '☾';
+  toggle.title = `Switch to ${dark ? 'light' : 'dark'} appearance`;
+  toggle.setAttribute('aria-label', toggle.title);
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#0b141b' : '#1d1d1f');
+  if (save) try { localStorage.setItem('neerwatch-theme', theme); } catch {}
+}
+let dashboardTheme = '';
+try { dashboardTheme = localStorage.getItem('neerwatch-theme') || ''; } catch {}
+setDashboardTheme(dashboardTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'), false);
+document.getElementById('themeToggle').addEventListener('click', () => setDashboardTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+mobileMenuToggle.addEventListener('click', () => {
+  const open = document.getElementById('navLinks').classList.toggle('mobile-open');
+  mobileMenuToggle.setAttribute('aria-expanded', String(open));
+});
+document.querySelectorAll('#navLinks button, #navLinks a').forEach(item => item.addEventListener('click', () => {
+  document.getElementById('navLinks').classList.remove('mobile-open');
+  mobileMenuToggle.setAttribute('aria-expanded', 'false');
+}));
+const initialView = location.hash.match(/^#\/(map|sites|trends|coverage|dataset)$/)?.[1] || 'overview';
+showView(initialView, false);
 initializeDashboard();
 </script>
 </body>

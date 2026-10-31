@@ -12,6 +12,10 @@ node backend/server.mjs
 
 The dashboard and API listen on `http://localhost:8000` by default. Open that address to use the dashboard; it fetches its records from this backend. Set `$env:PORT` before starting to use another port. Check `/health` or `/api/v1` for status and route discovery.
 
+The standalone ML Model Studio is available at `http://localhost:8000/model-studio`. It refreshes the API response and lets you inspect assessment zones and their saved SHAP contributors. The bundled predictions are synthetic August 2024 outputs, not live sensor readings or on-request model inference.
+
+For a public demo, set `NEERWATCH_READ_ONLY=true`. The health and API discovery endpoints report `read_only: true`, and public field-verification writes and CSV uploads are rejected. The Render Blueprint and Dockerfile use this mode. Local development leaves writes enabled by default.
+
 ## Routes
 
 - `GET /api/v1/locations` — location catalog. Optional `?state=Assam` filter.
@@ -44,7 +48,7 @@ The dashboard and API listen on `http://localhost:8000` by default. Open that ad
 - Risk probability, risk level, priority, reliability, rainfall/flood evidence, current water-quality readings, and disease cases are `null` until real feeds/model outputs are connected. `risk_status: UNAVAILABLE` distinguishes that from a measured zero or low risk.
 - An empty `top_risk_drivers` list means explanations are not connected; it does not mean there are no risk drivers.
 - Historical source observations are returned separately as `published_observation` and in the history endpoint. They are not substituted for current values or ML predictions.
-- The API has permissive CORS and no authentication for local prototyping only. Do not expose it publicly or put identifiable health data into it without adding access controls and privacy review.
+- The API has permissive CORS and no authentication. Public deployments must use `NEERWATCH_READ_ONLY=true`; do not enable public write routes or put identifiable health data into it without adding authentication and privacy controls.
 
 ## Frontend connection
 
